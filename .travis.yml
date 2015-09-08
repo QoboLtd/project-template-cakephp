@@ -16,7 +16,7 @@ before_script:
   - phpenv rehash
 
 script:
-  - ./vendor/bin/phpunit
+  - phpunit
 
 notifications:
   email: false
