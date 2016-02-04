@@ -1,6 +1,8 @@
 project-template-cakephp
 ========================
 
+**This is a non-stable project for CakePHP 3.x at this time. It is currently under development and should be considered experimental.**
+
 This is a template for the new CakePHP project.
 
 Install
