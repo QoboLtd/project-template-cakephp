@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "609f9c127eb9c9a2a20b03a8d0ae0b67",
-    "content-hash": "36b36eadad409a9cbb216ad370784a14",
+    "hash": "c7b8fbe36d61d47dc4e040af7c81a2b8",
+    "content-hash": "59f35cc3cfd25326eccef81cf5010847",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -272,6 +272,52 @@
             "time": "2016-02-06 17:50:55"
         },
         {
+            "name": "cakephp/bake",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/bake.git",
+                "reference": "02a9443b7c3f21a5ba0c0add9049a5e1689da2b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/02a9443b7c3f21a5ba0c0add9049a5e1689da2b6",
+                "reference": "02a9443b7c3f21a5ba0c0add9049a5e1689da2b6",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": ">=3.2.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "dev-master",
+                "phpunit/phpunit": "*"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Bake\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CakePHP Community",
+                    "homepage": "https://github.com/cakephp/bake/graphs/contributors"
+                }
+            ],
+            "description": "Bake plugin for CakePHP 3.0",
+            "homepage": "https://github.com/cakephp/bake",
+            "keywords": [
+                "bake",
+                "cakephp"
+            ],
+            "time": "2016-03-03 09:23:29"
+        },
+        {
             "name": "cakephp/cakephp",
             "version": "3.2.4",
             "source": {
@@ -345,16 +391,16 @@
         },
         {
             "name": "cakephp/chronos",
-            "version": "0.4.7",
+            "version": "0.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "8f90c9b8cc813be21fb07ac487dc90ddbdf2fb0b"
+                "reference": "aef0ba4ffcd1d962dc66b4d51b0d111db089cfcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/8f90c9b8cc813be21fb07ac487dc90ddbdf2fb0b",
-                "reference": "8f90c9b8cc813be21fb07ac487dc90ddbdf2fb0b",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/aef0ba4ffcd1d962dc66b4d51b0d111db089cfcf",
+                "reference": "aef0ba4ffcd1d962dc66b4d51b0d111db089cfcf",
                 "shasum": ""
             },
             "require": {
@@ -396,7 +442,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2016-02-14 20:36:45"
+            "time": "2016-03-10 01:50:25"
         },
         {
             "name": "cakephp/debug_kit",
@@ -1517,12 +1563,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/UseMuffin/OAuth2.git",
-                "reference": "6be0db7260a74673ddb15a6cf7e41c101401d89d"
+                "reference": "6d793518be186a84cd2d65052d947c1ea3872f98"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/UseMuffin/OAuth2/zipball/6d793518be186a84cd2d65052d947c1ea3872f98",
-                "reference": "6be0db7260a74673ddb15a6cf7e41c101401d89d",
+                "reference": "6d793518be186a84cd2d65052d947c1ea3872f98",
                 "shasum": ""
             },
             "require-dev": {
@@ -1532,6 +1578,11 @@
                 "phpunit/phpunit": "*"
             },
             "type": "cakephp-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Muffin\\OAuth2\\": "src"
@@ -1567,7 +1618,7 @@
                 "muffin",
                 "oauth2"
             ],
-            "time": "2015-10-08 06:25:25"
+            "time": "2016-02-26 20:51:30"
         },
         {
             "name": "nikic/php-parser",
@@ -1732,16 +1783,16 @@
         },
         {
             "name": "qobo/cakephp-groups",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/QoboLtd/cakephp-groups.git",
-                "reference": "e5d9228cfec6ba123a55ca5efab1622f60b4e3a7"
+                "reference": "318593bc2c8a85d73213c63208f01dec92cb05f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/QoboLtd/cakephp-groups/zipball/e5d9228cfec6ba123a55ca5efab1622f60b4e3a7",
-                "reference": "e5d9228cfec6ba123a55ca5efab1622f60b4e3a7",
+                "url": "https://api.github.com/repos/QoboLtd/cakephp-groups/zipball/318593bc2c8a85d73213c63208f01dec92cb05f7",
+                "reference": "318593bc2c8a85d73213c63208f01dec92cb05f7",
                 "shasum": ""
             },
             "require": {
@@ -1750,7 +1801,8 @@
                 "php": ">=5.4.16"
             },
             "require-dev": {
-                "phpunit/phpunit": "*"
+                "cakephp/cakephp-codesniffer": "dev-master",
+                "phpunit/phpunit": "~4.3"
             },
             "type": "cakephp-plugin",
             "autoload": {
@@ -1759,8 +1811,11 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
             "description": "Groups plugin for CakePHP",
-            "time": "2016-02-11 10:16:45"
+            "time": "2016-02-14 10:30:03"
         },
         {
             "name": "qobo/cakephp-menu",
@@ -1799,24 +1854,26 @@
         },
         {
             "name": "qobo/cakephp-qobo-admin-panel",
-            "version": "v1.0.0",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/QoboLtd/cakephp-qobo-admin-panel.git",
-                "reference": "d5b22d257526c746b2cfd7077e864ad433d8e868"
+                "reference": "4720ad053ffc846324dd56cb9320dc5ce29f43e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/QoboLtd/cakephp-qobo-admin-panel/zipball/d5b22d257526c746b2cfd7077e864ad433d8e868",
-                "reference": "d5b22d257526c746b2cfd7077e864ad433d8e868",
+                "url": "https://api.github.com/repos/QoboLtd/cakephp-qobo-admin-panel/zipball/4720ad053ffc846324dd56cb9320dc5ce29f43e4",
+                "reference": "4720ad053ffc846324dd56cb9320dc5ce29f43e4",
                 "shasum": ""
             },
             "require": {
                 "cakephp/cakephp": "~3.0",
-                "php": ">=5.4.16"
+                "php": ">=5.4.16",
+                "qobo/cakephp-menu": "^1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "*"
+                "cakephp/cakephp-codesniffer": "dev-master",
+                "phpunit/phpunit": "~4.3"
             },
             "type": "cakephp-plugin",
             "autoload": {
@@ -1825,21 +1882,24 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
             "description": "QoboAdminPanel plugin for CakePHP",
-            "time": "2016-02-04 15:56:04"
+            "time": "2016-02-29 13:22:08"
         },
         {
             "name": "qobo/cakephp-roles-capabilities",
-            "version": "v1.0.0",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/QoboLtd/cakephp-roles-capabilities.git",
-                "reference": "4ea3171c4136e69c474daf36f19971df3e7eb254"
+                "reference": "fb2c1d90d8db4b277a4b36f3ec06dbac3fcba141"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/QoboLtd/cakephp-roles-capabilities/zipball/4ea3171c4136e69c474daf36f19971df3e7eb254",
-                "reference": "4ea3171c4136e69c474daf36f19971df3e7eb254",
+                "url": "https://api.github.com/repos/QoboLtd/cakephp-roles-capabilities/zipball/fb2c1d90d8db4b277a4b36f3ec06dbac3fcba141",
+                "reference": "fb2c1d90d8db4b277a4b36f3ec06dbac3fcba141",
                 "shasum": ""
             },
             "require": {
@@ -1848,7 +1908,8 @@
                 "qobo/cakephp-groups": "~1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "*"
+                "cakephp/cakephp-codesniffer": "dev-master",
+                "phpunit/phpunit": "~4.3"
             },
             "type": "cakephp-plugin",
             "autoload": {
@@ -1857,8 +1918,11 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
             "description": "Roles and Capabilities plugin for CakePHP",
-            "time": "2016-02-12 08:17:02"
+            "time": "2016-02-14 10:51:08"
         },
         {
             "name": "qobo/pattern",
@@ -1909,16 +1973,16 @@
         },
         {
             "name": "qobo/phake-builder",
-            "version": "v1.0.29",
+            "version": "v1.0.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/QoboLtd/phake-builder.git",
-                "reference": "66f472502fe85b973f6eea1c7efbe60a5b724b5a"
+                "reference": "f5f3c408724b59be138bd9b655fda1b939150524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/QoboLtd/phake-builder/zipball/66f472502fe85b973f6eea1c7efbe60a5b724b5a",
-                "reference": "66f472502fe85b973f6eea1c7efbe60a5b724b5a",
+                "url": "https://api.github.com/repos/QoboLtd/phake-builder/zipball/f5f3c408724b59be138bd9b655fda1b939150524",
+                "reference": "f5f3c408724b59be138bd9b655fda1b939150524",
                 "shasum": ""
             },
             "require": {
@@ -1933,9 +1997,15 @@
                 "zetacomponents/archive": "1.5"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.3"
+                "phpunit/phpunit": "~4.3",
+                "squizlabs/php_codesniffer": "~2.5"
             },
             "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhakeBuilder\\": "src/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0"
@@ -1949,7 +2019,7 @@
                 }
             ],
             "description": "A set of build and deploy files, based on jaz303/phake",
-            "time": "2016-01-26 09:08:42"
+            "time": "2016-03-01 13:16:45"
         },
         {
             "name": "robmorgan/phinx",
@@ -2629,52 +2699,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "cakephp/bake",
-            "version": "1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakephp/bake.git",
-                "reference": "d60995d4d80498dd3285f076dffd3c9059cda160"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/d60995d4d80498dd3285f076dffd3c9059cda160",
-                "reference": "d60995d4d80498dd3285f076dffd3c9059cda160",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": ">=3.2.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "cakephp/cakephp-codesniffer": "dev-master",
-                "phpunit/phpunit": "*"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Bake\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "CakePHP Community",
-                    "homepage": "https://github.com/cakephp/bake/graphs/contributors"
-                }
-            ],
-            "description": "Bake plugin for CakePHP 3.0",
-            "homepage": "https://github.com/cakephp/bake",
-            "keywords": [
-                "bake",
-                "cakephp"
-            ],
-            "time": "2016-02-02 02:35:00"
-        },
         {
             "name": "cakephp/cakephp-codesniffer",
             "version": "dev-master",
@@ -3712,6 +3736,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "muffin/oauth2": 20,
         "cakephp/cakephp-codesniffer": 20
     },
     "prefer-stable": true,
