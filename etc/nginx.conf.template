@@ -5,7 +5,7 @@ server {
 	#
 
 	server_name %%NGINX_SITE_MAIN%% %%NGINX_SITE_OTHER%%;
-	root %%NGINX_ROOT_PREFIX%%/%%NGINX_SITE_MAIN%%;
+	root %%NGINX_ROOT_PREFIX%%/%%NGINX_SITE_MAIN%%/webroot;
 
 	access_log %%NGINX_LOG_PREFIX%%/%%NGINX_SITE_MAIN%%-access.log;
 	error_log %%NGINX_LOG_PREFIX%%/%%NGINX_SITE_MAIN%%-error.log;
@@ -23,13 +23,13 @@ server {
 
 	#
 	# Expires
-	# 
-	 
+	#
+
 	# Non-aggressive Expires header for JavaScript, CSS, and images
-	location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
-		expires 5m;
-		log_not_found off;
-	}
+	#location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+	#	expires 5m;
+	#	log_not_found off;
+	#}
 
 	#
 	# Restrictions
@@ -49,9 +49,9 @@ server {
 	}
 
 	# Disable all methods besides HEAD, GET, and POST
-	if ($request_method !~ ^(GET|HEAD|POST)$) {
-			return 444;
-	}
+	#if ($request_method !~ ^(GET|HEAD|POST)$) {
+	#		return 444;
+	#}
 
 	# Deny all attempts to access hidden files such as .htaccess, .git, etc.
 	location ~ /\. {

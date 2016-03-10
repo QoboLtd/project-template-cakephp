@@ -41,6 +41,16 @@ use Cake\Routing\Router;
  */
 Router::defaultRouteClass('Route');
 
+/**
+ * Add api route to handle our REST API functionality
+ */
+Router::prefix('api', function ($routes) {
+    /**
+     * handle json file extension on API calls
+     */
+    $routes->extensions(['json']);
+});
+
 Router::scope('/', function ($routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',

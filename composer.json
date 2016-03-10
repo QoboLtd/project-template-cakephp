@@ -25,8 +25,8 @@
         "cakephp/cakephp-codesniffer": "^2.0",
         "monolog/monolog": "^1.18",
         "guzzle/guzzle": "^3.9",
-        "league/oauth1-client": "^1.6"
-
+        "league/oauth1-client": "^1.6",
+        "friendsofcake/crud": "^4.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.3",
