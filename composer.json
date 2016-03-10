@@ -3,7 +3,7 @@
         "php": ">=5.4.16",
         "cakephp/cakephp": "^3.2",
         "mobiledetect/mobiledetectlib": "2.*",
-        "cakephp/migrations": "~1.0",
+        "cakephp/migrations": "^1.5",
         "cakephp/plugin-installer": "*",
         "qobo/phake-builder": "^1.0",
         "cakedc/users": "~3.1",
@@ -21,13 +21,16 @@
         "cakephp/debug_kit": "^3.2",
         "muffin/oauth2": "^1.0@dev",
         "cakephp/chronos": "^0.4.8",
-        "cakephp/bake": "^1.2"
+        "cakephp/bake": "^1.2",
+        "cakephp/cakephp-codesniffer": "^2.0",
+        "monolog/monolog": "^1.18",
+        "guzzle/guzzle": "^3.9",
+        "league/oauth1-client": "^1.6"
 
     },
     "require-dev": {
         "phpunit/phpunit": "~4.3",
-        "phpunit/phpunit-selenium": "~2.0",
-        "cakephp/cakephp-codesniffer": "dev-master"
+        "phpunit/phpunit-selenium": "~2.0"
     },
     "suggest": {
         "phpunit/phpunit": "Allows automated tests to be run without system-wide install.",
