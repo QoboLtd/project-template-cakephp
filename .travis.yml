@@ -26,4 +26,4 @@ before_script:
 script:
   - ./vendor/bin/phpunit --group example
   - ./vendor/bin/phpunit --exclude-group example
-  - ./vendor/bin/phpcs -n -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP src/ config/ tests/Fixture/ tests/TestCase/
+  - ./vendor/bin/phpcs -n -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP src/ tests/Fixture/ tests/TestCase/
