@@ -1,7 +1,7 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Table;
+use CsvMigrations\Table;
 
 /**
  * App Model
