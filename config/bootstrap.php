@@ -209,6 +209,7 @@ if (Configure::read('API.auth')) {
  * before any of our plugins that use routes, it breaks
  * them, needs to be investigated further.
  */
+Configure::write('Users.config', ['users']);
 Plugin::load('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
 
 // Only try to load DebugKit in development mode
