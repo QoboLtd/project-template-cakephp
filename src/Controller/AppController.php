@@ -82,6 +82,8 @@ class AppController extends Controller
     public function beforeRender(Event $event)
     {
         $this->viewBuilder()->theme('AdminLTE');
+        // overwrite theme title before setting the theme
+        Configure::write('Theme.title', $this->name);
         $this->set('theme', Configure::read('Theme'));
     }
     /**

@@ -87,7 +87,7 @@ class LdapAuthenticate extends BaseAuthenticate
             ldap_set_option($this->_connection, LDAP_OPT_PROTOCOL_VERSION, (int)$this->_config['version']);
             ldap_set_option($this->_connection, LDAP_OPT_REFERRALS, 0);
             ldap_set_option($this->_connection, LDAP_OPT_NETWORK_TIMEOUT, 5);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->log('Unable to connect to specified LDAP Server.', LogLevel::CRITICAL);
         }
     }
@@ -113,7 +113,7 @@ class LdapAuthenticate extends BaseAuthenticate
             } else {
                 $this->log('LDAP server bind failed for [' . $request->data['username'] . '].', LogLevel::CRITICAL);
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->log($e->getMessage());
         }
 

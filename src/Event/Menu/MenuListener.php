@@ -22,8 +22,115 @@ class MenuListener implements EventListenerInterface
     public function implementedEvents()
     {
         return [
+            'Menu.Menu.getMenu' => 'getMenu',
             'Menu.Menu.beforeRender' => 'beforeRender'
         ];
+    }
+
+    /**
+     * Method that returns menu nested array based on provided menu name
+     *
+     * @param \Cake\Event\Event $event Event object
+     * @param string $name Menu name
+     * @param array $user Current user
+     * @param bool $fullBaseUrl Flag for fullbase url on menu links
+     * @return void
+     */
+    public function getMenu(Event $event, $name, array $user, $fullBaseUrl)
+    {
+        // Set user display name
+        if (empty($user['display_name'])) {
+            $user['display_name'] = $user['first_name'] . ' ' . $user['last_name'];
+            if (empty(trim($user['display_name']))) {
+                $user['display_name'] = $user['username'];
+            }
+        }
+
+        $menus = [
+            'sidebar' => [
+                [
+                    'label' => 'Dashboards',
+                    'url' => '/search/dashboards/',
+                    'icon' => 'tachometer',
+                    'children' => $this->_getDashboardLinks($user)
+                ],
+                ['label' => 'Leads', 'url' => '/leads/', 'icon' => 'user-secret', 'children' => [
+                        ['label' => 'List', 'url' => '/leads/', 'icon' => 'list'],
+                        ['label' => 'Create', 'url' => '/leads/add', 'icon' => 'plus']
+                    ]
+                ],
+                ['label' => 'Contacts', 'url' => '/contacts/', 'icon' => 'phone', 'children' => [
+                        ['label' => 'List', 'url' => '/contacts/', 'icon' => 'list'],
+                        ['label' => 'Create', 'url' => '/contacts/add', 'icon' => 'plus']
+                    ]
+                ],
+                ['label' => 'Accounts', 'url' => '/accounts/', 'icon' => 'building', 'children' => [
+                        ['label' => 'List', 'url' => '/accounts/', 'icon' => 'list'],
+                        ['label' => 'Create', 'url' => '/accounts/add', 'icon' => 'plus']
+                    ]
+                ]
+            ],
+            'top' => [
+                ['label' => 'System', 'url' => '/users/', 'icon' => 'cog', 'children' => [
+                        ['label' => 'Users', 'url' => '/users/', 'icon' => 'user'],
+                        ['label' => 'Groups', 'url' => '/groups/groups/', 'icon' => 'users'],
+                        ['label' => 'Roles', 'url' => '/roles-capabilities/Roles/', 'icon' => 'unlock'],
+                        ['label' => 'Lists', 'url' => '/csv-migrations/dblists/', 'icon' => 'list'],
+                        ['label' => 'Logs', 'url' => '/Logs/', 'icon' => 'list-alt'],
+                        ['label' => 'Information', 'url' => '/System/info', 'icon' => 'info-circle']
+                    ]
+                ],
+                ['label' => $user['display_name'], 'url' => '/users/profile', 'icon' => 'user', 'children' => [
+                        ['label' => 'Profile', 'url' => '/users/profile', 'icon' => 'user'],
+                        ['label' => 'Settings', 'url' => '#', 'icon' => 'cog'],
+                        ['label' => 'Logout', 'url' => '/users/logout', 'icon' => 'sign-out'],
+                    ]
+                ]
+            ]
+        ];
+
+        if (empty($menus[$name])) {
+            return;
+        }
+
+        if ((bool)$fullBaseUrl) {
+            $menus[$name] = $event->subject()->Menu->setFullBaseUrl($menus[$name]);
+        }
+
+        $event->result = $menus[$name];
+    }
+
+    /**
+     * Get dashboard links for the menu.
+     *
+     * @param array $user Current user
+     * @return array
+     */
+    protected function _getDashboardLinks(array $user)
+    {
+        $dashboards = TableRegistry::get('Search.Dashboards')->getUserDashboards($user);
+
+        $result = [];
+        foreach ($dashboards as $dashboard) {
+            $result[] = [
+                'label' => $dashboard->name,
+                'url' => [
+                    'plugin' => 'Search',
+                    'controller' => 'Dashboards',
+                    'action' => 'view',
+                    $dashboard->id
+                ],
+                'icon' => 'tachometer'
+            ];
+        }
+
+        $result[] = [
+            'label' => 'Create',
+            'url' => '/search/dashboards/add',
+            'icon' => 'plus'
+        ];
+
+        return $result;
     }
 
     /**
@@ -87,11 +194,13 @@ class MenuListener implements EventListenerInterface
      */
     protected function _checkItemAccess(array $items, array $user)
     {
+        $fullBaseUrl = Router::fullBaseUrl();
         foreach ($items as $k => &$item) {
-            if (is_string($item['url'])) {
-                $url = Router::parse($item['url']);
-            } else {
-                $url = $item['url'];
+            $url = $item['url'];
+            if (is_string($url)) {
+                // strip out full base URL if is part of menu item's URL
+                $url = false !== strpos($url, $fullBaseUrl) ? str_replace($fullBaseUrl, '', $url) : $url;
+                $url = Router::parse($url);
             }
 
             try {

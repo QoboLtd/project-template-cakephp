@@ -32,7 +32,7 @@ class EmailShell extends Shell
     /**
      * Configure option parser
      *
-     * @return ConsoleOptionParser
+     * @return \Cake\Console\ConsoleOptionParser
      */
     public function getOptionParser()
     {
