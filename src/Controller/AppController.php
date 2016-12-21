@@ -85,7 +85,9 @@ class AppController extends Controller
         // overwrite theme title before setting the theme
         Configure::write('Theme.title', $this->name);
         $this->set('theme', Configure::read('Theme'));
+        $this->set('user', $this->Auth->user());
     }
+
     /**
      * Callack method.
      *
