@@ -2,7 +2,6 @@
 namespace App\Model\Table;
 
 use App\Feature\Factory as FeatureFactory;
-use Cake\Core\Configure;
 use CsvMigrations\CsvMigrationsUtils;
 use CsvMigrations\Table;
 use Qobo\Utils\ModuleConfig\ConfigType;
@@ -43,10 +42,14 @@ class AppTable extends Table
         }
 
         foreach ($modules as $module) {
-            // skip if associated module is disabled
-            $feature = FeatureFactory::get($module);
-            if (!$feature->isActive()) {
-                continue;
+            try {
+                // skip if associated module is disabled
+                $feature = FeatureFactory::get($module);
+                if (!$feature->isActive()) {
+                    continue;
+                }
+            } catch (\Exception $e) {
+                // do nothing
             }
 
             $this->belongsToMany($module, [
@@ -69,10 +72,14 @@ class AppTable extends Table
                     continue;
                 }
 
-                // skip if associated module is disabled
-                $feature = FeatureFactory::get($field->getAssocCsvModule());
-                if (!$feature->isActive()) {
-                    continue;
+                try {
+                    // skip if associated module is disabled
+                    $feature = FeatureFactory::get($field->getAssocCsvModule());
+                    if (!$feature->isActive()) {
+                        continue;
+                    }
+                } catch (\Exception $e) {
+                    // do nothing
                 }
 
                 // belongs-to association of the current module.
