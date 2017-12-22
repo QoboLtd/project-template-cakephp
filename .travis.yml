@@ -26,7 +26,7 @@ matrix:
         - php: nightly
 
 install:
-    - ./bin/phpserv >/dev/null 2>&1 &
+    - ./bin/phpserv >/dev/null &
     - ./bin/composer install --no-interaction --no-progress --no-suggest
     - yarn install
     - mkdir -p build/test-coverage
