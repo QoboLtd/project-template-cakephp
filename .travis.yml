@@ -25,11 +25,9 @@ matrix:
     allow_failures:
         - php: nightly
 
-before_install:
-    - ./bin/phpserv &
-
 install:
     - ./bin/composer install --no-interaction --no-progress --no-suggest
+    - ./bin/phpserv &
     - mkdir -p build/logs
     - ./bin/build app:install CHOWN_USER=$USER,CHGRP_GROUP=$USER,DB_NAME=app,DB_ADMIN_USER=root,DB_USER=root
 
