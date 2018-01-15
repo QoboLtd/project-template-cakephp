@@ -26,7 +26,7 @@ matrix:
         - php: nightly
 
 before_install:
-    - ./bin/phpserv >/dev/null 2>&1 &
+    - ./bin/phpserv &
 
 install:
     - ./bin/composer install --no-interaction --no-progress --no-suggest
