@@ -25,14 +25,12 @@ matrix:
     allow_failures:
         - php: nightly
 
-install:
+before_script:
     - ./bin/phpserv >/dev/null 2>&1 &
     - ./bin/composer install --no-interaction --no-progress --no-suggest
+    - yarn install
     - mkdir -p build/logs
     - ./bin/build app:install CHOWN_USER=$USER,CHGRP_GROUP=$USER,DB_NAME=app,DB_ADMIN_USER=root,DB_USER=root
-
-before_script:
-    - yarn install
 
 script:
   - yarn test
