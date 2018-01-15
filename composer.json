@@ -1,11 +1,17 @@
 {
-  	"name": "qobo/project-template-cakephp",
-	"description": "Template for new CakePHP projects",
-	"license": "GPL-2.0",
+    "name": "qobo/project-template-cakephp",
+    "description": "Template for new CakePHP projects",
+    "license": "GPL-2.0",
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "5.6"
+        }
+    },
     "require": {
         "cakephp/migrations": "^1.6",
         "cakephp/plugin-installer": "*",
-		"consolidation/robo": "^1.1",
+        "consolidation/robo": "^1.1",
         "dereuromark/cakephp-databaselog": "^2.1",
         "mobiledetect/mobiledetectlib": "2.*",
         "pelago/emogrifier": "^1.2",
