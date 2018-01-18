@@ -1,0 +1,5 @@
+PANEL NAME,FIRST COLUMN FIELD NAME,SECOND COLUMN FIELD NAME
+Details,name,active
+Command,job,options
+Recurrence,recurrence
+Recurrence,start_date,end_date

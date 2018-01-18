@@ -24,13 +24,21 @@ $iconColors = [
 ];
 ?>
 <section class="content-header">
-    <h1>
-        <?= __('Changelog')?> &raquo; <?= $this->Html->link(
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h4>
+            <?= __('Changelog')?> &raquo; <?= $this->Html->link(
             $entity->{$displayField},
             ['plugin' => $this->plugin, 'controller' => $this->name, 'action' => 'view', $entity->id],
             ['escape' => false]
-        ); ?>
-    </h1>
+            ); ?>
+            </h4>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="pull-right">
+            </div>
+        </div>
+    </div>
 </section>
 <section class="content">
 <div class="row">
