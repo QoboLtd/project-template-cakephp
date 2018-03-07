@@ -24,6 +24,15 @@ class App extends AbstractCommand
      */
     public function appInstall($env = '')
     {
+        $salt = $this->generateRandomString(64);
+        file_put_contents('build/.salt', $salt);
+
+        if (empty($env)) {
+            $env = "SALT=$salt";
+        } else {
+            $env .= ",SALT=$salt";
+        }
+
         $env = $this->getDotenv($env);
 
         if ($env === false || !$this->preInstall($env)) {
@@ -48,6 +57,14 @@ class App extends AbstractCommand
      */
     public function appUpdate($env = '')
     {
+        if (file_exists('build/.salt')) {
+            $salt = file_get_contents('build/.salt');
+            if (empty($env)) {
+                $env = "SALT=$salt";
+            } else {
+                $env .= ",SALT=$salt";
+            }
+        }
         $env = $this->getDotenv($env);
 
         if ($env === false || !$this->preInstall($env)) {
@@ -567,5 +584,15 @@ class App extends AbstractCommand
             return $result->getData()['data'][0]['message'];
         }
         return "Unknown";
+    }
+
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }
