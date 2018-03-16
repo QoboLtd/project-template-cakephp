@@ -130,6 +130,9 @@ class App extends AbstractCommand
         // prepare all remaining tasks in this array
         $tasks = [];
 
+        // clear cache as first task
+        $tasks[] = $this->taskCakephpCacheClear();
+
         // create DB
         $tasks []= $this->taskMysqlDbCreate()
             ->db($this->getValue('DB_NAME', $env))
@@ -273,6 +276,9 @@ class App extends AbstractCommand
                 ->recursive(true);
         }
 
+        // clear cache as last task
+        $tasks[] = $this->taskCakephpCacheClear();
+
         // execute all tasks
         foreach ($tasks as $task) {
             $result = $task->run();
@@ -307,6 +313,9 @@ class App extends AbstractCommand
 
         // prepare all remaining tasks in this array
         $tasks = [];
+
+        // clear cache as first task
+        $tasks[] = $this->taskCakephpCacheClear();
 
         // drop test DB
         $tasks []= $this->taskMysqlDbDrop()
@@ -366,8 +375,6 @@ class App extends AbstractCommand
             ->pass($this->getValue('DB_ADMIN_PASS', $env))
             ->hide($this->getValue('DB_ADMIN_PASS', $env))
             ->host($this->getValue('DB_HOST', $env));
-
-        $tasks [] = $this->taskCakephpCacheClear();
 
         // cleanup database logs
         $tasks []= $this->taskCakephpShellScript()->name('database_log')->param('gc');
@@ -438,6 +445,9 @@ class App extends AbstractCommand
                 ->group($group)
                 ->recursive(true);
         }
+
+        // clear cache as last task
+        $tasks[] = $this->taskCakephpCacheClear();
 
         // execute all tasks
         foreach ($tasks as $task) {
