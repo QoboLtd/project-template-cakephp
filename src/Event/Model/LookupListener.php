@@ -115,11 +115,7 @@ class LookupListener implements EventListenerInterface
      */
     private function setRelatedByLookupField(Association $association, EntityInterface $entity)
     {
-        if ('manyToOne' !== $association->type()) {
-            return;
-        }
-
-        if (is_null($association->className())) {
+        if (! $this->isValidAssociation($association)) {
             return;
         }
 
@@ -134,11 +130,7 @@ class LookupListener implements EventListenerInterface
             return;
         }
 
-        // skip if record is be found by primary key
-        $query = $association->getTarget()->find('all')
-            ->where([$association->primaryKey() => $entity->get($association->getForeignKey())])
-            ->limit(1);
-        if (! $query->isEmpty()) {
+        if ($this->hasPrimaryKey($association, $entity)) {
             return;
         }
 
@@ -155,5 +147,40 @@ class LookupListener implements EventListenerInterface
             $association->getForeignKey(),
             $query->first()->get($association->getPrimaryKey())
         );
+    }
+
+    /**
+     * Validates if association can be used for lookup functionality.
+     *
+     * @param \Cake\ORM\Association $association Table association
+     * @return bool
+     */
+    private function isValidAssociation(Association $association)
+    {
+        if ('manyToOne' !== $association->type()) {
+            return false;
+        }
+
+        if (is_null($association->className())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks if related record is found by primary key
+     *
+     * @param \Cake\ORM\Association $association Table association
+     * @param \Cake\Datasource\EntityInterface $entity Entity instance
+     * @return bool
+     */
+    private function hasPrimaryKey(Association $association, EntityInterface $entity)
+    {
+        $query = $association->getTarget()->find('all')
+            ->where([$association->primaryKey() => $entity->get($association->getForeignKey())])
+            ->limit(1);
+
+        return ! $query->isEmpty();
     }
 }
