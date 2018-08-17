@@ -61,13 +61,13 @@ $this->layout = 'AdminLTE/login';
 <?= $this->Form->end() ?>
 <?php
 if (!(bool)Configure::read('Ldap.enabled')) {
-    echo $this->Html->link(__d('users', 'I forgot my password'), ['action' => 'requestResetPassword']);
+    echo $this->Html->link(__d('users', 'I forgot my password'), ['action' => 'request-reset-password']);
 }
 
 if ((bool)Configure::read('Users.Registration.active') && (bool)Configure::read('Users.Email.validate')) {
     echo $this->Html->link(__d('users', 'Resend validation email'), [
         'controller' => 'Users',
-        'action' => 'resendTokenValidation'
+        'action' => 'resend-token-validation'
         ], ['class' => 'pull-right']
     );
 }

@@ -79,7 +79,7 @@ echo $this->Html->script('AdminLTE./plugins/datepicker/bootstrap-datepicker', ['
                         </dl>
                         <?= $this->Html->link(
                             '<i class="fa fa-lock"></i> ' . __d('Users', 'Change Password'),
-                            ['controller' => 'Users', 'action' => 'changePassword'],
+                            ['controller' => 'Users', 'action' => 'change-password'],
                             ['escape' => false, 'class' => 'btn btn-default btn-sm']
                         ); ?>
                     </div>
