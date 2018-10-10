@@ -4,6 +4,7 @@ namespace App\Shell;
 use Cake\Console\Shell;
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Hash;
 
 /**
  * Settings shell command.
@@ -46,7 +47,8 @@ class SettingsShell extends Shell
     public function main()
     {
         $query = TableRegistry::get('Settings');
-        $settings = $query->getAliasDiff(Configure::read('Settings'));
+        $alias = Hash::extract(Configure::read('Settings'), '{s}.{s}.{s}.{s}.alias');
+        $settings = $query->getAliasDiff($alias);
 
         $data = [];
         foreach ($settings as $set) {

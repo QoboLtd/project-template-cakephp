@@ -74,10 +74,10 @@ class SettingsTable extends Table
     {
         // Array with all the alias from the config
         $alias = [];
-        foreach ($settings as $field => $data) {
+        foreach ($settings as $data) {
             // check is the alias exist in the Configure
-            Configure::readOrFail($data['alias']);
-            $alias[] = $data['alias'];
+            Configure::readOrFail($data);
+            $alias[] = $data;
         }
 
         // Array with all the alias from the db
