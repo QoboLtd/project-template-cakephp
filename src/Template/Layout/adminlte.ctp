@@ -1,9 +1,4 @@
-<?php use Cake\Core\Configure;
-
-$skinUrl = Configure::read('Theme.skinUrl');
-$skinName = Configure::read('Theme.skin');
-
-?>
+<?php use Cake\Core\Configure ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +12,7 @@ $skinName = Configure::read('Theme.skin');
         <?php echo $this->Html->css('/plugins/ionicons/css/ionicons.min'); ?>
         <!-- Theme style -->
         <?php echo $this->Html->css('AdminLTE.AdminLTE.min'); ?>
-        <?php echo $this->Html->css($skinUrl); ?>
+        <?php echo $this->Html->css('AdminLTE.skins/skin-'. Configure::read('Theme.skin') .'.min'); ?>
 
         <?php echo $this->fetch('css'); ?>
 
