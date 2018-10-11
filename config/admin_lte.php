@@ -26,7 +26,6 @@ return [
             'show_social' => false,
         ],
         'skin' => 'blue',
-        'skinUrl' => 'AdminLTE.skins/skin-blue.min',
         'backgroundImages' => 'qobo',
         'prependAvatars' => true,
     ],
