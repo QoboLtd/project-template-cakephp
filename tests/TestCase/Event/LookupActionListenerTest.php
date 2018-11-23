@@ -12,9 +12,6 @@ use Cake\TestSuite\TestCase;
 
 class LookupActionListenerTest extends TestCase
 {
-    /**
-     * @var \App\Model\Table\UsersTable Table instance
-     */
     private $Users;
 
     public $fixtures = [

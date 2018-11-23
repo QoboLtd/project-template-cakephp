@@ -17,19 +17,6 @@ class UsersShellTest extends TestCase
      */
     private $out;
 
-    /**
-     * @var \Cake\Console\ConsoleIo
-     */
-    private $io;
-
-    /**
-     * @var \Cake\ORM\Table
-     */
-    private $Users;
-
-    /**
-     * Instance of the Shell
-     */
     private $Shell;
 
     /**
@@ -49,16 +36,23 @@ class UsersShellTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+
         $this->out = new ConsoleOutput();
-        $this->io = new ConsoleIo($this->out);
-        $this->Users = TableRegistry::get('CakeDC/Users.Users');
-        $this->Shell = $this->getMockBuilder('App\Shell\UsersShell')
+        /** @var \Cake\Console\ConsoleIo */
+        $io = new ConsoleIo($this->out);
+
+        /** @var \App\Shell\UsersShell */
+        $mock = $this->getMockBuilder('App\Shell\UsersShell')
             ->setMethods(['_welcome'])
-            ->setConstructorArgs([$this->io])
+            ->setConstructorArgs([$io])
             ->getMock();
-        $this->Shell->Users = $this->getMockBuilder('CakeDC\Users\Model\Table\UsersTable')
+        $this->Shell = $mock;
+
+        /** @var \App\Model\Table\UsersTable */
+        $mock = $this->getMockBuilder('CakeDC\Users\Model\Table\UsersTable')
             ->setMethods(['newEntity', 'save'])
             ->getMock();
+        $this->Shell->Users = $mock;
     }
 
     /**
@@ -87,7 +81,7 @@ class UsersShellTest extends TestCase
             'active' => 1
         ];
 
-        $entity = $this->Users->newEntity($data);
+        $entity = TableRegistry::get('CakeDC/Users.Users')->newEntity($data);
 
         $this->Shell->Users->expects($this->once())
             ->method('newEntity')

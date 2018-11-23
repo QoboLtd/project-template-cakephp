@@ -18,13 +18,6 @@ class CronShellTest extends ConsoleIntegrationTestCase
     ];
 
     /**
-     * ConsoleIo mock
-     *
-     * @var \Cake\Console\ConsoleIo|\PHPUnit_Framework_MockObject_MockObject
-     */
-    public $io;
-
-    /**
      * Test subject
      *
      * @var \App\Shell\CronShell
@@ -39,8 +32,11 @@ class CronShellTest extends ConsoleIntegrationTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->io = $this->getMockBuilder('Cake\Console\ConsoleIo')->getMock();
-        $this->CronShell = new CronShell($this->io);
+
+        /** @var \Cake\Console\ConsoleIo */
+        $io = $this->getMockBuilder('Cake\Console\ConsoleIo')->getMock();
+
+        $this->CronShell = new CronShell($io);
     }
 
     /**

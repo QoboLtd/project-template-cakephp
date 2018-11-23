@@ -7,14 +7,8 @@ use PDO;
 
 class EncodedFileTypeTest extends TestCase
 {
-    /**
-     * @var \App\Database\Type\EncodedFileType
-     */
     public $type;
 
-    /**
-     * @var \Cake\Database\Driver
-     */
     public $driver;
 
     /**

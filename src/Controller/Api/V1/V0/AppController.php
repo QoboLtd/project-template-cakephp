@@ -127,8 +127,10 @@ class AppController extends Controller
     {
         $this->loadComponent('Auth', $this->authConfig);
 
+        $authObject = $this->Auth->getAuthenticate('ADmad/JwtAuth.Jwt');
+
         // set auth user from token
-        $user = $this->Auth->getAuthenticate('ADmad/JwtAuth.Jwt')->getUser($this->request);
+        $user = null === $authObject ? [] : $authObject->getUser($this->request);
         $this->Auth->setUser($user);
 
         // set current user for access to all MVC layers
@@ -153,6 +155,10 @@ class AppController extends Controller
     public function view()
     {
         $this->Crud->on('beforeFind', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'query')) {
+                return;
+            }
+
             $event->getSubject()->query->applyOptions([
                 'lookup' => true,
                 'value' => $this->request->getParam('pass.0')
@@ -165,6 +171,10 @@ class AppController extends Controller
         });
 
         $this->Crud->on('afterFind', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entity')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_VIEW_AFTER_FIND(), $this, [
                 'entity' => $event->getSubject()->entity
             ]);
@@ -184,6 +194,10 @@ class AppController extends Controller
     public function related(string $id, string $associationName)
     {
         $this->Crud->on('beforePaginate', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'query')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_RELATED_BEFORE_PAGINATE(), $this, [
                 'query' => $event->getSubject()->query
             ]);
@@ -191,6 +205,10 @@ class AppController extends Controller
         });
 
         $this->Crud->on('afterPaginate', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entities')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_RELATED_AFTER_PAGINATE(), $this, [
                 'entities' => $event->getSubject()->entities
             ]);
@@ -198,6 +216,10 @@ class AppController extends Controller
         });
 
         $this->Crud->on('beforeRender', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entities')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_RELATED_BEFORE_RENDER(), $this, [
                 'entities' => $event->getSubject()->entities
             ]);
@@ -215,6 +237,10 @@ class AppController extends Controller
     public function index()
     {
         $this->Crud->on('beforePaginate', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'query')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_INDEX_BEFORE_PAGINATE(), $this, [
                 'query' => $event->getSubject()->query
             ]);
@@ -222,6 +248,10 @@ class AppController extends Controller
         });
 
         $this->Crud->on('afterPaginate', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entities')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_INDEX_AFTER_PAGINATE(), $this, [
                 'entities' => $event->getSubject()->entities
             ]);
@@ -229,6 +259,10 @@ class AppController extends Controller
         });
 
         $this->Crud->on('beforeRender', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entities')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_INDEX_BEFORE_RENDER(), $this, [
                 'entities' => $event->getSubject()->entities
             ]);
@@ -245,9 +279,15 @@ class AppController extends Controller
      */
     public function add()
     {
-        $this->Crud->action()->saveOptions(['lookup' => true]);
+        /** @var \Crud\Action\AddAction */
+        $action = $this->Crud->action();
+        $action->saveOptions(['lookup' => true]);
 
         $this->Crud->on('beforeSave', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entity')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_ADD_BEFORE_SAVE(), $this, [
                 'entity' => $event->getSubject()->entity
             ]);
@@ -255,11 +295,18 @@ class AppController extends Controller
         });
 
         $this->Crud->on('afterSave', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entity')) {
+                return;
+            }
+
+            /** @var \Cake\Datasource\RepositoryInterface&\Cake\ORM\Table */
+            $table = $this->loadModel();
+
             // handle file uploads if found in the request data
-            $fileUpload = new FileUpload($this->loadModel());
+            $fileUpload = new FileUpload($table);
             $fileUpload->link(
-                $event->getSubject()->entity->get($this->loadModel()->getPrimaryKey()),
-                $this->request->getData()
+                $event->getSubject()->entity->get($table->getPrimaryKey()),
+                (array)$this->request->getData()
             );
 
             $ev = new Event((string)EventName::API_ADD_AFTER_SAVE(), $this, [
@@ -278,9 +325,15 @@ class AppController extends Controller
      */
     public function edit()
     {
-        $this->Crud->action()->saveOptions(['lookup' => true]);
+        /** @var \Crud\Action\EditAction */
+        $action = $this->Crud->action();
+        $action->saveOptions(['lookup' => true]);
 
         $this->Crud->on('beforeFind', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'query')) {
+                return;
+            }
+
             $event->getSubject()->query->applyOptions([
                 'lookup' => true,
                 'value' => $this->request->getParam('pass.0')
@@ -293,6 +346,10 @@ class AppController extends Controller
         });
 
         $this->Crud->on('afterFind', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entity')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_EDIT_AFTER_FIND(), $this, [
                 'entity' => $event->getSubject()->entity
             ]);
@@ -300,6 +357,10 @@ class AppController extends Controller
         });
 
         $this->Crud->on('beforeSave', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entity')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_EDIT_BEFORE_SAVE(), $this, [
                 'entity' => $event->getSubject()->entity
             ]);
@@ -307,11 +368,18 @@ class AppController extends Controller
         });
 
         $this->Crud->on('afterSave', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entity')) {
+                return;
+            }
+
+            /** @var \Cake\Datasource\RepositoryInterface&\Cake\ORM\Table */
+            $table = $this->loadModel();
+
             // handle file uploads if found in the request data
-            $fileUpload = new FileUpload($this->loadModel());
+            $fileUpload = new FileUpload($table);
             $fileUpload->link(
-                $event->getSubject()->entity->get($this->loadModel()->getPrimaryKey()),
-                $this->request->getData()
+                $event->getSubject()->entity->get($table->getPrimaryKey()),
+                (array)$this->request->getData()
             );
         });
 
@@ -343,7 +411,7 @@ class AppController extends Controller
             'success' => true,
             'data' => []
         ];
-        foreach ($this->request->getData($this->name) as $field => $files) {
+        foreach ((array)$this->request->getData($this->name) as $field => $files) {
             if (! is_array($files)) {
                 continue;
             }
@@ -363,6 +431,10 @@ class AppController extends Controller
     public function lookup()
     {
         $this->Crud->on('beforeLookup', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'query')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_LOOKUP_BEFORE_FIND(), $this, [
                 'query' => $event->getSubject()->query
             ]);
@@ -370,6 +442,10 @@ class AppController extends Controller
         });
 
         $this->Crud->on('afterLookup', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'entities')) {
+                return;
+            }
+
             $ev = new Event((string)EventName::API_LOOKUP_AFTER_FIND(), $this, [
                 'entities' => $event->getSubject()->entities
             ]);

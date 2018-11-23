@@ -31,11 +31,14 @@ class BatchActionListener implements EventListenerInterface
      */
     public function batchAccessCheck(Event $event, array $batchIds, string $operation, array $user): void
     {
+        /** @var \Cake\ORM\Controller */
+        $controller = $event->getSubject();
+
         $result = [];
         foreach ($batchIds as $batchId) {
             $url = [
-                'plugin' => $event->getSubject()->getPlugin(),
-                'controller' => $event->getSubject()->getName(),
+                'plugin' => $controller->getPlugin(),
+                'controller' => $controller->getName(),
                 'action' => $operation,
                 $batchId
             ];
