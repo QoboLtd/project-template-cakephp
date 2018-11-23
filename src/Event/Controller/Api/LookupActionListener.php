@@ -70,7 +70,8 @@ class LookupActionListener extends BaseActionListener
     protected function _alterQuery(RepositoryInterface $table, QueryInterface $query, ServerRequest $request): void
     {
         $fields = $this->_getTypeaheadFields($table);
-
+        /** @var \Cake\ORM\Query $query */
+        $query = $query;
         $query->order($this->_getOrderByFields($table, $query, $fields));
 
         $this->_joinParentTables($table, $query);
@@ -94,6 +95,7 @@ class LookupActionListener extends BaseActionListener
             } else {
                 // always type-cast fields to string for LIKE clause to work.
                 // otherwise for cases where type is integer LIKE value '%123%' will be converted to '0'
+                /** @var array $typeMap */
                 $typeMap = array_combine($fields, array_pad([], count($fields), 'string'));
                 $query->setTypeMap($typeMap);
                 $query->orWhere([$field . ' LIKE' => '%' . $value . '%']);
@@ -251,6 +253,8 @@ class LookupActionListener extends BaseActionListener
     protected function _getTypeaheadFields(RepositoryInterface $table): array
     {
         $config = (new ModuleConfig(ConfigType::MODULE(), $table->getRegistryAlias()))->parse();
+        /** @var \Cake\ORM\Table $table */
+        $table = $table;
 
         $fields = ! empty($config->table->typeahead_fields) ?
             $config->table->typeahead_fields :
@@ -344,13 +348,14 @@ class LookupActionListener extends BaseActionListener
         /**
          * @var string $parentPrimaryKey
          */
-        $parentPrimaryKey = $parentAssociation->getPrimaryKey();
+        $parentPrimaryKey = $parentAssociation->getTarget()->getPrimaryKey();
 
         $targetTable = $parentAssociation->getTarget();
         $primaryKey = $targetTable->aliasField($parentPrimaryKey);
         $foreignKey = $table->aliasField($parentForeignKey);
 
-        // join parent table
+        /** @var \Cake\ORM\Query $query */
+        $query = $query;
         $query->join([
             'table' => $targetTable->table(),
             'alias' => $parentAssociation->name(),

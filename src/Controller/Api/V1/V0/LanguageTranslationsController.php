@@ -12,11 +12,18 @@ class LanguageTranslationsController extends AppController
     public function index()
     {
         $this->Crud->on('beforePaginate', function (Event $event) {
+            if (! property_exists($event->getSubject(), 'query')) {
+                return;
+            }
+
             $query = $event->getSubject()->query;
 
             $params = $this->request->getQueryParams();
 
             if (Hash::get($params, 'object_model') && Hash::get($params, 'object_foreign_key')) {
+                /**
+                 * @var \App\Model\Table\LanguageTranslationsTable $table
+                 */
                 $table = $this->loadModel();
                 $conditions = [
                     'object_model' => Hash::get($params, 'object_model'),

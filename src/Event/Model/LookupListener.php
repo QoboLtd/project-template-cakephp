@@ -115,9 +115,10 @@ class LookupListener implements EventListenerInterface
         }
 
         /**
-         * @var \Cake\ORM|Table $table
+         * @var \Cake\ORM\Table $table
          */
         $table = $event->getSubject();
+
         foreach ($table->associations() as $association) {
             if (! $this->validate($association, $data)) {
                 continue;
@@ -185,9 +186,13 @@ class LookupListener implements EventListenerInterface
          * @var \Cake\ORM\Table $table
          */
         $table = $association->getTarget();
+        /**
+         * @var string $primaryKey
+         */
+        $primaryKey = $table->getPrimaryKey();
 
         $query = $table->find('all')
-            ->where([$association->getPrimaryKey() => $value])
+            ->where([$primaryKey => $value])
             ->limit(1);
 
         return ! $query->isEmpty();
@@ -211,8 +216,9 @@ class LookupListener implements EventListenerInterface
         if (is_null($relatedEntity)) {
             return;
         }
-
-        $data[$association->getForeignKey()] = $relatedEntity->get($association->getPrimaryKey());
+        /** @var string $primaryKey */
+        $primaryKey = $association->getTarget()->getPrimaryKey();
+        $data[$association->getForeignKey()] = $relatedEntity->get($primaryKey);
     }
 
     /**
@@ -223,9 +229,10 @@ class LookupListener implements EventListenerInterface
      */
     private function getLookupFields(string $moduleName): array
     {
-        $config = (new ModuleConfig(ConfigType::MODULE(), $moduleName))->parse();
+        $mc = new ModuleConfig(ConfigType::MODULE(), $moduleName);
+        $config = $mc->parseToArray();
 
-        return $config->table->lookup_fields;
+        return $config['table']['lookup_fields'];
     }
 
     /**
@@ -240,7 +247,7 @@ class LookupListener implements EventListenerInterface
     {
         $query = $association->getTarget()
             ->find('all')
-            ->select($association->getPrimaryKey())
+            ->select($association->getTarget()->getPrimaryKey())
             ->limit(1);
 
         foreach ($fields as $field) {

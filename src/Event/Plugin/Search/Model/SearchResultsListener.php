@@ -63,7 +63,11 @@ class SearchResultsListener implements EventListenerInterface
         foreach ($entity->visibleProperties() as $prop) {
             if ('_matchingData' === $prop) {
                 foreach ($entity->{$prop} as $associationName => $targetEntity) {
-                    $targetTable = $table->association($associationName)->getTarget();
+                    /**
+                     * @var \Cake\ORM\Association $association
+                     */
+                    $association = $table->association($associationName);
+                    $targetTable = $association->getTarget();
                     $this->_renderValues($targetEntity, $targetTable, $fhf);
                 }
             } else {
