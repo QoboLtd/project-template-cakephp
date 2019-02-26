@@ -38,7 +38,7 @@
         "composer/composer": "^1.7",
         "dereuromark/cakephp-databaselog": "^2.1",
         "dereuromark/cakephp-whoops": "^0.1.2",
-        "lasserafn/php-initial-avatar-generator": "^2.3",
+        "lasserafn/php-initial-avatar-generator": "^3.0",
         "pelago/emogrifier": "^1.2",
         "pyrech/composer-changelogs": "^1.4",
         "qobo/cakephp-csv-migrations": "^35.0",
