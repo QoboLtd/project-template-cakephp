@@ -7,7 +7,6 @@ use CakeDC\Users\Controller\Traits\LoginTrait;
 use CakeDC\Users\Controller\Traits\ProfileTrait;
 use CakeDC\Users\Controller\Traits\RegisterTrait;
 use CakeDC\Users\Controller\Traits\SimpleCrudTrait;
-use CakeDC\Users\Controller\Traits\U2fTrait;
 use CakeDC\Users\Exception\UserNotFoundException;
 use CakeDC\Users\Exception\WrongPasswordException;
 use Cake\Http\Exception\ForbiddenException;
@@ -31,7 +30,6 @@ class UsersController extends AppController
     use SimpleCrudTrait {
         SimpleCrudTrait::delete as defaultDelete;
     }
-    use U2fTrait;
 
     /**
      * changeUserPassword method

@@ -82,7 +82,7 @@ class ModuleIndexListener implements EventListenerInterface
             ],
         ]);
         $batchItem->disableIf(function () {
-            return !Configure::read('CsvMigrations.batch.active');
+            return !Configure::read('Search.batch.active');
         });
 
         $csrfToken = empty($request->getParam('_csrfToken')) ? $request->getCookie('csrfToken') : $request->getParam('_csrfToken');
