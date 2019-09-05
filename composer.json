@@ -40,7 +40,7 @@
         "dereuromark/cakephp-databaselog": "^2.1",
         "dereuromark/cakephp-whoops": "^0.1.2",
         "lasserafn/php-initial-avatar-generator": "^2.3",
-        "pelago/emogrifier": "^1.2",
+        "pelago/emogrifier": "^2.2",
         "pyrech/composer-changelogs": "^1.4",
         "qobo/cakephp-csv-migrations": "^35.0",
         "qobo/cakephp-groups": "^11.0",
