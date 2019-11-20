@@ -56,7 +56,6 @@ class ModelTest extends TestCase
             $this->assertInternalType('array', $field['meta']);
         }
 
-        // 32 migration.json fields, +4 from combined fields, +1 trashed field
         $countFields = $migrationFieldsCount + $trashedFieldsCount + $combinedFieldsCount;
         $this->assertEquals(count($fields) - $ignoreFieldsCount, $countFields, "The fields in database, migration field and trashed fields doesn't match. This happens when new fields were introduced in the database, usually from another branch");
     }
