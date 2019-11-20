@@ -4,6 +4,9 @@ namespace App\Test\TestCase\Utility;
 
 use App\Utility\Model;
 use Cake\TestSuite\TestCase;
+use Qobo\Utils\ModuleConfig\ConfigType;
+use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\ModuleConfig\Parser\Parser;
 
 class ModelTest extends TestCase
 {
@@ -13,10 +16,30 @@ class ModelTest extends TestCase
     {
         $fields = Model::fields('Things');
 
-        // 32 migration.json fields, +4 from combined fields, +1 trashed field
-        $this->assertCount(37, $fields);
+        //Retrieve migration fields
+        $mc = $this->getModuleConfig('Things', []);
+        $migrationFields = [];
+        $config = json_encode($mc->parse());
+        $migrationFields = $mc->parseToArray();
+
+        $ignoreFieldsCount = 0;
+        $combinedFieldsCount = 0;
+        $trashedFieldsCount = 0;
+        $migrationFieldsCount = 0;
 
         foreach ($fields as $field) {
+            if (array_key_exists($field['name'], $migrationFields)) {
+                $migrationFieldsCount++;
+            } elseif ($field['name'] == 'trashed') {
+                $trashedFieldsCount++;
+            } elseif (preg_match("/^.*\_(unit|amount|currency)$/", $field['name'])) {
+                $combinedFieldsCount++;
+            } else {
+                //Exist in the database but it is not trashed, combined or migration field
+                $ignoreFieldsCount++;
+                continue;
+            }
+
             $this->assertArrayHasKey('name', $field);
             $this->assertInternalType('string', $field['name']);
 
@@ -32,5 +55,28 @@ class ModelTest extends TestCase
             $this->assertArrayHasKey('meta', $field);
             $this->assertInternalType('array', $field['meta']);
         }
+
+        // 32 migration.json fields, +4 from combined fields, +1 trashed field
+        $countFields = $migrationFieldsCount + $trashedFieldsCount + $combinedFieldsCount;
+        $this->assertEquals(count($fields) - $ignoreFieldsCount, $countFields, "The fields in database, migration field and trashed fields doesn't match. This happens when new fields were introduced in the database, usually from another branch");
+    }
+
+    /**
+     * Creates a custom instance of `ModuleConfig` with a parser, schema and
+     * extra validation.
+     *
+     * @param string $module Module.
+     * @param string[] $options Options.
+     * @return ModuleConfig Module Config.
+     */
+    protected function getModuleConfig(string $module, array $options = []): ModuleConfig
+    {
+        $configFile = empty($options['configFile']) ? null : $options['configFile'];
+        $mc = new ModuleConfig(ConfigType::MIGRATION(), $module, $configFile, ['cacheSkip' => true]);
+
+        $schema = $mc->createSchema(['lint' => true]);
+        $mc->setParser(new Parser($schema, ['lint' => true, 'validate' => true]));
+
+        return $mc;
     }
 }
