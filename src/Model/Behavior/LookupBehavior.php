@@ -60,15 +60,13 @@ class LookupBehavior extends Behavior
         if (! isset($options['value'])) {
             return;
         }
-
+        $primaryKey = $table->getPrimaryKey();
+        if (! is_string($primaryKey)) {
+            throw new UnsupportedPrimaryKeyException();
+        }
         // fail-safe binding of primary key to query's where clause, if lookup
         // fields are not defined, to avoid random record retrieval.
         if (empty($this->lookupFields)) {
-            $primaryKey = $table->getPrimaryKey();
-            if (! is_string($primaryKey)) {
-                throw new UnsupportedPrimaryKeyException();
-            }
-
             $query->where([
                 $table->aliasField($primaryKey) => $options['value']
             ]);
@@ -76,6 +74,7 @@ class LookupBehavior extends Behavior
             return;
         }
 
+        $clauses = [];
         foreach ($this->lookupFields as $field) {
             $value = $this->castValueByFieldType($options['value'], (string)$table->getSchema()->getColumnType($field));
             // cast value back to string and do strict comparison,
@@ -84,10 +83,12 @@ class LookupBehavior extends Behavior
                 continue;
             }
 
-            $query->orWhere([
-                $table->aliasField($field) => $options['value']
-            ]);
+            $clauses[] = [$table->aliasField($field) => $options['value']];
         }
+
+        array_push($clauses, [$table->aliasField($primaryKey) => $options['value']]);
+
+        $query->where(['OR' => $clauses]);
     }
 
     /**
