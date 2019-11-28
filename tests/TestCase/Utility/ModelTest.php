@@ -57,7 +57,7 @@ class ModelTest extends TestCase
         }
 
         $countFields = $migrationFieldsCount + $trashedFieldsCount + $combinedFieldsCount;
-        $this->assertEquals(count($fields) - $ignoreFieldsCount, $countFields, "The fields in database, migration field and trashed fields doesn't match. This happens when new fields were introduced in the database, usually from another branch");
+        $this->assertEquals(count($fields) - $ignoreFieldsCount, $countFields, "The fields in database doesn't match those in the migration file. This happens when new fields were introduced in the database, usually from another branch");
     }
 
     /**
