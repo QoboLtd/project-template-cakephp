@@ -88,7 +88,7 @@ $iconColors = [
                     ]) ?>
                 </span>
                 <h3 class="timeline-header">
-                    <a href="<?= $url ?>"><?= $username; ?></a> Retrieved entity data
+                    <?= $this->Html->link(__('{0} retrieved entity data', $username), $url) ?>
                 </h3>
         </div>
         </li>
@@ -111,15 +111,15 @@ $iconColors = [
                     ]) ?>
                 </span>
                 <h3 class="timeline-header">
-                    <a href="<?= $url ?>"><?= $username; ?></a> made the following changes:
+                    <?= $this->Html->link(__('{0} made the following changes:', $username), $url) ?>
                 </h3>
                 <div class="timeline-body">
                     <table class="table table-hover table-condensed table-vertical-align">
                         <thead>
                             <tr>
-                                <th class="col-xs-2">Field</th>
-                                <th class="col-xs-5">Old Value</th>
-                                <th class="col-xs-5">New Value</th>
+                                <th class="col-xs-2"><?= __('Field') ?></th>
+                                <th class="col-xs-5"><?= __('Old Value') ?></th>
+                                <th class="col-xs-5"><?= __('New Value') ?></th>
                             </tr>
                         </thead>
                         <tbody>

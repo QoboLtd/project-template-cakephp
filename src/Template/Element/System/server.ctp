@@ -12,13 +12,13 @@ $server = Server::getInfo();
     <div class="col-md-3">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Summary</h3>
+                <h3 class="box-title"><?= __('Summary') ?></h3>
             </div>
             <div class="box-body">
                 <div class="info-box">
                     <span class="info-box-icon bg-blue"><i class="fa fa-linux"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Operating System</span>
+                        <span class="info-box-text"><?= __('Operating System') ?></span>
                         <span class="info-box-number"><?php echo PHP_OS; ?></span>
                     </div>
                 </div>
@@ -28,7 +28,7 @@ $server = Server::getInfo();
     <div class="col-md-3">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Hardware</h3>
+                <h3 class="box-title"><?= __('Hardware') ?></h3>
             </div>
             <div class="box-body">
                 <dl class="dl-horizontal">

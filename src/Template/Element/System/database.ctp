@@ -23,32 +23,32 @@ $totalSize = ($totalSize > 0) ? $this->Number->toReadableSize($totalSize) : 'N/A
     <div class="col-md-4">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Database Summary</h3>
+                <h3 class="box-title"><?= __('Database Summary') ?></h3>
             </div>
             <div class="box-body">
                 <div class="info-box">
                     <span class="info-box-icon bg-blue"><i class="fa fa-database"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Database engine</span>
+                        <span class="info-box-text"><?= __('Database engine') ?></span>
                         <span class="info-box-number"><?= $driver ?></span>
                     </div>
                 </div>
                 <div class="info-box">
                     <span class="info-box-icon bg-blue"><i class="fa fa-database"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Database size</span>
+                        <span class="info-box-text"><?= __('Database size') ?></span>
                         <span class="info-box-number"><?= $totalSize; ?></span>
                     </div>
                 </div>
                 <div class="info-box bg-blue">
                     <span class="info-box-icon"><i class="fa fa-database"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Total tables</span>
+                        <span class="info-box-text"><?= __('Total tables') ?></span>
                         <span class="info-box-number"><?php echo number_format(count($allTables)); ?></span>
                         <div class="progress">
                             <div class="progress-bar" style="width: <?php echo $this->SystemInfo->getProgressValue(count($skipTables), count($allTables)); ?>"></div>
                         </div>
-                        <span class="progress-description"><?php echo count($skipTables); ?> system tables</span>
+                        <span class="progress-description"><?= __('{0} system tables', count($skipTables)) ?></span>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@ $totalSize = ($totalSize > 0) ? $this->Number->toReadableSize($totalSize) : 'N/A
     <div class="col-md-4">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Table Records</h3>
+                <h3 class="box-title"><?= __('Table Records') ?></h3>
             </div>
             <div class="box-body">
                 <?php foreach ($tableStats as $table => $stats) : ?>
@@ -70,12 +70,12 @@ $totalSize = ($totalSize > 0) ? $this->Number->toReadableSize($totalSize) : 'N/A
                         <span class="info-box-icon"><i class="fa fa-table"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text"><?php echo $table; ?></span>
-                            <span class="info-box-number"><?php echo number_format($stats['total']); ?> records</span>
+                            <span class="info-box-number"><?= __('{0} records', number_format($stats['total'])) ?></span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: <?php echo $this->SystemInfo->getProgressValue($stats['deleted'], $stats['total']); ?>"></div>
                             </div>
                             <span class="progress-description">
-                                <?php echo number_format($stats['deleted']); ?> deleted records (<?php echo $this->SystemInfo->getProgressValue($stats['deleted'], $stats['total']); ?>)
+                                <?php __('{0} deleted records ({1})', number_format($stats['deleted']), $this->SystemInfo->getProgressValue($stats['deleted'], $stats['total'])) ?>
                             </span>
                         </div>
                     </div>
@@ -86,7 +86,7 @@ $totalSize = ($totalSize > 0) ? $this->Number->toReadableSize($totalSize) : 'N/A
     <div class="col-md-4">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Table Sizes</h3>
+                <h3 class="box-title"><?= __('Table Sizes') ?></h3>
             </div>
             <div class="box-body">
                 <?php foreach ($tableStats as $table => $stats) : ?>

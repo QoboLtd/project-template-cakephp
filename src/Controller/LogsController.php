@@ -67,7 +67,7 @@ class LogsController extends BaseLogsController
         $date = new Time($age);
         $count = $this->DatabaseLogs->deleteAll(['created <' => $date]);
 
-        $this->Flash->success('Removed ' . number_format($count) . ' log records older than ' . ltrim($age, '-') . '.');
+        $this->Flash->success((string)__('Removed {0} log records older than {1}.', number_format($count), ltrim($age, '-')));
 
         return $this->redirect(['action' => 'index']);
     }

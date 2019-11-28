@@ -12,10 +12,10 @@ $projectLogo = Project::getLogo('large');
 ?>
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">About</h3>
+        <h3 class="box-title"><?= __('About') ?></h3>
     </div>
     <div class="box-body">
         <p><img src="<?= $this->Url->image($projectLogo) ?>" alt="Site Logo" height="50" /></p>
-        <p>Welcome to <b><?= $projectName ?></b>.  You are using version <b><?= $projectVersion ?></b>.
+        <p><?= __('Welcome to <strong>{0}</strong>. You are using version <strong>{1}</strong>.', $projectName, $projectVersion) ?></p>
     </div>
 </div>

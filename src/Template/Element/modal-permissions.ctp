@@ -157,7 +157,7 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                                     '/roles-capabilities/permissions/delete/' . $permission->get($primaryKey),
                                     [
                                         'class' => 'btn btn-default btn-xs',
-                                        'confirm' => 'Are you sure you want to delete this permission?',
+                                        'confirm' => __('Are you sure you want to delete this permission?'),
                                         'data' => [
                                             'plugin' => $this->plugin,
                                             'model' => $this->name,
@@ -174,7 +174,7 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?= __('Close') ?></button>
             </div>
         </div>
     </div>

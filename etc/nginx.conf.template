@@ -22,16 +22,6 @@ server {
 	error_page 504 /errors/5xx.html; # Gateway Timeout
 
 	#
-	# Expires
-	#
-
-	# Non-aggressive Expires header for JavaScript, CSS, and images
-	#location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
-	#	expires 5m;
-	#	log_not_found off;
-	#}
-
-	#
 	# Restrictions
 	#
 

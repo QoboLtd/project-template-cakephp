@@ -23,20 +23,20 @@ $extensions = Php::getLoadedExtensions();
     <div class="col-md-3">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">PHP Summary</h3>
+                <h3 class="box-title"><?= __('PHP Summary') ?></h3>
             </div>
             <div class="box-body">
                 <div class="info-box">
                     <span class="info-box-icon bg-blue"><i class="fa fa-heart"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">PHP version</span>
+                        <span class="info-box-text"><?= __('PHP version') ?></span>
                         <span class="info-box-number"><?= Php::getVersion() ?></span>
                     </div>
                 </div>
                 <div class="info-box">
                     <span class="info-box-icon bg-blue"><i class="fa fa-plug"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">PHP extensions</span>
+                        <span class="info-box-text"><?= __('PHP extensions') ?></span>
                         <span class="info-box-number"><?php echo number_format(count($extensions)); ?></span>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ $extensions = Php::getLoadedExtensions();
     <div class="col-md-4">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">PHP Configuration</h3>
+                <h3 class="box-title"><?= __('PHP Configuration') ?></h3>
             </div>
             <div class="box-body">
                 <dl class="dl-horizontal">
@@ -62,7 +62,7 @@ $extensions = Php::getLoadedExtensions();
     <div class="col-md-5">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Loaded Extensions</h3>
+                <h3 class="box-title"><?= __('Loaded Extensions') ?></h3>
             </div>
             <div class="box-body">
                 <dl class="dl-horizontal">

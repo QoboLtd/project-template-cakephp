@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test\TestCase\Entity;
+namespace App\Test\TestCase\Shell;
 
 use App\Shell\FixDateTimeShell;
 use Cake\ORM\TableRegistry;

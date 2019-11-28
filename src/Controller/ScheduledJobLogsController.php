@@ -77,7 +77,7 @@ class ScheduledJobLogsController extends BaseModuleController
 
         $age = Configure::read('ScheduledLog.stats.age');
         if (!$age) {
-            $this->Flash->error("Max age is not configured.");
+            $this->Flash->error((string)__('Max age is not configured.'));
 
             return $this->redirect(['controller' => 'ScheduledJobs', 'action' => 'index']);
         }
@@ -88,7 +88,8 @@ class ScheduledJobLogsController extends BaseModuleController
         $count = $query->deleteAll(['created <' => $date]);
         // Write in the Log
         Log::write('info', "Clean up scheduled job logs older then $age.");
-        $this->Flash->success('Removed ' . number_format($count) . ' log records older than ' . ltrim($age, '-') . '.');
+
+        $this->Flash->success((string)__('Removed {0} log records older than {1}.', number_format($count), ltrim($age, '-')));
 
         return $this->redirect(['controller' => 'ScheduledJobs', 'action' => 'index']);
     }

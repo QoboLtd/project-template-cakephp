@@ -32,7 +32,7 @@ if (!empty($currentError)) {
                 </h3>
             </div>
             <div class="box-body">
-                <?php echo 'There was a problem processing your request.  Please notify your system administrator.'; ?>
+                <?= __('There was a problem processing your request.  Please notify your system administrator.'); ?>
             </div>
             <div class="box-footer">
                 <b>URL: </b><?= h(Router::url($url, true)) ?>
