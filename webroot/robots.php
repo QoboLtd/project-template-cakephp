@@ -49,11 +49,11 @@ if ($allowRobots) {
         readfile($robotsFile);
     } else {
         // Allow indexing of everything if we can't read robots.txt
-        echo "User-agent: *\n";
-        echo "Disallow:\n";
+        echo __("User-agent: *\n");
+        echo __("Disallow:\n");
     }
 } else {
     // Deny indexing
-    echo "User-agent: *\n";
-    echo "Disallow: /\n";
+    echo __("User-agent: *\n");
+    echo __("Disallow: /\n");
 }
