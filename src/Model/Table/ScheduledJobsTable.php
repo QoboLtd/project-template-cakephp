@@ -15,7 +15,7 @@ use RRule\RRule;
 
 class ScheduledJobsTable extends AppTable
 {
-    const JOB_ACTIVE = 1;
+    public const JOB_ACTIVE = 1;
 
     /**
      * Initialize method

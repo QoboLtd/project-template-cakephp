@@ -10,9 +10,9 @@ use RuntimeException;
 
 class EmailShell extends Shell
 {
-    const DEFAULT_DOMAIN = 'localhost';
-    const DEFAULT_SUBJECT = 'Test message';
-    const DEFAULT_BODY = 'Hello.  This is a test message.';
+    public const DEFAULT_DOMAIN = 'localhost';
+    public const DEFAULT_SUBJECT = 'Test message';
+    public const DEFAULT_BODY = 'Hello.  This is a test message.';
 
     /**
      * Get default domain

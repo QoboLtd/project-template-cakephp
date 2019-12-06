@@ -4,6 +4,7 @@ namespace App\Utility;
 
 use App\Model\Table\UsersTable;
 use App\Search\Manager;
+use Cake\Cache\Cache;
 use Cake\Core\App;
 use Cake\Datasource\EntityInterface;
 use Cake\Log\Log;
@@ -46,7 +47,7 @@ final class Search
      */
     private static $associationLabels = [];
 
-    const SUPPORTED_ASSOCIATIONS = [
+    private const SUPPORTED_ASSOCIATIONS = [
         Association::MANY_TO_ONE,
         Association::MANY_TO_MANY,
         Association::ONE_TO_MANY
@@ -57,7 +58,7 @@ final class Search
      *
      * @var array
      */
-    const CHARTS = [
+    private const CHARTS = [
         ['type' => 'funnelChart', 'icon' => 'filter', 'class' => '\Search\Widgets\Reports\DonutChartReportWidget'],
         ['type' => 'pie', 'icon' => 'pie-chart', 'class' => '\Search\Widgets\Reports\PieChartReportWidget'],
         ['type' => 'bar', 'icon' => 'bar-chart', 'class' => '\Search\Widgets\Reports\BarChartReportWidget']
@@ -73,6 +74,12 @@ final class Search
     {
         if (! empty(static::$filters[$tableName])) {
             return static::$filters[$tableName];
+        }
+
+        $cacheKey = 'search_filters_' . md5($tableName);
+        $cached = Cache::read($cacheKey);
+        if (false !== $cached) {
+            return $cached;
         }
 
         $table = TableRegistry::getTableLocator()->get($tableName);
@@ -91,6 +98,8 @@ final class Search
         usort($result, function ($x, $y) {
             return strcasecmp($x['field'], $y['field']);
         });
+
+        Cache::write($cacheKey, $result);
 
         static::$filters[$tableName] = $result;
 

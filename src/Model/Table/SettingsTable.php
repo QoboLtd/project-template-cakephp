@@ -27,9 +27,9 @@ use CsvMigrations\FieldHandlers\CsvField;
 class SettingsTable extends Table
 {
 
-    const SCOPE_APP = 'app';
-    const CONTEXT_APP = 'app';
-    const SCOPE_USER = 'user';
+    public const SCOPE_APP = 'app';
+    public const CONTEXT_APP = 'app';
+    public const SCOPE_USER = 'user';
 
     /**
      * Initialize method

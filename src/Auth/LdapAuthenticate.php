@@ -21,12 +21,12 @@ class LdapAuthenticate extends BaseAuthenticate
     /**
      * Default LDAP protocol version.
      */
-    const DEFAULT_VERSION = 3;
+    public const DEFAULT_VERSION = 3;
 
     /**
      * Default LDAP port.
      */
-    const DEFAULT_PORT = 389;
+    public const DEFAULT_PORT = 389;
 
     /**
      * LDAP Object.

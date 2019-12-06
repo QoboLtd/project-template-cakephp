@@ -7,8 +7,8 @@ use RuntimeException;
 
 class Factory
 {
-    const FEATURE_INTERFACE = 'App\\Feature\\FeatureInterface';
-    const FEATURE_SUFFIX = 'Feature';
+    public const FEATURE_INTERFACE = 'App\\Feature\\FeatureInterface';
+    public const FEATURE_SUFFIX = 'Feature';
 
     protected static $initialized = false;
 

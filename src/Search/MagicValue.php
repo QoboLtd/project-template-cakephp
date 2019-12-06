@@ -21,7 +21,7 @@ final class MagicValue
     /**
      * Magic value wrapper identifier.
      */
-    const WRAPPER = '%%';
+    private const WRAPPER = '%%';
 
     /**
      * User info.

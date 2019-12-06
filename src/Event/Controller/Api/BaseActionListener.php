@@ -21,17 +21,17 @@ abstract class BaseActionListener implements EventListenerInterface
     /**
      * Pretty format identifier
      */
-    const FORMAT_PRETTY = 'pretty';
+    public const FORMAT_PRETTY = 'pretty';
 
     /**
      * Include menus identifier
      */
-    const FLAG_INCLUDE_MENUS = 'menus';
+    public const FLAG_INCLUDE_MENUS = 'menus';
 
     /**
      * Property name for menu items
      */
-    const MENU_PROPERTY_NAME = '_Menus';
+    public const MENU_PROPERTY_NAME = '_Menus';
 
     /**
      * FieldHandlerFactory instance.

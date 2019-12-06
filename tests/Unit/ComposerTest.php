@@ -11,8 +11,8 @@ use PHPUnit\Framework\TestCase;
 class ComposerTest extends TestCase
 {
 
-    const COMPOSER_JSON = 'composer.json';
-    const COMPOSER_LOCK = 'composer.lock';
+    public const COMPOSER_JSON = 'composer.json';
+    public const COMPOSER_LOCK = 'composer.lock';
 
     protected $folder;
 

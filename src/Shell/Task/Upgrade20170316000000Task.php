@@ -13,12 +13,12 @@ class Upgrade20170316000000Task extends Shell
     /**
      *  Default datetime field name
      */
-    const DEFAULT_COLUMN_NAME = 'trashed';
+    private const DEFAULT_COLUMN_NAME = 'trashed';
 
     /**
      *  Default field type
      */
-    const TARGET_COLUMN_TYPE = 'datetime';
+    private const TARGET_COLUMN_TYPE = 'datetime';
 
     /**
      * Configure option parser
