@@ -44,9 +44,7 @@
                     .replace('{{icon}}', 'check-circle')
                     .replace('{{action}}', 'Click to edit');
                 $(field).parents(that.options.wrapper_id).append(msg);
-                if (!$(field).attr('disabled')) {
-                    $(field).attr('disabled', true);
-                }
+                $('[name="' + $(field).attr('name') + '"]').attr('disabled', true);
                 $(this).remove();
             });
 
@@ -57,10 +55,8 @@
                     .replace('{{icon}}', 'times-circle')
                     .replace('{{action}}', 'Do not change');
                 $(field).parents(that.options.wrapper_id).append(msg);
-                if ($(field).attr('disabled')) {
-                    $(field).attr('disabled', false);
-                    $(field).focus();
-                }
+                $('[name="' + $(field).attr('name') + '"]').attr('disabled', false);
+                $(field).focus();
                 $(this).remove();
             });
         },

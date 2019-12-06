@@ -123,7 +123,7 @@ class ScheduledJobsTable extends AppTable
          */
         $tick = $now->i18nFormat('yyyy-MM-dd HH:mm');
 
-        $dtNow = new DateTime($tick, $now->timezone);
+        $dtNow = new DateTime($tick, $now->getTimezone());
 
         if ($rrule->occursAt($dtNow)) {
             $state = true;
