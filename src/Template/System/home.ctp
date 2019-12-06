@@ -14,8 +14,8 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="jumbotron">
-                <h1><?= __('Homepage') ?></h1>
-                <p><?= __('Access control has not been defined. Please contact the system administrator.') ?></p>
+                <h1><?= __d('Qobo/ProjectTemplateCakephp', 'Homepage') ?></h1>
+                <p><?= __d('Qobo/ProjectTemplateCakephp', 'Access control has not been defined. Please contact the system administrator.') ?></p>
             </div>
         </div>
     </div>

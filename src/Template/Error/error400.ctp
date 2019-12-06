@@ -44,18 +44,18 @@ endif;
             <div class="box-body">
                 <?php
                     switch ($code) {
-                        case 401: echo __('The page that you are trying to access requires authorization. Please login and try again.'); break;
-                        case 403: echo __('You do not have sufficient authorization to access this page. Please contact your system administrator.'); break;
-                        case 404: echo __('The page that you are trying to access does not exist. Please adjust your URL and try again.'); break;
-                        case 405: echo __('The method that you are using to access this page is not allowed.'); break;
-                        case 406: echo __('Your browser does not understand how to render the requested page. Please contact your system administrator.'); break;
-                        case 408: echo __('The server took longer than it is allowed to process your request.  Please try again later.'); break;
-                        case 409: echo __('The file that you requested used to be here, but it is gone now.  Please contact your system administrator.'); break;
-                        case 411: echo __('Your request is missing <pre>Content-Length</pre> header. Please contact your system administrator.'); break;
-                        case 413: echo __('The request file was too big to process.  Please try with a smaller file or contact your system administrator.'); break;
-                        case 414: echo __('The request URL is too long.  Please limit the number and/or length of parameters, or contact your system administrator.'); break;
-                        case 415: echo __('The file type of the request is not supported.  Please try with another file or contact your system administrator.'); break;
-                        default: echo __('There was a problem with your request. Please try later, adjust your request, or contact your system administrator.'); break;
+                        case 401: echo __d('Qobo/ProjectTemplateCakephp', 'The page that you are trying to access requires authorization. Please login and try again.'); break;
+                        case 403: echo __d('Qobo/ProjectTemplateCakephp', 'You do not have sufficient authorization to access this page. Please contact your system administrator.'); break;
+                        case 404: echo __d('Qobo/ProjectTemplateCakephp', 'The page that you are trying to access does not exist. Please adjust your URL and try again.'); break;
+                        case 405: echo __d('Qobo/ProjectTemplateCakephp', 'The method that you are using to access this page is not allowed.'); break;
+                        case 406: echo __d('Qobo/ProjectTemplateCakephp', 'Your browser does not understand how to render the requested page. Please contact your system administrator.'); break;
+                        case 408: echo __d('Qobo/ProjectTemplateCakephp', 'The server took longer than it is allowed to process your request.  Please try again later.'); break;
+                        case 409: echo __d('Qobo/ProjectTemplateCakephp', 'The file that you requested used to be here, but it is gone now.  Please contact your system administrator.'); break;
+                        case 411: echo __d('Qobo/ProjectTemplateCakephp', 'Your request is missing <pre>Content-Length</pre> header. Please contact your system administrator.'); break;
+                        case 413: echo __d('Qobo/ProjectTemplateCakephp', 'The request file was too big to process.  Please try with a smaller file or contact your system administrator.'); break;
+                        case 414: echo __d('Qobo/ProjectTemplateCakephp', 'The request URL is too long.  Please limit the number and/or length of parameters, or contact your system administrator.'); break;
+                        case 415: echo __d('Qobo/ProjectTemplateCakephp', 'The file type of the request is not supported.  Please try with another file or contact your system administrator.'); break;
+                        default: echo __d('Qobo/ProjectTemplateCakephp', 'There was a problem with your request. Please try later, adjust your request, or contact your system administrator.'); break;
                     }
                 ?>
             </div>

@@ -30,16 +30,16 @@
             ) ?>
         </p>
         <p>
-            <?= __('Here are some useful links for more information:') ?>
+            <?= __d('Qobo/ProjectTemplateCakephp', 'Here are some useful links for more information:') ?>
             <ul>
-                <li><?= $this->Html->link(__('Qobo Website'), 'https://www.qobo.biz', ['target' => '_blank']) ?></li>
-                <li><?= $this->Html->link(__('Qobo Blog'), 'https://qobo.biz/blog/', ['target' => '_blank']) ?></li>
-                <li><?= $this->Html->link(__('Qobo Careers'), 'https://qobo.biz/careers/', ['target' => '_blank']) ?></li>
-                <li><?= $this->Html->link(__('Qobo on GitHub'), 'https://github.com/QoboLtd', ['target' => '_blank']) ?></li>
-                <li><?= $this->Html->link(__('Qobo on Facebook'), 'https://www.facebook.com/Qobo.biz/', ['target' => '_blank']) ?></li>
-                <li><?= $this->Html->link(__('Qobo on LinkedIn'), 'https://www.linkedin.com/company/3241664/', ['target' => '_blank']) ?></li>
+                <li><?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Qobo Website'), 'https://www.qobo.biz', ['target' => '_blank']) ?></li>
+                <li><?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Qobo Blog'), 'https://qobo.biz/blog/', ['target' => '_blank']) ?></li>
+                <li><?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Qobo Careers'), 'https://qobo.biz/careers/', ['target' => '_blank']) ?></li>
+                <li><?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Qobo on GitHub'), 'https://github.com/QoboLtd', ['target' => '_blank']) ?></li>
+                <li><?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Qobo on Facebook'), 'https://www.facebook.com/Qobo.biz/', ['target' => '_blank']) ?></li>
+                <li><?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Qobo on LinkedIn'), 'https://www.linkedin.com/company/3241664/', ['target' => '_blank']) ?></li>
             </ul>
-            <?= __('Feel free to contact Qobo via the {0} page.', $this->Html->link(__('Contact Us'), 'https://qobo.biz/contact/', ['target' => '_blank']) ) ?>
+            <?= __d('Qobo/ProjectTemplateCakephp', 'Feel free to contact Qobo via the {0} page.', $this->Html->link(__('Contact Us'), 'https://qobo.biz/contact/', ['target' => '_blank']) ) ?>
         </p>
     </div>
 </div>

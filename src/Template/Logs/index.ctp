@@ -8,14 +8,14 @@ $age = Configure::read('DatabaseLog.maxLength');
 
 ?>
 <section class="content-header">
-    <h1><?= __('Logs'); ?>
+    <h1><?= __d('Qobo/ProjectTemplateCakephp', 'Logs'); ?>
         <div class="pull-right">
             <div class="btn-group btn-group-sm" role="group">
             <?php echo $this->Form->postLink(
-                '<i class="fa fa-trash"></i> ' . __('Delete duplicates'),
+                '<i class="fa fa-trash"></i> ' . __d('Qobo/ProjectTemplateCakephp', 'Delete duplicates'),
                 ['plugin' => false, 'controller' => 'Logs', 'action' => 'removeDuplicates'],
                 [
-                    'title' => __('Delete duplicates'),
+                    'title' => __d('Qobo/ProjectTemplateCakephp', 'Delete duplicates'),
                     'confirm' => 'Are you sure? This action will truncate all duplicate logs from the database.',
                     'escape' => false,
                     'class' => 'btn btn-danger'
@@ -24,10 +24,10 @@ $age = Configure::read('DatabaseLog.maxLength');
 
             if ($age) {
                 echo $this->Form->postLink(
-                    '<i class="fa fa-trash-o"></i> ' . __('Delete old'),
+                    '<i class="fa fa-trash-o"></i> ' . __d('Qobo/ProjectTemplateCakephp', 'Delete old'),
                     ['plugin' => false, 'controller' => 'Logs', 'action' => 'gc'],
                     [
-                        'title' => __('Delete old logs'),
+                        'title' => __d('Qobo/ProjectTemplateCakephp', 'Delete old logs'),
                         'confirm' => 'Are you sure? This action will delete all logs older than ' . ltrim($age, '-') . '.',
                         'escape' => false,
                         'class' => 'btn btn-danger'
@@ -37,10 +37,10 @@ $age = Configure::read('DatabaseLog.maxLength');
 
             if ('localhost' === $this->request->getEnv('SERVER_NAME')) {
                 echo $this->Form->postLink(
-                    '<i class="fa fa-trash-o"></i> ' . __('Truncate all logs'),
+                    '<i class="fa fa-trash-o"></i> ' . __d('Qobo/ProjectTemplateCakephp', 'Truncate all logs'),
                     ['plugin' => false, 'controller' => 'Logs', 'action' => 'reset'],
                     [
-                        'title' => __('Truncate all logs'),
+                        'title' => __d('Qobo/ProjectTemplateCakephp', 'Truncate all logs'),
                         'confirm' => 'Are you sure? This action will truncate all logs from the database.',
                         'escape' => false,
                         'class' => 'btn btn-danger'
@@ -59,7 +59,7 @@ $age = Configure::read('DatabaseLog.maxLength');
                 <div class="box-body">
                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
                         <?= $this->Html->link(
-                            __('All'),
+                            __d('Qobo/ProjectTemplateCakephp', 'All'),
                             ['controller' => 'Logs', 'action' => 'index'],
                             ['class' => 'btn btn-default']
                         );?>
@@ -125,7 +125,7 @@ $age = Configure::read('DatabaseLog.maxLength');
                 <div class="box-body">
                     <div class="paginator">
                         <?= $this->Paginator->counter([
-                            'format' => __('Showing {{start}} to {{end}} of {{count}} entries')
+                            'format' => __d('Qobo/ProjectTemplateCakephp', 'Showing {{start}} to {{end}} of {{count}} entries')
                         ]) ?>
                         <ul class="pagination pagination-sm no-margin pull-right">
                             <?= $this->Paginator->prev('&laquo;', ['escape' => false]) ?>

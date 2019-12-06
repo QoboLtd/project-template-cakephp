@@ -64,7 +64,7 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="mySetsLabel"><?= __('Add Permissions') ?></h4>
+                <h4 class="modal-title" id="mySetsLabel"><?= __d('Qobo/ProjectTemplateCakephp', 'Add Permissions') ?></h4>
             </div>
             <div class="modal-body">
                 <?= $this->Form->create('RolesCapabilities.Permissions', [
@@ -91,7 +91,7 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
-                        <?= $this->Form->label(__('Permission')) ?>
+                        <?= $this->Form->label(__d('Qobo/ProjectTemplateCakephp', 'Permission')) ?>
                         <?= $this->Form->select(
                             'type',
                             $controllerPermissions,
@@ -102,7 +102,7 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                 <br />
                 <div class="row">
                     <div class="col-xs-12">
-                        <?= $this->Form->button(__('Submit'), [
+                        <?= $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Submit'), [
                             'name' => 'btn_operation',
                             'value' => 'submit',
                             'class' => 'btn btn-primary pull-right'
@@ -113,7 +113,7 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                 <br />
                 <div id="type-outer-container" class="hidden">
                     <div id="permission-user">
-                        <?= $this->Form->label(__('User')) ?>
+                        <?= $this->Form->label(__d('Qobo/ProjectTemplateCakephp', 'User')) ?>
                         <?= $this->Form->select('user_id', $users, [
                             'id' => 'permission-user',
                             'class' => 'select2',
@@ -122,7 +122,7 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                         ]) ?>
                     </div>
                     <div id="permission-group">
-                        <?= $this->Form->label(__('Groups')) ?>
+                        <?= $this->Form->label(__d('Qobo/ProjectTemplateCakephp', 'Groups')) ?>
                         <?= $this->Form->select('group_id', $groups, [
                             'id' => 'permission-group',
                             'class' => 'select2',
@@ -134,10 +134,10 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                 <table class="table table-hover table-condensed table-vertical-align">
                     <thead>
                         <tr>
-                            <th><?= __('ID') ?></th>
-                            <th><?= __('Model') ?></th>
-                            <th><?= __('Permission') ?></th>
-                            <th><?= __('Actions') ?></th>
+                            <th><?= __d('Qobo/ProjectTemplateCakephp', 'ID') ?></th>
+                            <th><?= __d('Qobo/ProjectTemplateCakephp', 'Model') ?></th>
+                            <th><?= __d('Qobo/ProjectTemplateCakephp', 'Permission') ?></th>
+                            <th><?= __d('Qobo/ProjectTemplateCakephp', 'Actions') ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -157,7 +157,7 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                                     '/roles-capabilities/permissions/delete/' . $permission->get($primaryKey),
                                     [
                                         'class' => 'btn btn-default btn-xs',
-                                        'confirm' => __('Are you sure you want to delete this permission?'),
+                                        'confirm' => __d('Qobo/ProjectTemplateCakephp', 'Are you sure you want to delete this permission?'),
                                         'data' => [
                                             'plugin' => $this->plugin,
                                             'model' => $this->name,
@@ -174,7 +174,7 @@ foreach (PermissionsTable::ALLOWED_ACTIONS as $action) {
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?= __('Close') ?></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?= __d('Qobo/ProjectTemplateCakephp', 'Close') ?></button>
             </div>
         </div>
     </div>

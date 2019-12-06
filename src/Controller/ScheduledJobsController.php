@@ -42,12 +42,12 @@ class ScheduledJobsController extends BaseModuleController
             $entity = $table->patchEntity($entity, (array)$this->request->getData());
 
             if ($table->save($entity)) {
-                $this->Flash->success((string)__('Scheduled Job has been saved.'));
+                $this->Flash->success((string)__d('Qobo/ProjectTemplateCakephp', 'Scheduled Job has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
 
-            $this->Flash->error((string)__('Scheduled Job could not be saved. Please, try again'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Scheduled Job could not be saved. Please, try again'));
         }
 
         $this->set(compact('entity', 'commands'));
@@ -83,9 +83,9 @@ class ScheduledJobsController extends BaseModuleController
             $saved = $table->save($entity);
 
             if ($saved) {
-                $this->Flash->success((string)__('The record has been saved.'));
+                $this->Flash->success((string)__d('Qobo/ProjectTemplateCakephp', 'The record has been saved.'));
             } else {
-                $this->Flash->error((string)__('This record could not be saved.'));
+                $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'This record could not be saved.'));
             }
 
             return $this->redirect($redirectUrl);

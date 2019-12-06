@@ -37,7 +37,7 @@ trait MenuEntityTrait
         return MenuItemFactory::createMenuItem([
             'url' => ['prefix' => false, 'plugin' => $plugin, 'controller' => $controller, 'action' => 'view', $id],
             'icon' => 'eye',
-            'label' => __('View'),
+            'label' => __d('Qobo/ProjectTemplateCakephp', 'View'),
             'type' => 'link_button',
             'order' => 100
         ]);
@@ -59,7 +59,7 @@ trait MenuEntityTrait
         return MenuItemFactory::createMenuItem([
             'url' => ['prefix' => false, 'plugin' => $plugin, 'controller' => $controller, 'action' => 'edit', $id],
             'icon' => 'pencil',
-            'label' => __('Edit'),
+            'label' => __d('Qobo/ProjectTemplateCakephp', 'Edit'),
             'type' => 'link_button',
             'order' => 110
         ]);
@@ -86,7 +86,7 @@ trait MenuEntityTrait
         $config = [
             'url' => ['prefix' => false, 'plugin' => $plugin, 'controller' => $controller, 'action' => 'delete', $id],
             'icon' => 'trash',
-            'label' => __('Delete'),
+            'label' => __d('Qobo/ProjectTemplateCakephp', 'Delete'),
             'type' => 'postlink_button',
             'order' => 120,
             'confirmMsg' => __(

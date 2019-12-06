@@ -95,7 +95,7 @@ class UsersController extends AppController
         $data = $this->request->getData('Users.image');
 
         if (! $data) {
-            $this->Flash->error((string)__('Failed to upload image, please try again.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Failed to upload image, please try again.'));
 
             return $this->redirect($this->request->referer());
         }
@@ -106,13 +106,13 @@ class UsersController extends AppController
          */
         $data = $data;
         if (! $avatarService->isAllowedSize($data)) {
-            $this->Flash->error((string)__('Image is too large. Max size 512kb.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Image is too large. Max size 512kb.'));
 
             return $this->redirect($this->request->referer());
         }
 
         if (! $avatarService->isImage($data)) {
-            $this->Flash->error((string)__('Unsupported image type.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Unsupported image type.'));
 
             return $this->redirect($this->request->referer());
         }
@@ -125,9 +125,9 @@ class UsersController extends AppController
         }
 
         if ($processed) {
-            $this->Flash->success((string)__('The image has been uploaded.'));
+            $this->Flash->success((string)__d('Qobo/ProjectTemplateCakephp', 'The image has been uploaded.'));
         } else {
-            $this->Flash->error((string)__('Couldn\'t upload the image'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Couldn\'t upload the image'));
         }
 
         return $this->redirect($this->request->referer());
@@ -162,10 +162,10 @@ class UsersController extends AppController
         $user = $this->Users->patchEntity($user, (array)$this->request->getData());
 
         if ($this->Users->save($user)) {
-            $this->Flash->success((string)__('Profile successfully updated'));
+            $this->Flash->success((string)__d('Qobo/ProjectTemplateCakephp', 'Profile successfully updated'));
             $this->Auth->setUser($user->toArray());
         } else {
-            $this->Flash->error((string)__('Failed to update profile data, please try again.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Failed to update profile data, please try again.'));
         }
 
         return $this->redirect($this->request->referer());

@@ -201,11 +201,11 @@ $(document).ready(function(){
                               <table id='dataSettings' class="table table-hover table-condensed table-vertical-align table-datatable">
                                   <thead>
                                   <tr>
-                                      <th><?= __('alias') ?></th>
-                                      <th><?= __('name') ?></th>
-                                      <th><?= __('type') ?></th>
-                                      <th><?= __('help') ?></th>
-                                      <th><?= __('scope') ?></th>
+                                      <th><?= __d('Qobo/ProjectTemplateCakephp', 'alias') ?></th>
+                                      <th><?= __d('Qobo/ProjectTemplateCakephp', 'name') ?></th>
+                                      <th><?= __d('Qobo/ProjectTemplateCakephp', 'type') ?></th>
+                                      <th><?= __d('Qobo/ProjectTemplateCakephp', 'help') ?></th>
+                                      <th><?= __d('Qobo/ProjectTemplateCakephp', 'scope') ?></th>
                                   </tr>
                                   </thead>
                                   <tbody>
@@ -337,7 +337,7 @@ $(document).ready(function(){
                 <div id='list_tabs_pane' class="tab-content"></div>
             </div>
             <?= $this->Form->create(); ?>
-            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary','value' => 'submit', 'id' => 'render']);?>
+            <?= $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Submit'), ['class' => 'btn btn-primary','value' => 'submit', 'id' => 'render']);?>
             <?= $this->Form->end(); ?>
             <div id='preArray'></div>
         </div>

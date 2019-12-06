@@ -4,7 +4,7 @@ use CsvMigrations\FieldHandlers\FieldHandlerFactory;
 $factory = new FieldHandlerFactory($this);
 ?>
 <section class="content-header">
-    <h1><?= $this->Html->link(__('Users'), ['action' => 'index']) . ' &raquo; ' . h($Users->username) ?></h1>
+    <h1><?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Users'), ['action' => 'index']) . ' &raquo; ' . h($Users->username) ?></h1>
 </section>
 <section class="content">
     <div class="row">
@@ -18,15 +18,15 @@ $factory = new FieldHandlerFactory($this);
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
-                        <dt><?= __('ID') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'ID') ?></dt>
                         <dd><?= $Users->has('id') ? h($Users->id) : '&nbsp;' ?></dd>
-                        <dt><?= __('Username') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Username') ?></dt>
                         <dd><?= $Users->has('username') ? h($Users->username) : '&nbsp;' ?></dd>
-                        <dt><?= __('Active') ?></dt>
-                        <dd><?= $Users->has('active') && $Users->active ? __('Yes') : __('No') ?></dd>
-                        <dt><?= __('Created') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Active') ?></dt>
+                        <dd><?= $Users->has('active') && $Users->active ? __d('Qobo/ProjectTemplateCakephp', 'Yes') : __('No') ?></dd>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Created') ?></dt>
                         <dd><?= $Users->has('created') ? $Users->created->i18nFormat('yyyy-MM-dd HH:mm') : '&nbsp;' ?></dd>
-                        <dt><?= __('Modified') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Modified') ?></dt>
                         <dd><?= $Users->has('modified') ? $Users->modified->i18nFormat('yyyy-MM-dd HH:mm') : '&nbsp;' ?></dd>
                     </dl>
                 </div>
@@ -44,25 +44,25 @@ $factory = new FieldHandlerFactory($this);
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
-                        <dt><?= __('First Name') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'First Name') ?></dt>
                         <dd><?= $Users->has('first_name') ? h($Users->first_name) : '&nbsp;' ?></dd>
-                        <dt><?= __('Last Name') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Last Name') ?></dt>
                         <dd><?= $Users->has('last_name') ? h($Users->last_name) : '&nbsp;' ?></dd>
-                        <dt><?= __('Country') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Country') ?></dt>
                         <dd><?= $factory->renderValue('Users', 'country', $Users, ['fieldDefinitions' => [
                             'name' => 'country',
                             'type' => 'list(countries)',
                             'required' => false
                         ]]) ?></dd>
-                        <dt><?= __('Initials') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Initials') ?></dt>
                         <dd><?= $Users->has('initials') ? h($Users->initials) : '&nbsp;' ?></dd>
-                        <dt><?= __('Gender') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Gender') ?></dt>
                         <dd><?= $factory->renderValue('Users', 'gender', $Users, ['fieldDefinitions' => [
                             'name' => 'gender',
                             'type' => 'list(genders)',
                             'required' => false
                         ]]) ?></dd>
-                        <dt><?= __('Birthdate') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Birthdate') ?></dt>
                         <dd><?= $Users->has('birthdate') ? $Users->birthdate->i18nFormat('yyyy-MM-dd') : '&nbsp;' ?></dd>
                     </dl>
                 </div>
@@ -82,17 +82,17 @@ $factory = new FieldHandlerFactory($this);
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
-                        <dt><?= __('Email') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Email') ?></dt>
                         <dd><?= $Users->has('email') ? h($Users->email) : '&nbsp;' ?></dd>
-                        <dt><?= __('Phone Office') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Office') ?></dt>
                         <dd><?= $Users->has('phone_office') ? h($Users->phone_office) : '&nbsp;' ?></dd>
-                        <dt><?= __('Phone Home') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Home') ?></dt>
                         <dd><?= $Users->has('phone_home') ? h($Users->phone_home) : '&nbsp;' ?></dd>
-                        <dt><?= __('Phone Mobile') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Mobile') ?></dt>
                         <dd><?= $Users->has('phone_mobile') ? h($Users->phone_mobile) : '&nbsp;' ?></dd>
-                        <dt><?= __('Phone Extension') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Extension') ?></dt>
                         <dd><?= $Users->has('phone_extension') ? h($Users->phone_extension) : '&nbsp;' ?></dd>
-                        <dt><?= __('Fax') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Fax') ?></dt>
                         <dd><?= $Users->has('fax') ? h($Users->fax) : '&nbsp;' ?></dd>
                     </dl>
                 </div>
@@ -110,22 +110,22 @@ $factory = new FieldHandlerFactory($this);
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
-                        <dt><?= __('Company') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Company') ?></dt>
                         <dd><?= $Users->has('company') ? h($Users->company) : '&nbsp;' ?></dd>
-                        <dt><?= __('Department') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Department') ?></dt>
                         <dd><?= $Users->has('department') ? h($Users->department) : '&nbsp;' ?></dd>
-                        <dt><?= __('Team') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Team') ?></dt>
                         <dd><?= $Users->has('team') ? h($Users->team) : '&nbsp;' ?></dd>
-                        <dt><?= __('Position') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Position') ?></dt>
                         <dd><?= $Users->has('position') ? h($Users->position) : '&nbsp;' ?></dd>
-                        <dt><?= __('Reports To') ?></dt>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Reports To') ?></dt>
                         <dd><?= $factory->renderValue('Users', 'reports_to', $Users, ['fieldDefinitions' => [
                             'name' => 'reports_to',
                             'type' => 'related(Users)',
                             'required' => false
                         ]]) ?></dd>
-                        <dt><?= __('Is Supervisor') ?></dt>
-                        <dd><?= $Users->has('is_supervisor') && $Users->get('is_supervisor') ? __('Yes') : __('No') ?></dd>
+                        <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Is Supervisor') ?></dt>
+                        <dd><?= $Users->has('is_supervisor') && $Users->get('is_supervisor') ? __d('Qobo/ProjectTemplateCakephp', 'Yes') : __('No') ?></dd>
                     </dl>
                 </div>
                 <!-- /.box-body -->
@@ -140,7 +140,7 @@ $factory = new FieldHandlerFactory($this);
                 <ul id="relatedTabs" class="nav nav-tabs" role="tablist">
                 <?php if (! empty($userGroups)) : ?>
                     <li role="presentation" class="active">
-                        <?= $this->Html->link(__('Groups'), '#groups', [
+                        <?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Groups'), '#groups', [
                             'aria-controls' => 'groups',
                             'role' => 'tab',
                             'data-toggle' => 'tab',
@@ -149,7 +149,7 @@ $factory = new FieldHandlerFactory($this);
                 <?php endif ?>
                 <?php if (! empty($subordinates)) : ?>
                     <li role="presentation">
-                        <?= $this->Html->link(__('Subordinates'), '#subordinates', [
+                        <?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Subordinates'), '#subordinates', [
                             'aria-controls' => 'subordinates',
                             'role' => 'tab',
                             'data-toggle' => 'tab',
@@ -164,8 +164,8 @@ $factory = new FieldHandlerFactory($this);
                             <table class="table table-hover table-condensed table-vertical-align">
                                 <thead>
                                     <tr>
-                                        <th><?= __('Name');?></th>
-                                        <th><?= __('Description');?></th>
+                                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Name');?></th>
+                                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Description');?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -191,12 +191,12 @@ $factory = new FieldHandlerFactory($this);
                             <table class="table table-hover table-condensed table-vertical-align">
                                 <thead>
                                     <tr>
-                                        <th><?= __('Name') ?></th>
-                                        <th><?= __('Department') ?></th>
-                                        <th><?= __('Team') ?></th>
-                                        <th><?= __('Position') ?></th>
-                                        <th><?= __('Phone Office') ?></th>
-                                        <th><?= __('Phone Extension') ?></th>
+                                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Name') ?></th>
+                                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Department') ?></th>
+                                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Team') ?></th>
+                                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Position') ?></th>
+                                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Office') ?></th>
+                                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Extension') ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>

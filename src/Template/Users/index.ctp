@@ -28,15 +28,15 @@ echo $this->Html->scriptBlock(
 <section class="content-header">
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <h4><?= __('Users');?></h4>
+            <h4><?= __d('Qobo/ProjectTemplateCakephp', 'Users');?></h4>
         </div>
         <div class="col-xs-12 col-md-6">
             <div class="pull-right">
                 <div class="btn-group btn-group-sm" role="group">
                     <?= $this->Html->link(
-                        '<i class="fa fa-plus"></i> ' . __('Add'),
+                        '<i class="fa fa-plus"></i> ' . __d('Qobo/ProjectTemplateCakephp', 'Add'),
                         ['controller' => 'Users', 'action' => 'add'],
-                        ['escape' => false, 'title' => __('Add'), 'class' => 'btn btn-default']
+                        ['escape' => false, 'title' => __d('Qobo/ProjectTemplateCakephp', 'Add'), 'class' => 'btn btn-default']
                     ); ?>
                 </div>
             </div>
@@ -49,14 +49,14 @@ echo $this->Html->scriptBlock(
             <table class="table table-hover table-condensed table-vertical-align table-datatable">
                 <thead>
                 <tr>
-                    <th><?= __('Username') ?></th>
-                    <th><?= __('Email') ?></th>
-                    <th><?= __('First Name') ?></th>
-                    <th><?= __('Last Name') ?></th>
-                    <th><?= __('Gender') ?></th>
-                    <th><?= __('Birthdate') ?></th>
-                    <th><?= __('Active') ?></th>
-                    <th><?= __('Created') ?></th>
+                    <th><?= __d('Qobo/ProjectTemplateCakephp', 'Username') ?></th>
+                    <th><?= __d('Qobo/ProjectTemplateCakephp', 'Email') ?></th>
+                    <th><?= __d('Qobo/ProjectTemplateCakephp', 'First Name') ?></th>
+                    <th><?= __d('Qobo/ProjectTemplateCakephp', 'Last Name') ?></th>
+                    <th><?= __d('Qobo/ProjectTemplateCakephp', 'Gender') ?></th>
+                    <th><?= __d('Qobo/ProjectTemplateCakephp', 'Birthdate') ?></th>
+                    <th><?= __d('Qobo/ProjectTemplateCakephp', 'Active') ?></th>
+                    <th><?= __d('Qobo/ProjectTemplateCakephp', 'Created') ?></th>
                     <th class="actions"><?= __d('Users', 'Actions') ?></th>
                 </tr>
                 </thead>
@@ -88,17 +88,17 @@ echo $this->Html->scriptBlock(
                                 <?= $this->Html->link(
                                     '<i class="fa fa-eye"></i>',
                                     ['controller' => 'Users', 'action' => 'view', $user->id],
-                                    ['title' => __('View'), 'class' => 'btn btn-default btn-sm', 'escape' => false]
+                                    ['title' => __d('Qobo/ProjectTemplateCakephp', 'View'), 'class' => 'btn btn-default btn-sm', 'escape' => false]
                                 ); ?>
                                 <?= $this->Html->link(
                                     '<i class="fa fa-pencil"></i>',
                                     ['controller' => 'Users', 'action' => 'edit', $user->id],
-                                    ['title' => __('Edit'), 'class' => 'btn btn-default btn-sm', 'escape' => false]
+                                    ['title' => __d('Qobo/ProjectTemplateCakephp', 'Edit'), 'class' => 'btn btn-default btn-sm', 'escape' => false]
                                 ); ?>
                                 <?= $this->Html->link(
                                     '<i class="fa fa-lock"></i>',
                                     ['action' => 'change-user-password', $user->id],
-                                    ['title' => __('Change User Password'), 'class' => 'btn btn-default btn-sm', 'escape' => false]
+                                    ['title' => __d('Qobo/ProjectTemplateCakephp', 'Change User Password'), 'class' => 'btn btn-default btn-sm', 'escape' => false]
                                 ) ?>
                                 <?php
                                     $factory = new AccessFactory();
@@ -107,7 +107,7 @@ echo $this->Html->scriptBlock(
                                     <?= $this->Html->link(
                                         '<i class="fa fa-gears"></i>',
                                         ['controller' => 'settings', 'action' => 'user', $user->id],
-                                        ['title' => __('Change User Settings'), 'class' => 'btn btn-default btn-sm', 'escape' => false]
+                                        ['title' => __d('Qobo/ProjectTemplateCakephp', 'Change User Settings'), 'class' => 'btn btn-default btn-sm', 'escape' => false]
                                     ) ?>
                                 <?php endif; ?>
                                 <?php if (in_array($user->username, $lockedUsers)): ?>
@@ -115,7 +115,7 @@ echo $this->Html->scriptBlock(
                                         '<i class="fa fa-trash"></i>',
                                         [],
                                         [
-                                            'title' => __('User can not be deleted'),
+                                            'title' => __d('Qobo/ProjectTemplateCakephp', 'User can not be deleted'),
                                             'class' => 'btn btn-default btn-sm',
                                             'escape' => false,
                                             'disabled' => true,
@@ -127,8 +127,8 @@ echo $this->Html->scriptBlock(
                                         '<i class="fa fa-trash"></i>',
                                         ['controller' => 'Users', 'action' => 'delete', $user->id],
                                         [
-                                            'confirm' => __('Are you sure you want to delete user {0}?', $user->username),
-                                            'title' => __('Delete'),
+                                            'confirm' => __d('Qobo/ProjectTemplateCakephp', 'Are you sure you want to delete user {0}?', $user->username),
+                                            'title' => __d('Qobo/ProjectTemplateCakephp', 'Delete'),
                                             'class' => 'btn btn-default btn-sm',
                                             'escape' => false,
                                         ]

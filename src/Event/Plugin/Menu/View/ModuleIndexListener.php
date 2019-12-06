@@ -73,7 +73,7 @@ class ModuleIndexListener implements EventListenerInterface
         return MenuItemFactory::createMenuItem([
             'url' => ['plugin' => $plugin, 'controller' => $controller, 'action' => 'import'],
             'icon' => 'upload',
-            'label' => __('Import'),
+            'label' => __d('Qobo/ProjectTemplateCakephp', 'Import'),
             'type' => 'link_button',
             'order' => 10,
         ]);
@@ -93,7 +93,7 @@ class ModuleIndexListener implements EventListenerInterface
         return MenuItemFactory::createMenuItem([
             'url' => ['plugin' => $plugin, 'controller' => $controller, 'action' => 'add'],
             'icon' => 'plus',
-            'label' => __('Add'),
+            'label' => __d('Qobo/ProjectTemplateCakephp', 'Add'),
             'type' => 'link_button',
             'order' => 20,
         ]);
@@ -113,8 +113,8 @@ class ModuleIndexListener implements EventListenerInterface
         $delLog = MenuItemFactory::createMenuItem([
             'url' => ['plugin' => false, 'controller' => 'ScheduledJobLogs', 'action' => 'gc'],
             'icon' => 'trash',
-            'label' => __('Delete old logs'),
-            'confirmMsg' => __('Are you sure? This action will delete all the scheduled job logs older than ' . ltrim($age, '-') . '.'),
+            'label' => __d('Qobo/ProjectTemplateCakephp', 'Delete old logs'),
+            'confirmMsg' => __d('Qobo/ProjectTemplateCakephp', 'Are you sure? This action will delete all the scheduled job logs older than ' . ltrim($age, '-') . '.'),
             'attributes' => ['class' => 'btn btn-danger'],
             'type' => 'postlink_button',
             'order' => 20,

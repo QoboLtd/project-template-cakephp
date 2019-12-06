@@ -11,7 +11,7 @@ $tableName = 'ScheduledJobs';
 <section class="content-header">
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <h4><?php echo __('Edit Scheduled Job'); ?></h4>
+            <h4><?php echo __d('Qobo/ProjectTemplateCakephp', 'Edit Scheduled Job'); ?></h4>
         </div>
         <div class="col-xs-12 col-md-6"></div>
     </div>
@@ -20,7 +20,7 @@ $tableName = 'ScheduledJobs';
 <?= $this->Form->create($entity) ?>
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title"><?= __('Details');?></h3>
+            <h3 class="box-title"><?= __d('Qobo/ProjectTemplateCakephp', 'Details');?></h3>
         </div>
         <div class="box-body">
             <div class="row">
@@ -100,7 +100,7 @@ $tableName = 'ScheduledJobs';
 
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title"><?= __('Recurrence');?></h3>
+            <h3 class="box-title"><?= __d('Qobo/ProjectTemplateCakephp', 'Recurrence');?></h3>
         </div>
         <div class="box-body">
             <div class="row">
@@ -156,9 +156,9 @@ $tableName = 'ScheduledJobs';
     </div>
 
 <?php
-echo $this->Form->button(__('Submit'), ['name' => 'btn_operation', 'value' => 'submit', 'class' => 'btn btn-primary']);
+echo $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Submit'), ['name' => 'btn_operation', 'value' => 'submit', 'class' => 'btn btn-primary']);
 echo '&nbsp;';
-echo $this->Form->button(__('Cancel'), ['name' => 'btn_operation', 'value' => 'cancel', 'class' => 'btn btn-primary']);
+echo $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Cancel'), ['name' => 'btn_operation', 'value' => 'cancel', 'class' => 'btn btn-primary']);
 echo $this->Form->end();
 echo $this->element('CsvMigrations.common_js_libs');
 ?>

@@ -15,7 +15,7 @@ if (! $validatePassword) :
                 'type' => 'password',
                 'required' => true,
                 'label' => false,
-                'placeholder' => __('Password')
+                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Password')
             ]); ?>
         </div>
     </div>
@@ -28,7 +28,7 @@ if (! $validatePassword) :
                 'type' => 'password',
                 'required' => true,
                 'label' => false,
-                'placeholder' => __('Password Confirm')
+                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Password Confirm')
             ]); ?>
         </div>
     </div>
@@ -57,19 +57,19 @@ if ($validatePassword) : ?>
                     <?= $this->Form->control('Users.current_password', [
                         'type' => 'password',
                         'required' => true,
-                        'placeholder' => __('Current Password')
+                        'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Current Password')
                     ]); ?>
                     <?= $this->Form->control('Users.password', [
                         'type' => 'password',
                         'required' => true,
-                        'placeholder' => __('Password')
+                        'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Password')
                     ]); ?>
                     <?= $this->Form->control('Users.password_confirm', [
                         'type' => 'password',
                         'required' => true,
-                        'placeholder' => __('Password Confirm')
+                        'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Password Confirm')
                     ]); ?>
-                    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+                    <?= $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Submit'), ['class' => 'btn btn-primary']) ?>
                 </div>
                 <?= $this->Form->end() ?>
             </div>

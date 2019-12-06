@@ -27,7 +27,7 @@ $iconColors = [
     <div class="row">
         <div class="col-xs-12 col-md-6">
             <h4>
-                <?= __('Changelog')?> &raquo; <?= $this->Html->link(
+                <?= __d('Qobo/ProjectTemplateCakephp', 'Changelog')?> &raquo; <?= $this->Html->link(
                     $entity->{$displayField},
                     ['plugin' => $this->plugin, 'controller' => $this->name, 'action' => 'view', $entity->id],
                     ['escape' => false]
@@ -50,7 +50,7 @@ $iconColors = [
     $date = $record->timestamp->i18nFormat('d MMM. YYY');
 
     $url = '#';
-    $username = __('Unknown');
+    $username = __d('Qobo/ProjectTemplateCakephp', 'Unknown');
     if ($record->get('user_id')) {
         $user = $usersTable->findById($record->user_id)->first();
         $username = empty($user) ? $record->user_id : $user->name;
@@ -88,7 +88,7 @@ $iconColors = [
                     ]) ?>
                 </span>
                 <h3 class="timeline-header">
-                    <?= $this->Html->link(__('{0} retrieved entity data', $username), $url) ?>
+                    <?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', '{0} retrieved entity data', $username), $url) ?>
                 </h3>
         </div>
         </li>
@@ -111,15 +111,15 @@ $iconColors = [
                     ]) ?>
                 </span>
                 <h3 class="timeline-header">
-                    <?= $this->Html->link(__('{0} made the following changes:', $username), $url) ?>
+                    <?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', '{0} made the following changes:', $username), $url) ?>
                 </h3>
                 <div class="timeline-body">
                     <table class="table table-hover table-condensed table-vertical-align">
                         <thead>
                             <tr>
-                                <th class="col-xs-2"><?= __('Field') ?></th>
-                                <th class="col-xs-5"><?= __('Old Value') ?></th>
-                                <th class="col-xs-5"><?= __('New Value') ?></th>
+                                <th class="col-xs-2"><?= __d('Qobo/ProjectTemplateCakephp', 'Field') ?></th>
+                                <th class="col-xs-5"><?= __d('Qobo/ProjectTemplateCakephp', 'Old Value') ?></th>
+                                <th class="col-xs-5"><?= __d('Qobo/ProjectTemplateCakephp', 'New Value') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -140,7 +140,7 @@ $iconColors = [
                                 if (!empty($v->date) && !empty($v->timezone)) {
                                     $v = new Time($v->date, $v->timezone);
                                 } else {
-                                    $v = __('Unknown value');
+                                    $v = __d('Qobo/ProjectTemplateCakephp', 'Unknown value');
                                 }
                             }
                             ?>
@@ -163,7 +163,7 @@ $oldDate = $date;
             <div class="box-body">
                 <div class="paginator">
                     <?= $this->Paginator->counter([
-                        'format' => __('Showing {{start}} to {{end}} of {{count}} entries')
+                        'format' => __d('Qobo/ProjectTemplateCakephp', 'Showing {{start}} to {{end}} of {{count}} entries')
                     ]) ?>
                     <ul class="pagination pagination-sm no-margin pull-right">
                         <?= $this->Paginator->prev('&laquo;', ['escape' => false]) ?>

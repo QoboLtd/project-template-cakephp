@@ -34,5 +34,5 @@ $this->layout = 'AdminLTE/login';
     }
     ?>
 </fieldset>
-<?= $this->Form->button(__('Register'), ['class' => 'btn btn-primary btn-block']) ?>
+<?= $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Register'), ['class' => 'btn btn-primary btn-block']) ?>
 <?= $this->Form->end() ?>

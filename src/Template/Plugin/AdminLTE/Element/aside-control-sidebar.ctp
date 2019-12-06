@@ -72,7 +72,7 @@ $hasActivity = false;
                     <a href="#">
                         <i class="menu-icon fa fa-ban bg-primary"></i>
                         <div class="menu-info">
-                            <h4 class="control-sidebar-subheading"><?= __('No recent activity') ?></h4>
+                            <h4 class="control-sidebar-subheading"><?= __d('Qobo/ProjectTemplateCakephp', 'No recent activity') ?></h4>
                             <p><?= date('Y-m-d H:i:s') ?></p>
                         </div>
                     </a>

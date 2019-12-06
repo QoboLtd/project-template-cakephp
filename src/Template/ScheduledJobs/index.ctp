@@ -37,7 +37,7 @@ echo $this->Html->scriptBlock(
 <section class="content-header">
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <h4><?= __('Scheduled Jobs'); ?></h4>
+            <h4><?= __d('Qobo/ProjectTemplateCakephp', 'Scheduled Jobs'); ?></h4>
         </div>
         <div class="col-xs-12 col-md-6">
             <div class="pull-right">
@@ -54,14 +54,14 @@ echo $this->Html->scriptBlock(
             <table class="table table-hover table-condensed table-vertical-align table-datatable" width="100%">
                 <thead>
                     <tr>
-                        <th><?= __('Name'); ?></th>
-                        <th><?= __('Active');?></th>
-                        <th><?= __('Job');?></th>
-                        <th><?= __('Recurrence'); ?></th>
-                        <th><?= __('Start');?></th>
-                        <th><?= __('End');?></th>
-                        <th><?= __('Last Run Date');?></th>
-                        <th><?= __('Actions');?></th>
+                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Name'); ?></th>
+                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Active');?></th>
+                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Job');?></th>
+                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Recurrence'); ?></th>
+                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Start');?></th>
+                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'End');?></th>
+                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Last Run Date');?></th>
+                        <th><?= __d('Qobo/ProjectTemplateCakephp', 'Actions');?></th>
                     </tr>
                 </thead>
             </table>

@@ -46,7 +46,7 @@ echo $this->Html->scriptBlock(
 );
 ?>
 <section class="content-header">
-    <h1><?= __('Create {0}', ['User']) ?></h1>
+    <h1><?= __d('Qobo/ProjectTemplateCakephp', 'Create {0}', ['User']) ?></h1>
 </section>
 <section class="content">
     <div class="row">
@@ -54,7 +54,7 @@ echo $this->Html->scriptBlock(
             <?= $this->Form->create($Users) ?>
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= __('User Information') ?></h3>
+                    <h3 class="box-title"><?= __d('Qobo/ProjectTemplateCakephp', 'User Information') ?></h3>
                 </div>
                 <div class="box-body">
                     <div class="row">
@@ -82,7 +82,7 @@ echo $this->Html->scriptBlock(
             </div>
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= __('Personal Details') ?></h3>
+                    <h3 class="box-title"><?= __d('Qobo/ProjectTemplateCakephp', 'Personal Details') ?></h3>
                 </div>
                 <div class="box-body">
                     <div class="row">
@@ -147,7 +147,7 @@ echo $this->Html->scriptBlock(
             </div>
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= __('Contact Details') ?></h3>
+                    <h3 class="box-title"><?= __d('Qobo/ProjectTemplateCakephp', 'Contact Details') ?></h3>
                 </div>
                 <div class="box-body">
                     <div class="row">
@@ -178,7 +178,7 @@ echo $this->Html->scriptBlock(
             </div>
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= __('Company Details') ?></h3>
+                    <h3 class="box-title"><?= __d('Qobo/ProjectTemplateCakephp', 'Company Details') ?></h3>
                 </div>
                 <div class="box-body">
                     <div class="row">
@@ -220,7 +220,7 @@ echo $this->Html->scriptBlock(
                     </div>
                 </div>
             </div>
-            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

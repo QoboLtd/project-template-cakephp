@@ -16,13 +16,13 @@ if (!empty($this->passedArgs[0])) {
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= __('Please enter the new password for user {0}', '<i>' . $entity->username . '</i>') ?> <?= empty($fullname) ? '' : "($fullname)" ?></h3>
+                    <h3 class="box-title"><?= __d('Qobo/ProjectTemplateCakephp', 'Please enter the new password for user {0}', '<i>' . $entity->username . '</i>') ?> <?= empty($fullname) ? '' : "($fullname)" ?></h3>
                 </div>
                 <?= $this->Form->create('User') ?>
                 <div class="box-body">
                     <?= $this->Form->control('password'); ?>
                     <?= $this->Form->control('password_confirm', ['type' => 'password', 'required' => true]); ?>
-                    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+                    <?= $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Submit'), ['class' => 'btn btn-primary']) ?>
                 </div>
                 <?= $this->Form->end() ?>
             </div>

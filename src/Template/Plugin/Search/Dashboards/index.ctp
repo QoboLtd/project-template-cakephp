@@ -17,19 +17,19 @@ use RolesCapabilities\Access\AccessFactory;
     <div class="row">
         <div class="col-xs-12">
             <div class="jumbotron">
-                <h1><?= __('Dashboards') ?></h1>
+                <h1><?= __d('Qobo/ProjectTemplateCakephp', 'Dashboards') ?></h1>
                 <p>
-                    <?= __('There are no configured Dashboards for you.'); ?>
+                    <?= __d('Qobo/ProjectTemplateCakephp', 'There are no configured Dashboards for you.'); ?>
                 <?php
                     $factory = new AccessFactory();
                     $url = [ 'controller' => $this->request->controller, 'action' => 'add'];
                     if (!$factory->hasAccess($url, $user)):
                 ?>
-                    <?= __('Please contact the system administrator.'); ?>
+                    <?= __d('Qobo/ProjectTemplateCakephp', 'Please contact the system administrator.'); ?>
                 </p>
                 <?php else: ?>
                 <p>
-                <?= $this->Html->link(__('{0} Create Dashboard', '<i class="fa fa-plus"></i>'), $url, ['class' => 'btn btn-primary', 'escape' => false]) ?>
+                <?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', '{0} Create Dashboard', '<i class="fa fa-plus"></i>'), $url, ['class' => 'btn btn-primary', 'escape' => false]) ?>
                 <p>
                 <?php endif; ?>
             </div>

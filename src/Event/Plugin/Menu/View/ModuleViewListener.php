@@ -67,7 +67,7 @@ class ModuleViewListener implements EventListenerInterface
         $menu->addMenuItem($this->getDeleteMenuItem($entity, $request));
 
         $moreActions = MenuItemFactory::createMenuItem([
-            'label' => __('More Actions'),
+            'label' => __d('Qobo/ProjectTemplateCakephp', 'More Actions'),
             'icon' => 'plus-square-o',
             'type' => 'button_group',
             'order' => 0,
@@ -96,7 +96,7 @@ class ModuleViewListener implements EventListenerInterface
         return MenuItemFactory::createMenuItem([
             'url' => ['plugin' => $plugin, 'controller' => $controller, 'action' => 'managePermissions'],
             'attributes' => ['class' => ' '],
-            'label' => __('Permissions'),
+            'label' => __d('Qobo/ProjectTemplateCakephp', 'Permissions'),
             'icon' => 'shield',
             'type' => 'link_button_modal',
             'modal_target' => 'permissions-modal-add',
@@ -121,7 +121,7 @@ class ModuleViewListener implements EventListenerInterface
         return MenuItemFactory::createMenuItem([
             'url' => ['plugin' => $plugin, 'controller' => $controller, 'action' => 'changelog', $id],
             'attributes' => ['class' => ' '],
-            'label' => __('Changelog'),
+            'label' => __d('Qobo/ProjectTemplateCakephp', 'Changelog'),
             'icon' => 'book',
             'type' => 'link_button',
             'order' => 60

@@ -15,7 +15,7 @@ echo $this->Html->css('database-logs', ['block' => 'css']);
 
 $typeStyles = Configure::read('DatabaseLog.typeStyles');
 
-$title = $this->Html->link(__('Logs'), ['plugin' => false, 'controller' => 'Logs', 'action' => 'index']);
+$title = $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Logs'), ['plugin' => false, 'controller' => 'Logs', 'action' => 'index']);
 $title .= ' &raquo; ' . h($log['id']);
 
 $headerStyle = !empty($typeStyles[$log['type']]['header']) ? $typeStyles[$log['type']]['header'] : 'bg-gray';

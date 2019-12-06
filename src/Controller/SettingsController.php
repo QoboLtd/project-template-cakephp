@@ -183,7 +183,7 @@ class SettingsController extends AppController
             }
 
             if (empty($set)) {
-                $this->Flash->success((string)__('Nothing to update'));
+                $this->Flash->success((string)__d('Qobo/ProjectTemplateCakephp', 'Nothing to update'));
 
                 return $this->redirect($this->request->referer());
             }
@@ -193,11 +193,11 @@ class SettingsController extends AppController
              */
             $entities = $set;
             if ($this->query->saveMany($entities)) {
-                $this->Flash->success((string)__('Settings successfully updated'));
+                $this->Flash->success((string)__d('Qobo/ProjectTemplateCakephp', 'Settings successfully updated'));
 
                 return $this->redirect($this->request->referer());
             } else {
-                $this->Flash->error((string)__('Failed to update settings, please try again.'));
+                $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Failed to update settings, please try again.'));
             }
         }
     }

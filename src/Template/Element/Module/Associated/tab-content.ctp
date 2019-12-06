@@ -96,7 +96,7 @@ $('#relatedTabs a.$containerId').on('click', function() {
             <?php foreach ($fields as $field) : ?>
                 <th><?= $factory->renderName($association->className(), $field) ?></th>
             <?php endforeach; ?>
-                <th><?= __('Actions');?></th>
+                <th><?= __d('Qobo/ProjectTemplateCakephp', 'Actions');?></th>
             </tr>
         </thead>
     </table>

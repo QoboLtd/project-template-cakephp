@@ -30,7 +30,7 @@ class SettingsShell extends Shell
                 'parser' => [
                     'options' => [
                         'reset' => [
-                            'help' => __('Insert key'),
+                            'help' => __d('Qobo/ProjectTemplateCakephp', 'Insert key'),
                             'required' => true,
                         ]
                     ]

@@ -43,7 +43,7 @@ if (array_key_exists('panels', $config)) {
 }
 ?>
 <section class="content-header">
-    <h4><?= Hash::get($config, 'table.alias', Inflector::humanize(Inflector::underscore($controller))) ?> &raquo; <?= __('Create') ?></h4>
+    <h4><?= Hash::get($config, 'table.alias', Inflector::humanize(Inflector::underscore($controller))) ?> &raquo; <?= __d('Qobo/ProjectTemplateCakephp', 'Create') ?></h4>
 </section>
 <section class="content">
 <?php
@@ -60,12 +60,12 @@ echo $this->element('Module/Form/fields', [
 ]);
 
 echo $this->Form->button(
-    __('Submit'),
+    __d('Qobo/ProjectTemplateCakephp', 'Submit'),
     ['name' => 'btn_operation', 'value' => 'submit', 'class' => 'btn btn-primary']
 );
 
 echo $this->Html->link(
-    __('Cancel'),
+    __d('Qobo/ProjectTemplateCakephp', 'Cancel'),
     ['action' => 'index'],
     ['class' => 'btn btn-link', 'role' => 'button', 'aria-label' => 'Close', 'data-dismiss' => 'modal']
 );

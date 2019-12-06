@@ -5,7 +5,7 @@ echo $this->Html->scriptBlock('var api_token="' . Configure::read('API.token') .
 ?>
 
 <section class="content-header">
-    <h1><?= __('System Information'); ?></h1>
+    <h1><?= __d('Qobo/ProjectTemplateCakephp', 'System Information'); ?></h1>
 </section>
 <section class="content">
     <div class="row">

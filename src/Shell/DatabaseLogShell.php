@@ -147,7 +147,7 @@ class DatabaseLogShell extends BaseShell
             'parser' => [
                 'options' => [
                     'since' => [
-                        'help' => __('Period to be exported. Example "-1 day"'),
+                        'help' => __d('Qobo/ProjectTemplateCakephp', 'Period to be exported. Example "-1 day"'),
                         'required' => false,
                     ]
                 ]

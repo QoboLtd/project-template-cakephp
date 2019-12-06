@@ -4,7 +4,7 @@ use Cake\Core\Configure;
 <section class="content-header">
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <h4><?= __('System Searches'); ?></h4>
+            <h4><?= __d('Qobo/ProjectTemplateCakephp', 'System Searches'); ?></h4>
         </div>
     </div>
 </section>
@@ -16,9 +16,9 @@ use Cake\Core\Configure;
                     <table class="table table-hover table-condensed table-vertical-align" data-datatable="1">
                         <thead>
                             <tr>
-                                <th><?= __('Name') ?></th>
-                                <th><?= __('Model') ?></th>
-                                <th class="actions"><?= __('Actions') ?></th>
+                                <th><?= __d('Qobo/ProjectTemplateCakephp', 'Name') ?></th>
+                                <th><?= __d('Qobo/ProjectTemplateCakephp', 'Model') ?></th>
+                                <th class="actions"><?= __d('Qobo/ProjectTemplateCakephp', 'Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +40,7 @@ use Cake\Core\Configure;
                                             'action' => 'search',
                                             $entity->get('id')],
                                         [
-                                            'title' => __('View'),
+                                            'title' => __d('Qobo/ProjectTemplateCakephp', 'View'),
                                             'class' => 'btn btn-default btn-sm',
                                             'escape' => false
                                         ]

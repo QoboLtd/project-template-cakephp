@@ -11,7 +11,7 @@ $menu = new Menu();
 $menu->addMenuItem(MenuItemFactory::createMenuItem([
     'url' => ['prefix' => false, 'plugin' => $plugin, 'controller' => $controller, 'action' => 'view', $entity->id],
     'icon' => 'eye',
-    'label' => __('View'),
+    'label' => __d('Qobo/ProjectTemplateCakephp', 'View'),
     'type' => 'link_button',
     'order' => 10,
 ]));
@@ -19,7 +19,7 @@ $menu->addMenuItem(MenuItemFactory::createMenuItem([
 $menu->addMenuItem(MenuItemFactory::createMenuItem([
     'url' => ['prefix' => false, 'plugin' => $plugin, 'controller' => $controller, 'action' => 'edit', $entity->id],
     'icon' => 'pencil',
-    'label' => __('Edit'),
+    'label' => __d('Qobo/ProjectTemplateCakephp', 'Edit'),
     'type' => 'link_button',
     'order' => 20,
 ]));
@@ -34,7 +34,7 @@ $menu->addMenuItem(MenuItemFactory::createMenuItem([
         $entity->id
     ],
     'icon' => 'trash',
-    'label' => __('Delete'),
+    'label' => __d('Qobo/ProjectTemplateCakephp', 'Delete'),
     'dataType' => 'ajax-delete-record',
     'type' => 'link_button',
     'confirmMsg' => __(
@@ -57,7 +57,7 @@ $menu->addMenuItem(MenuItemFactory::createMenuItem([
         $entity->id,
     ],
     'icon' => 'chain-broken',
-    'label' => __('Unlink'),
+    'label' => __d('Qobo/ProjectTemplateCakephp', 'Unlink'),
     'dataType' => 'ajax-delete-record',
     'type' => 'postlink_button',
     'confirmMsg' => __(

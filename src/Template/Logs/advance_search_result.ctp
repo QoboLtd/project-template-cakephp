@@ -14,7 +14,7 @@
                 <div class="box-body">
                     <div class="paginator">
                         <?= $this->Paginator->counter([
-                            'format' => __('Showing {{start}} to {{end}} of {{count}} entries')
+                            'format' => __d('Qobo/ProjectTemplateCakephp', 'Showing {{start}} to {{end}} of {{count}} entries')
                         ]) ?>
                         <ul class="pagination pagination-sm no-margin pull-right">
                             <?= $this->Paginator->prev('&laquo;', ['escape' => false]) ?>
@@ -69,30 +69,30 @@
 			                	<?php if (array_key_exists($module.'.hostname',$log) || array_key_exists($module.'.ip',$log)): ?>
 								    <div class="row">
 								    	<?php if (array_key_exists($module.'.hostname',$log)): ?>
-									        <div class="col-xs-4 col-md-2 text-right"><strong><?= __('Hostname'); ?></strong></div>
+									        <div class="col-xs-4 col-md-2 text-right"><strong><?= __d('Qobo/ProjectTemplateCakephp', 'Hostname'); ?></strong></div>
 									        <div class="col-xs-8 col-md-4"><?= h($log[$module.'.hostname']); ?></div>
 									    <?php endif ?>
 									    <?php if (array_key_exists($module.'.ip',$log)): ?>
-									        <div class="col-xs-4 col-md-2 text-right"><strong><?= __('IP'); ?></strong></div>
+									        <div class="col-xs-4 col-md-2 text-right"><strong><?= __d('Qobo/ProjectTemplateCakephp', 'IP'); ?></strong></div>
 									        <div class="col-xs-8 col-md-4"><?= h($log[$module.'.ip']); ?></div>
 									    <?php endif ?>
 								    </div>
 							    <?php endif ?>
 							    <?php if (array_key_exists($module.'.uri',$log)): ?>
 								    <div class="row">
-								        <div class="col-xs-4 col-md-2 text-right"><strong><?= __('Uri'); ?></strong></div>
+								        <div class="col-xs-4 col-md-2 text-right"><strong><?= __d('Qobo/ProjectTemplateCakephp', 'Uri'); ?></strong></div>
 								        <div class="col-xs-8 col-md-4"><?= h($log[$module.'.uri']); ?></div>
 								    </div>
 								<?php endif ?>
 								<?php if (array_key_exists($module.'.refer',$log)): ?>
 								    <div class="row">
-								        <div class="col-md-2 text-right"><strong><?= __('Referrer'); ?></strong></div>
+								        <div class="col-md-2 text-right"><strong><?= __d('Qobo/ProjectTemplateCakephp', 'Referrer'); ?></strong></div>
 								        <div class="col-md-10"><?= h($log[$module.'.refer']); ?></div>
 								    </div>
 							    <?php endif ?>
 							    <?php if (array_key_exists($module.'.message',$log)): ?>
 								    <div class="row" style="margin-top:20px;">
-								        <div class="col-md-2 text-right"><strong><?= __('Message'); ?></strong></div>
+								        <div class="col-md-2 text-right"><strong><?= __d('Qobo/ProjectTemplateCakephp', 'Message'); ?></strong></div>
 								        <div class="col-md-10"><pre><small><?= trim(h($log[$module.'.message'])); ?></small></pre></div>
 								    </div>
 							    <?php endif ?>
@@ -109,7 +109,7 @@
                 <div class="box-body">
                     <div class="paginator">
                         <?= $this->Paginator->counter([
-                            'format' => __('Showing {{start}} to {{end}} of {{count}} entries')
+                            'format' => __d('Qobo/ProjectTemplateCakephp', 'Showing {{start}} to {{end}} of {{count}} entries')
                         ]) ?>
                         <ul class="pagination pagination-sm no-margin pull-right">
                             <?= $this->Paginator->prev('&laquo;', ['escape' => false]) ?>

@@ -37,11 +37,11 @@
             ) ?>
         </p>
         <p>
-            <?= __('Here are some useful links for more information:') ?>
+            <?= __d('Qobo/ProjectTemplateCakephp', 'Here are some useful links for more information:') ?>
             <ul>
                 <li><?= $this->Html->link('project-template-cakephp on GitHub', 'https://github.com/QoboLtd/project-template-cakephp/', ['target' => '_blank']) ?></li>
-                <li><?= $this->Html->link(__('Qobo Website'), 'https://www.qobo.biz', ['target' => '_blank']) ?></li>
-                <li><?= $this->Html->link(__('Qobrix Website'), 'https://qobrix.com', ['target' => '_blank']) ?></li>
+                <li><?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Qobo Website'), 'https://www.qobo.biz', ['target' => '_blank']) ?></li>
+                <li><?= $this->Html->link(__d('Qobo/ProjectTemplateCakephp', 'Qobrix Website'), 'https://qobrix.com', ['target' => '_blank']) ?></li>
             </ul>
         </p>
     </div>

@@ -261,11 +261,11 @@ class BaseModuleController extends AppController
         }
 
         if (! $saved) {
-            $this->Flash->error((string)__('The record could not be saved, please try again.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'The record could not be saved, please try again.'));
         }
 
         if ($saved) {
-            $this->Flash->success((string)__('The record has been saved.'));
+            $this->Flash->success((string)__d('Qobo/ProjectTemplateCakephp', 'The record has been saved.'));
 
             $primaryKey = $table->getPrimaryKey();
             if (! is_string($primaryKey)) {
@@ -305,9 +305,9 @@ class BaseModuleController extends AppController
         $entity = $model->get($id);
 
         if ($model->delete($entity)) {
-            $this->Flash->success((string)__('The record has been deleted.'));
+            $this->Flash->success((string)__d('Qobo/ProjectTemplateCakephp', 'The record has been deleted.'));
         } else {
-            $this->Flash->error((string)__('The record could not be deleted. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'The record could not be deleted. Please, try again.'));
         }
 
         $url = $this->referer();
@@ -341,7 +341,7 @@ class BaseModuleController extends AppController
         // unlink associated record
         $table->{$assocName}->unlink($entity, [$assocEntity]);
 
-        $this->Flash->success((string)__('The record has been unlinked.'));
+        $this->Flash->success((string)__d('Qobo/ProjectTemplateCakephp', 'The record has been unlinked.'));
 
         return $this->redirect($this->referer());
     }
@@ -369,7 +369,7 @@ class BaseModuleController extends AppController
         $ids = (array)$this->request->getData($associationName . '._ids');
 
         if (empty($ids)) {
-            $this->Flash->error((string)__('No records provided for linking.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'No records provided for linking.'));
 
             return $this->redirect($this->referer());
         }
@@ -383,18 +383,18 @@ class BaseModuleController extends AppController
             ->where([$association->getPrimaryKey() . ' IN' => $ids]);
 
         if ($query->isEmpty()) {
-            $this->Flash->error((string)__('No records found for linking.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'No records found for linking.'));
 
             return $this->redirect($this->referer());
         }
 
         if (! $association->link($table->get($id), $query->toArray())) {
-            $this->Flash->error((string)__('Failed to link records.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Failed to link records.'));
 
             return $this->redirect($this->referer());
         }
 
-        $this->Flash->success(sprintf('(%s)', count($ids)) . ' ' . __('records have been linked.'));
+        $this->Flash->success(sprintf('(%s)', count($ids)) . ' ' . __d('Qobo/ProjectTemplateCakephp', 'records have been linked.'));
 
         return $this->redirect($this->referer());
     }
@@ -416,7 +416,7 @@ class BaseModuleController extends AppController
 
         $batchIds = (array)$this->request->getData('batch.ids');
         if (empty($batchIds)) {
-            $this->Flash->error((string)__('No records selected.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'No records selected.'));
 
             return $this->redirect($redirectUrl);
         }
@@ -435,7 +435,7 @@ class BaseModuleController extends AppController
 
         if (empty($batchIds)) {
             $operation = strtolower(Inflector::humanize($operation));
-            $this->Flash->error((string)__('Insufficient permissions to ' . $operation . ' the selected records.'));
+            $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Insufficient permissions to ' . $operation . ' the selected records.'));
 
             return $this->redirect($redirectUrl);
         }
@@ -451,10 +451,10 @@ class BaseModuleController extends AppController
             // execute batch delete
             if ($table->{$deleteMethod}($conditions)) {
                 $this->Flash->success(
-                    (string)__(count($batchIds) . ' of ' . $batchIdsCount . ' selected records have been deleted.')
+                    (string)__d('Qobo/ProjectTemplateCakephp', '{0} of {1} selected records have been deleted.', count($batchIds), $batchIdsCount)
                 );
             } else {
-                $this->Flash->error((string)__('Selected records could not be deleted. Please, try again.'));
+                $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Selected records could not be deleted. Please, try again.'));
             }
 
             return $this->redirect($redirectUrl);
@@ -463,7 +463,7 @@ class BaseModuleController extends AppController
         if ('edit' === $operation && (bool)$this->request->getData('batch.execute')) {
             $fields = (array)$this->request->getData($this->name);
             if (empty($fields)) {
-                $this->Flash->error((string)__('Selected records could not be updated. No changes provided.'));
+                $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Selected records could not be updated. No changes provided.'));
 
                 return $this->redirect($redirectUrl);
             }
@@ -477,10 +477,10 @@ class BaseModuleController extends AppController
             // execute batch edit
             if ($table->updateAll($fields, $conditions)) {
                 $this->Flash->success(
-                    (string)__(count($batchIds) . ' of ' . $batchIdsCount . ' selected records have been updated.')
+                    (string)__d('Qobo/ProjectTemplateCakephp', '{0} of {1} selected records have been updated.', count($batchIds), $batchIdsCount)
                 );
             } else {
-                $this->Flash->error((string)__('Selected records could not be updated. Please, try again.'));
+                $this->Flash->error((string)__d('Qobo/ProjectTemplateCakephp', 'Selected records could not be updated. Please, try again.'));
             }
 
             return $this->redirect($redirectUrl);

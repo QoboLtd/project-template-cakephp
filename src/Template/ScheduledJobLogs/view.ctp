@@ -49,7 +49,7 @@ $table = TableRegistry::get($tableName);
 if (!$options['title']) {
     $config = (new ModuleConfig(ConfigType::MODULE(), $this->name))->parse();
     $options['title'] = $this->Html->link(
-        __('Scheduled Job'),
+        __d('Qobo/ProjectTemplateCakephp', 'Scheduled Job'),
         ['controller' => 'ScheduledJobs', 'action' => 'view', $entity->scheduled_job_id]
     );
 

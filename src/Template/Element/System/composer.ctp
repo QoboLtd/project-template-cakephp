@@ -22,14 +22,14 @@ $matchCounts = Composer::getMatchCounts($packages, $matchWords);
     <div class="col-md-3">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= __('Composer Summary') ?></h3>
+                <h3 class="box-title"><?= __d('Qobo/ProjectTemplateCakephp', 'Composer Summary') ?></h3>
             </div>
             <div class="box-body">
 
                 <div class="info-box">
                     <span class="info-box-icon bg-blue"><i class="fa fa-book"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text"><?= __('Composer libraries') ?></span>
+                        <span class="info-box-text"><?= __d('Qobo/ProjectTemplateCakephp', 'Composer libraries') ?></span>
                         <span class="info-box-number"><?php echo number_format($count); ?></span>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ $matchCounts = Composer::getMatchCounts($packages, $matchWords);
                     <div class="info-box">
                         <span class="info-box-icon bg-blue"><i class="fa fa-<?= $matches[$word] ?>"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text"><?= __('Match {0}', $word); ?></span>
+                            <span class="info-box-text"><?= __d('Qobo/ProjectTemplateCakephp', 'Match {0}', $word); ?></span>
                             <span class="info-box-number"><?php echo number_format($count); ?></span>
                         </div>
                     </div>
@@ -50,16 +50,16 @@ $matchCounts = Composer::getMatchCounts($packages, $matchWords);
 
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= __('Installed Dependencies') ?></h3>
+                <h3 class="box-title"><?= __d('Qobo/ProjectTemplateCakephp', 'Installed Dependencies') ?></h3>
             </div>
             <div class="box-body">
                 <table class="table table-hover table-condensed table-vertical-align">
                     <thead>
                         <tr>
-                            <th width="20%"><?= __('Name') ?></th>
-                            <th width="10%"><?= __('Version') ?></th>
-                            <th width="10%"><?= __('License') ?></th>
-                            <th width="60%"><?= __('Description') ?></th>
+                            <th width="20%"><?= __d('Qobo/ProjectTemplateCakephp', 'Name') ?></th>
+                            <th width="10%"><?= __d('Qobo/ProjectTemplateCakephp', 'Version') ?></th>
+                            <th width="10%"><?= __d('Qobo/ProjectTemplateCakephp', 'License') ?></th>
+                            <th width="60%"><?= __d('Qobo/ProjectTemplateCakephp', 'Description') ?></th>
                         </tr>
                     </thead>
                     <tbody>

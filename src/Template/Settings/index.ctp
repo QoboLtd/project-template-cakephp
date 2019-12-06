@@ -61,7 +61,7 @@ $(document).ready(function(){
 
 <?php $this->Html->scriptEnd(); ?>
 <section class="content-header">
-	<h1><?= __('Settings'); ?>
+	<h1><?= __d('Qobo/ProjectTemplateCakephp', 'Settings'); ?>
 		<?= isset($afterTitle) ? ' » '. $afterTitle : '' ?>
 		<?= isset($linkToGenerator) ? '<h4><a href=/settings/generator/>settings.php file builder utility</a></h4>' : '' ?>
 	</h1>
@@ -176,7 +176,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<?php
-				echo $this->Form->button(__('Submit'), ['class' => 'btn btn-primary','value' => 'submit']);
+				echo $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Submit'), ['class' => 'btn btn-primary','value' => 'submit']);
 				echo $this->Form->end();
 			?>
 		</div>

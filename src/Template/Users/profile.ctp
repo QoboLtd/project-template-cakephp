@@ -36,17 +36,17 @@ echo $this->Html->script('AdminLTE./bower_components/bootstrap-datepicker/dist/j
                 <div class="tab-content">
                     <div class="active tab-pane" id="info">
                         <dl class="dl-horizontal">
-                            <dt><?= __('ID') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'ID') ?></dt>
                             <dd><?= !empty($user['id']) ? h($user['id']) : '&nbsp;' ?></dd>
-                            <dt><?= __('Username') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Username') ?></dt>
                             <dd><?= !empty($user['username']) ? h($user['username']) : '&nbsp;' ?></dd>
-                            <dt><?= __('Email') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Email') ?></dt>
                             <dd><?= !empty($user['email']) ? h($user['email']) : '&nbsp;' ?></dd>
-                            <dt><?= __('First Name') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'First Name') ?></dt>
                             <dd><?= !empty($user['first_name']) ? h($user['first_name']) : '&nbsp;' ?></dd>
-                            <dt><?= __('Last Name') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Last Name') ?></dt>
                             <dd><?= !empty($user['last_name']) ? h($user['last_name']) : '&nbsp;' ?></dd>
-                            <dt><?= __('Country') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Country') ?></dt>
                             <dd><?php
                             if (!empty($user['country'])) {
                                 $definition = [
@@ -57,9 +57,9 @@ echo $this->Html->script('AdminLTE./bower_components/bootstrap-datepicker/dist/j
                                 echo $fhf->renderValue('Users', 'country', $user['country'], ['fieldDefinitions' => $definition]);
                             }
                             ?></dd>
-                            <dt><?= __('Initials') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Initials') ?></dt>
                             <dd><?= !empty($user['initials']) ? h($user['initials']) : '&nbsp;' ?></dd>
-                            <dt><?= __('Gender') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Gender') ?></dt>
                             <dd><?php
                             if (!empty($user['gender'])) {
                                 $definition = [
@@ -70,15 +70,15 @@ echo $this->Html->script('AdminLTE./bower_components/bootstrap-datepicker/dist/j
                                 echo $fhf->renderValue('Users', 'gender', $user['gender'], ['fieldDefinitions' => $definition]);
                             }
                             ?></dd>
-                            <dt><?= __('Birthdate') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Birthdate') ?></dt>
                             <dd><?= !empty($user['birthdate']) ? $user['birthdate']->i18nFormat('yyyy-MM-dd') : '&nbsp;' ?></dd>
-                            <dt><?= __('Phone Office') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Office') ?></dt>
                             <dd><?= !empty($user['phone_office']) ? h($user['phone_office']) : '&nbsp;' ?></dd>
-                            <dt><?= __('Phone Home') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Home') ?></dt>
                             <dd><?= !empty($user['phone_home']) ? h($user['phone_home']) : '&nbsp;' ?></dd>
-                            <dt><?= __('Phone Mobile') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Mobile') ?></dt>
                             <dd><?= !empty($user['phone_mobile']) ? h($user['phone_mobile']) : '&nbsp;' ?></dd>
-                            <dt><?= __('Phone Extension') ?></dt>
+                            <dt><?= __d('Qobo/ProjectTemplateCakephp', 'Phone Extension') ?></dt>
                             <dd><?= !empty($user['phone_extension']) ? h($user['phone_extension']) : '&nbsp;' ?></dd>
                         </dl>
                         <?= $this->Html->link(
@@ -111,7 +111,7 @@ echo $this->Html->script('AdminLTE./bower_components/bootstrap-datepicker/dist/j
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
                             <?= $this->Form->control('Users.username', [
-                                'placeholder' => __('Username'),
+                                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Username'),
                                 'value' => !empty($user['username']) ? h($user['username']) : null
                             ]); ?>
                             </div>
@@ -119,13 +119,13 @@ echo $this->Html->script('AdminLTE./bower_components/bootstrap-datepicker/dist/j
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
                             <?= $this->Form->control('Users.first_name', [
-                                'placeholder' => __('First Name'),
+                                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'First Name'),
                                 'value' => !empty($user['first_name']) ? h($user['first_name']) : null
                             ]); ?>
                             </div>
                             <div class="col-xs-12 col-md-6">
                             <?= $this->Form->control('Users.last_name', [
-                                'placeholder' => __('Last Name'),
+                                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Last Name'),
                                 'value' => !empty($user['last_name']) ? h($user['last_name']) : null
                             ]); ?>
                             </div>
@@ -144,7 +144,7 @@ echo $this->Html->script('AdminLTE./bower_components/bootstrap-datepicker/dist/j
                             </div>
                             <div class="col-xs-12 col-md-6">
                             <?= $this->Form->control('Users.initials', [
-                                'placeholder' => __('Initials'),
+                                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Initials'),
                                 'value' => !empty($user['initials']) ? h($user['initials']) : null
                             ]); ?>
                             </div>
@@ -184,13 +184,13 @@ echo $this->Html->script('AdminLTE./bower_components/bootstrap-datepicker/dist/j
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
                             <?= $this->Form->control('Users.email', [
-                                'placeholder' => __('Email'),
+                                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Email'),
                                 'value' => !empty($user['email']) ? h($user['email']) : null
                             ]); ?>
                             </div>
                             <div class="col-xs-12 col-md-6">
                             <?= $this->Form->control('Users.phone_office', [
-                                'placeholder' => __('Office Phone'),
+                                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Office Phone'),
                                 'value' => !empty($user['phone_office']) ? h($user['phone_office']) : null
                             ]); ?>
                             </div>
@@ -198,26 +198,26 @@ echo $this->Html->script('AdminLTE./bower_components/bootstrap-datepicker/dist/j
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
                             <?= $this->Form->control('Users.phone_home', [
-                                'placeholder' => __('Home Phone'),
+                                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Home Phone'),
                                 'value' => !empty($user['phone_home']) ? h($user['phone_home']) : null
                             ]); ?>
                             </div>
                             <div class="col-xs-12 col-md-6">
                             <?= $this->Form->control('Users.phone_mobile', [
-                                'placeholder' => __('Mobile Phone'),
+                                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Mobile Phone'),
                                 'value' => !empty($user['phone_mobile']) ? h($user['phone_mobile']) : null
                             ]); ?>
                             </div>
                             <div class="col-xs-12 col-md-6">
                             <?= $this->Form->control('Users.phone_extension', [
-                                'placeholder' => __('Phone Extension'),
+                                'placeholder' => __d('Qobo/ProjectTemplateCakephp', 'Phone Extension'),
                                 'value' => !empty($user['phone_extension']) ? h($user['phone_extension']) : null
                             ]); ?>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
-                                <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+                                <?= $this->Form->button(__d('Qobo/ProjectTemplateCakephp', 'Submit'), ['class' => 'btn btn-primary']) ?>
                             </div>
                         </div>
                         <?= $this->Form->end() ?>
