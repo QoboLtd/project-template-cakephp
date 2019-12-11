@@ -15,7 +15,7 @@ use Qobo\Utils\ModuleConfig\ConfigType;
 use Qobo\Utils\ModuleConfig\ModuleConfig;
 
 $config = (new ModuleConfig(ConfigType::MODULE(), $this->name))->parse();
-$alias = __( isset($config->table->alias) ? $config->table->alias : Inflector::humanize(Inflector::underscore($this->name)));
+$alias = isset($config->table->alias) ? $config->table->alias : Inflector::humanize(Inflector::underscore($this->name));
 
 $options = [
     'title' => ['page' => __('Batch Edit'), 'alias' => $alias, 'link' => $this->request->getParam('controller')],
