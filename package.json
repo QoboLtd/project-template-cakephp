@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@babel/register": "^7.7.0",
-    "acorn": "^6.3.0",
+    "acorn": "^6.4.1",
     "axios": "^0.18.0",
     "bootstrap-datepicker": "^1.8.0",
     "bootstrap-timepicker": "^0.5.2",
