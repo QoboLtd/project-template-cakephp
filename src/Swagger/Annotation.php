@@ -153,34 +153,96 @@ class Annotation
                 )
             )
 
-            @SWG\Get(
-                path="/api/{{module_url}}/lookup.json",
-                summary="Retrieve a list of records {{module_human_singular}} by name",
+            @SWG\Post(
+                path="/api/{{module_url}}/search",
+                summary="Search {{module_human_singular}}",
                 tags={"{{module_human_plural}}"},
+                consumes={"application/json"},
                 produces={"application/json"},
                 @SWG\Parameter(
-                    name="query",
-                    description="{{module_human_singular}} Name",
-                    in="query",
-                    required=false,
-                    type="string",
-                    default=""
-                ),
-                @SWG\Parameter(
-                    name="limit",
-                    description="Limit results",
-                    in="query",
-                    required=false,
-                    type="integer",
-                    default=""
-                ),
-                @SWG\Parameter(
-                    name="page",
-                    description="Page Number",
-                    in="query",
-                    required=false,
-                    type="integer",
-                    default=""
+                    name="body",
+                    in="body",
+                    description="{{module_human_singular}} object for search",
+                    required=true,
+                    @SWG\Schema(
+                        @SWG\Property(
+                            property="direction",
+                            type="string",
+                            format="list",
+                            example="DESC",
+                            description="Sorting direction"
+                        ),
+                        @SWG\Property(
+                            property="fields",
+                            type="array",
+                            items= {
+                                "type": "string"
+                            },
+                            description="",
+                            example={{search_fields}}
+                        ),
+                        @SWG\Property(
+                            property="limit",
+                            type="string",
+                            description="",
+                            example=10
+                        ),
+                        @SWG\Property(
+                            property="page",
+                            type="string",
+                            description="Page number",
+                            example=1
+                        ),
+                        @SWG\Property(
+                            property="sort",
+                            type="string",
+                            description="Sorting field",
+                            example="{{module_human_plural}}.id"
+                        ),
+                        @SWG\Property(
+                            property="criteria",
+                            description="Criteria field",
+                            @SWG\Property(
+                                type="object",
+                                property="{{module_human_plural}}.id",
+                                @SWG\Property(
+                                    property={{random_uuid}},
+                                    description="Criteria field",
+                                    @SWG\Property(
+                                        property="type",
+                                        type="object",
+                                        description="Field type",
+                                        example="string"
+                                    ),
+                                    @SWG\Property(
+                                        property="operator",
+                                        type="object",
+                                        description="Operator",
+                                        example="contains"
+                                    ),
+                                    @SWG\Property(
+                                        property="value",
+                                        type="object",
+                                        description="Search value",
+                                        example={{random_name}}
+                                    ),
+                                ),
+                            )
+                        ),
+                        @SWG\Property(
+                            property="group_by",
+                            type="string",
+                            description="Group by field",
+                            example=""
+                        ),
+                        @SWG\Property(
+                            property="conjunction",
+                            type="string",
+                            description="Conjunction field",
+                            example="AND"
+                        )
+
+                    ),
                 ),
                 @SWG\Response(
                     response="200",
@@ -192,9 +254,19 @@ class Annotation
                             property="success"
                         ),
                         @SWG\Property(
-                            type="object",
+                            type="array",
                             property="data",
-                            example={"808D613A-3990-408E-947B-B63D188D6B07":"lion", "E45A34F6-F124-4154-B2AA-E32D77468685":"ion"}
+                            items= {
+                                "type": "array"
+                            },
+                            example={
+                                "{{module_human_plural}}.id": {{random_uuid}},
+                                "_permissions": {
+                                    "view": true,
+                                    "edit": true,
+                                    "delete": true
+                                }
+                            }
                         ),
                         @SWG\Property(
                             title="pagination",
@@ -235,8 +307,10 @@ class Annotation
                 @SWG\Response(
                     response="500",
                     description="Unsuccessful operation"
-                )
+                ),
+              ),
             )
+
             @SWG\Post(
                 path="/api/{{module_url}}/add",
                 summary="Add new {{module_human_singular}}",
@@ -738,6 +812,9 @@ class Annotation
             '{{module_singular}}' => Inflector::singularize($this->className),
             '{{module_url}}' => Inflector::dasherize($this->className),
             '{{sort_fields}}' => '"' . implode('", "', $fields) . '"',
+            '{{random_uuid}}' => '"' . Text::uuid() . '"',
+            '{{random_name}}' => '"' . self::randomName() . '"',
+            '{{search_fields}}' => self::getSearchFieldsObjectAsString(),
         ];
 
         return str_replace(
@@ -745,5 +822,88 @@ class Annotation
             array_values($placeholders),
             $this->annotations['paths']
         );
+    }
+
+    /**
+     * Return Search fields object as string
+     * @return string
+     */
+    protected function getSearchFieldsObjectAsString(): string
+    {
+        $columns = $this->getColumnsFromConfig();
+        if (empty($columns)) {
+            $columns = $this->getColumnsFromSchema();
+        }
+
+        $result = [];
+        foreach ($columns as $column) {
+            $result[] = $this->className . '.' . $column['db_field']->getName();
+        }
+
+        return (string)json_encode($result, JSON_FORCE_OBJECT);
+    }
+
+    /**
+     * Return a random name
+     * @return string
+     */
+    protected function randomName(): string
+    {
+        $names = [
+            'Roxie',
+            'Toi',
+            'Kori',
+            'Paris',
+            'Alessandra',
+            'Jone',
+            'Dawn',
+            'Prince',
+            'Tammie',
+            'Penny',
+            'Lincoln',
+            'Carlo',
+            'Kayleigh',
+            'Angila',
+            'Ruben',
+            'Lu',
+            'Hattie',
+            'Claretta',
+            'Carrol',
+            'Estefana',
+            'Rosalina',
+            'Sidney',
+            'Callie',
+            'Emely',
+            'Robt',
+            'Vena',
+            'Rubie',
+            'Scarlet',
+            'Ernest',
+            'Keneth',
+            'Eleanora',
+            'Freeda',
+            'Donya',
+            'Sylvester',
+            'Charleen',
+            'Robyn',
+            'Wiley',
+            'Pandora',
+            'Krystal',
+            'Bonita',
+            'Londa',
+            'Jay',
+            'Mimi',
+            'Britney',
+            'Bobbie',
+            'Christy',
+            'Denisse',
+            'Waltraud',
+            'Noah',
+            'Barbra',
+        ];
+
+        $randomNumber = random_int(0, count($names));
+
+        return $names[$randomNumber];
     }
 }
