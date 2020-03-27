@@ -469,7 +469,6 @@ class Annotation
               ),
             )
 
->>>>>>> origin/task-15807-search-endpoint-in-swagger-documentation
             @SWG\Post(
                 path="/api/{{module_url}}/add",
                 summary="Add new {{module_human_singular}}",
