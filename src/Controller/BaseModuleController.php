@@ -269,20 +269,30 @@ class BaseModuleController extends AppController
 
         $options = array_merge($options, ['lookup' => true]);
         $entity = $table->patchEntity($entity, $data, $options);
+        //$entity->setError('email', (string)__('Error message'));
+        //$entity->setError('name', (string)__('Error'));
 
         $saved = false;
+        $exception = false;
         try {
             $saved = $table->save($entity);
         } catch (PDOException $e) {
+            $exception = true;
             Log::error($e->getMessage());
+            $this->Flash->error((string)__($e->getMessage()));
         }
 
         if ($entity->getErrors()) {
+            foreach ($entity->getErrors() as $key => $errors) {
+                foreach ($errors as $error) {
+                    $this->Flash->error((string)__('{0} {1}', (string)Inflector::humanize(Inflector::underscore($key)), (string)$error));
+                }
+            }
             Log::warning((string)json_encode($entity->getErrors()));
         }
 
-        if (! $saved) {
-            $this->Flash->error((string)__('The record could not be saved, please try again.'));
+        if (! $saved || $exception) {
+            //$this->Flash->error((string)__('The record could not be saved, please try again.'));
         }
 
         if ($saved) {

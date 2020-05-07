@@ -7,7 +7,7 @@ use Cake\Core\Configure;
 return [
     'CsvMigrations' => [
         'appView' => AppView::class,
-        'tableValidation' => false,
+        'tableValidation' => true,
         // Configuration options for the ValidateShell
         'ValidateShell' => [
             // Module-specific configuration options
