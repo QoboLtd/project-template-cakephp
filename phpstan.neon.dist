@@ -5,6 +5,7 @@ parameters:
         - tests
         - webroot
     excludes_analyse:
+        - %rootDir%/../../../src/Module/*
         - %rootDir%/../../../tests/data/*
     autoload_files:
         - tests/bootstrap.php

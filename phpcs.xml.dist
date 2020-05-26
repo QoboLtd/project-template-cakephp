@@ -37,7 +37,7 @@
     <file>./webroot/js</file>
 
     <!-- Ignore files -->
-    <arg name="ignore" value="config/Migrations/, resources/" />
+    <arg name="ignore" value="config/Migrations/,src/Module/,resources/" />
 
     <!-- Ignore minified files -->
     <exclude-pattern>*\.min\.(css|js)</exclude-pattern>
