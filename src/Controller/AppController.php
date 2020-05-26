@@ -28,10 +28,12 @@ use Cake\Event\Event;
 use Cake\Event\EventManager;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
+use Cake\Utility\Hash;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 use Cake\View\Exception\MissingTemplateException;
 use Firebase\JWT\JWT;
+use Qobo\Utils\Module\Exception\MissingModuleException;
 use Qobo\Utils\Module\ModuleRegistry;
 use Qobo\Utils\Utility\User;
 use RolesCapabilities\CapabilityTrait;
@@ -235,10 +237,13 @@ class AppController extends Controller
         $this->viewBuilder()->setTheme('AdminLTE');
         $this->viewBuilder()->setLayout('adminlte');
 
-        $config = ModuleRegistry::getModule($this->getName())->getConfig();
-        $title = empty($config['table']['alias']) ?
-            Inflector::humanize(Inflector::underscore($this->name)) :
-            $config['table']['alias'];
+        $defaultTitle = Inflector::humanize(Inflector::underscore($this->name));
+        try {
+            $config = ModuleRegistry::getModule($this->getName())->getConfig();
+            $title = Hash::get($config, 'table.alias', $defaultTitle);
+        } catch (MissingModuleException $e) {
+            $title = $defaultTitle;
+        }
 
         // overwrite theme title before setting the theme
         // NOTE: we set controller specific title, to work around requestAction() calls.
