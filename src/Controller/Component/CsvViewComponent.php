@@ -22,8 +22,7 @@ use Cake\ORM\Table;
 use CsvMigrations\Controller\Traits\PanelsTrait;
 use CsvMigrations\FieldHandlers\CsvField;
 use CsvMigrations\Utility\Field;
-use Qobo\Utils\ModuleConfig\ConfigType;
-use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\Module\ModuleRegistry;
 use Webmozart\Assert\Assert;
 
 /**
@@ -92,10 +91,7 @@ class CsvViewComponent extends Component
         $request = $controller->getRequest();
         Assert::isInstanceOf($request, ServerRequest::class);
 
-        $config = new ModuleConfig(ConfigType::MODULE(), $controller->getName());
-        $config = json_encode($config->parse());
-        $config = false === $config ? [] : json_decode($config, true);
-
+        $config = ModuleRegistry::getModule($controller->getName())->getConfig();
         $panels = $this->getPanels($config, $controller->viewVars['entity']->toArray(), compact('request', 'table'));
 
         $batchAction = (string)Configure::read('CsvMigrations.batch.action') === $this->getAction();
@@ -121,10 +117,7 @@ class CsvViewComponent extends Component
      */
     protected function filterBatchFields(Event $event): void
     {
-        $config = new ModuleConfig(ConfigType::MIGRATION(), $this->request->getParam('controller'));
-        $config = json_encode($config->parse());
-        $fields = false === $config ? [] : json_decode($config, true);
-
+        $fields = ModuleRegistry::getModule($this->request->getParam('controller'))->getMigration();
         $batchFields = (array)Configure::read('CsvMigrations.batch.types');
 
         $nonBatchFields = [];

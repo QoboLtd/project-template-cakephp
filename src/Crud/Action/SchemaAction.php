@@ -6,9 +6,7 @@ use ArrayIterator;
 use Cake\Core\App;
 use Crud\Action\BaseAction;
 use CsvMigrations\FieldHandlers\CsvField;
-use CsvMigrations\Model\AssociationsAwareTrait;
-use Qobo\Utils\ModuleConfig\ConfigType;
-use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\Module\ModuleRegistry;
 
 /**
  * Handles 'Schema' Crud actions
@@ -58,13 +56,13 @@ class SchemaAction extends BaseAction
      */
     protected function getFields(array $associations): array
     {
-        $migrationJson = new ModuleConfig(ConfigType::MIGRATION(), $this->_controller()->getName());
-        $fieldJson = new ModuleConfig(ConfigType::FIELDS(), $this->_controller()->getName());
-        $fieldJson = $fieldJson->parseToArray();
+        $module = ModuleRegistry::getModule($this->_controller()->getName());
+        $migration = $module->getMigration();
+        $fields = $module->getFields();
         $db_fields_type = $this->_table()->getSchema()->typeMap();
 
         $data_fields = [];
-        foreach ($migrationJson->parseToArray() as $field) {
+        foreach ($migration as $field) {
             $csvField = new CsvField($field);
             $data = [
                 'name' => $csvField->getName(),
@@ -72,7 +70,7 @@ class SchemaAction extends BaseAction
                 'required' => $csvField->getRequired(),
             ];
             // Check if exist a label, or required, non_searchable, unique are set as true.
-            !empty($fieldJson[$csvField->getName()]['label']) ? $data['label'] = $fieldJson[$csvField->getName()]['label'] : '';
+            !empty($fields[$csvField->getName()]['label']) ? $data['label'] = $fields[$csvField->getName()]['label'] : '';
             $csvField->getNonSearchable() ? $data['non_searchable'] = true : '';
             $csvField->getUnique() ? $data['unique'] = true : '';
 
@@ -98,9 +96,9 @@ class SchemaAction extends BaseAction
                     list($moduleName, $listName) = false !== strpos((string)$csvField->getLimit(), '.') ?
                         explode('.', (string)$csvField->getLimit(), 2) :
                         [$this->_controller()->getName(), (string)$csvField->getLimit()];
-                    $list = new ModuleConfig(ConfigType::LISTS(), $moduleName, $listName);
+                    $list = ModuleRegistry::getModule($moduleName)->getList($listName);
                     $data['db_type'] = $db_fields_type[$csvField->getName()];
-                    $data['options'] = $this->getOptionList($list->parseToArray()['items']);
+                    $data['options'] = $this->getOptionList($list['items']);
                     break;
                 case "related":
                     $data['db_type'] = $db_fields_type[$csvField->getName()];

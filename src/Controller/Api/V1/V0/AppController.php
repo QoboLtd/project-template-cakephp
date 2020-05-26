@@ -18,8 +18,7 @@ use Crud\Action\EditAction;
 use Crud\Controller\ControllerTrait;
 use CsvMigrations\Controller\Traits\PanelsTrait;
 use CsvMigrations\Utility\FileUpload;
-use Qobo\Utils\ModuleConfig\ConfigType;
-use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\Module\ModuleRegistry;
 use Qobo\Utils\Utility\User;
 use RolesCapabilities\CapabilityTrait;
 use Webmozart\Assert\Assert;
@@ -489,7 +488,7 @@ class AppController extends Controller
         Assert::isInstanceOf($table, Table::class);
 
         $panels = $this->getPanels(
-            (new ModuleConfig(ConfigType::MODULE(), $this->name))->parseToArray(),
+            ModuleRegistry::getModule($this->name)->getConfig(),
             $data,
             ['request' => $this->getRequest(), 'table' => $table]
         );

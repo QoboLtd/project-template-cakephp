@@ -18,30 +18,23 @@ namespace App\Controller;
 
 use App\Controller\Traits\ChangelogTrait;
 use App\Controller\Traits\SearchTrait;
-use App\Event\Plugin\Search\Model\SearchableFieldsListener;
 use App\Feature\Factory as FeatureFactory;
 use App\Search\Manager as SearchManager;
-use App\Utility\Search;
 use AuditStash\Meta\ApplicationMetadata;
 use AuditStash\Meta\RequestMetadata;
 use Cake\Controller\Controller;
 use Cake\Core\Configure;
-use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\Event\EventManager;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
-use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 use Cake\View\Exception\MissingTemplateException;
 use Firebase\JWT\JWT;
-use Qobo\Utils\ModuleConfig\ConfigType;
-use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\Module\ModuleRegistry;
 use Qobo\Utils\Utility\User;
 use RolesCapabilities\CapabilityTrait;
-use RuntimeException;
-use Webmozart\Assert\Assert;
 
 /**
  * Application Controller
@@ -242,7 +235,7 @@ class AppController extends Controller
         $this->viewBuilder()->setTheme('AdminLTE');
         $this->viewBuilder()->setLayout('adminlte');
 
-        $config = (new ModuleConfig(ConfigType::MODULE(), $this->name))->parseToArray();
+        $config = ModuleRegistry::getModule($this->getName())->getConfig();
         $title = empty($config['table']['alias']) ?
             Inflector::humanize(Inflector::underscore($this->name)) :
             $config['table']['alias'];
