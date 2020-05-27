@@ -22,7 +22,7 @@
     },
     "country": {
         "name": "country",
-        "type": "country(countries)",
+        "type": "country(Common.countries)",
         "required": true,
         "non-searchable": false,
         "unique": false
@@ -36,7 +36,7 @@
     },
     "gender": {
         "name": "gender",
-        "type": "list(genders)",
+        "type": "list(Common.genders)",
         "required": true,
         "non-searchable": false,
         "unique": false
@@ -141,14 +141,14 @@
     },
     "title": {
         "name": "title",
-        "type": "list(titles)",
+        "type": "list(Common.titles)",
         "required": false,
         "non-searchable": false,
         "unique": false
     },
     "language": {
         "name": "language",
-        "type": "list(languages)",
+        "type": "list(Common.languages)",
         "required": false,
         "non-searchable": false,
         "unique": false
