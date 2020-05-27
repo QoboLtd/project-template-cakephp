@@ -16,8 +16,7 @@ use CsvMigrations\FieldHandlers\CsvField;
 use CsvMigrations\FieldHandlers\FieldHandlerFactory;
 use CsvMigrations\FieldHandlers\RelatedFieldTrait;
 use CsvMigrations\FieldHandlers\Setting;
-use Qobo\Utils\ModuleConfig\ConfigType;
-use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\Module\ModuleRegistry;
 use Webmozart\Assert\Assert;
 
 class LookupActionListener extends BaseActionListener
@@ -218,9 +217,7 @@ class LookupActionListener extends BaseActionListener
      */
     protected function _getVirtualFields(RepositoryInterface $table): array
     {
-        $config = (new ModuleConfig(ConfigType::MODULE(), $table->getRegistryAlias()))->parse();
-        $config = json_encode($config);
-        $config = false !== $config ? json_decode($config, true) : [];
+        $config = ModuleRegistry::getModule($table->getRegistryAlias())->getConfig();
 
         return array_key_exists('virtualFields', $config) ? $config['virtualFields'] : [];
     }
@@ -257,7 +254,7 @@ class LookupActionListener extends BaseActionListener
      */
     protected function _getTypeaheadFields(Table $table): array
     {
-        $config = (new ModuleConfig(ConfigType::MODULE(), $table->getRegistryAlias()))->parseToArray();
+        $config = ModuleRegistry::getModule($table->getRegistryAlias())->getConfig();
 
         $fields = ! empty($config['table']['typeahead_fields']) ?
             $config['table']['typeahead_fields'] :
@@ -372,7 +369,7 @@ class LookupActionListener extends BaseActionListener
      */
     protected function _getParentModule(RepositoryInterface $table): string
     {
-        $config = (new ModuleConfig(ConfigType::MODULE(), $table->getRegistryAlias()))->parseToArray();
+        $config = ModuleRegistry::getModule($table->getRegistryAlias())->getConfig();
 
         return isset($config['parent']['module']) ? $config['parent']['module'] : '';
     }

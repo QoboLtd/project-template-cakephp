@@ -16,8 +16,7 @@ use CsvMigrations\FieldHandlers\CsvField;
 use CsvMigrations\FieldHandlers\FieldHandlerFactory;
 use CsvMigrations\FieldHandlers\Provider\SelectOptions\ListSelectOptions;
 use CsvMigrations\Model\Table\DblistsTable;
-use Qobo\Utils\ModuleConfig\ConfigType;
-use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\Module\ModuleRegistry;
 use Qobo\Utils\Utility;
 use Webmozart\Assert\Assert;
 
@@ -676,7 +675,7 @@ class Annotation
     {
         $factory = new FieldHandlerFactory();
         $table = TableRegistry::getTableLocator()->get($this->className);
-        $config = (new ModuleConfig(ConfigType::MIGRATION(), $this->className))->parseToArray();
+        $config = ModuleRegistry::getModule($this->className)->getMigration();
 
         $result = [];
         foreach ($config as $column) {

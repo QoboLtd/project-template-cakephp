@@ -11,8 +11,7 @@ use Cake\Datasource\QueryInterface;
 use Cake\Utility\Hash;
 use Cake\Validation\Validator;
 use CsvMigrations\Model\AssociationsAwareTrait;
-use Qobo\Utils\ModuleConfig\ConfigType;
-use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\Module\ModuleRegistry;
 
 /**
  * Users Model
@@ -37,7 +36,7 @@ class UsersTable extends Table
 
         $this->setAssociations();
 
-        $tableConfig = (new ModuleConfig(ConfigType::MODULE(), $this->getAlias()))->parseToArray();
+        $tableConfig = ModuleRegistry::getModule($this->getAlias())->getConfig();
         if (Hash::get($tableConfig, 'table.searchable')) {
             $this->addBehavior('Search.Searchable', [
                 'fields' => ['first_name', 'last_name', 'username', 'email', 'created', 'modified'],

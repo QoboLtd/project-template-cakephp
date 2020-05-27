@@ -1,14 +1,14 @@
 <?php
 use Cake\ORM\Association;
 use Cake\Utility\Hash;
+use Qobo\Utils\Module\ModuleRegistry;
 use Qobo\Utils\ModuleConfig\ConfigType;
 use Qobo\Utils\ModuleConfig\ModuleConfig;
 use RolesCapabilities\Access\AccessFactory;
 
 $accessFactory = new AccessFactory();
 
-$config = (new ModuleConfig(ConfigType::MODULE(), $this->name))->parseToArray();
-
+$config = ModuleRegistry::getModule($this->name)->getConfig();
 $hiddenAssociations = Hash::get($config, 'associations.hide_associations', []);
 
 $associations = [];
@@ -20,7 +20,7 @@ foreach ($table->associations() as $association) {
     if (in_array($association->getName(), $hiddenAssociations)) {
         continue;
     }
-    
+
     // Skip all generated translations associations
     if ('Translations.Translations' === $association->className() || '_translation' === substr($association->getName(), -12)) {
         continue;

@@ -13,6 +13,7 @@
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
 use CsvMigrations\FieldHandlers\FieldHandlerFactory;
+use Qobo\Utils\Module\ModuleRegistry;
 use Qobo\Utils\ModuleConfig\ConfigType;
 use Qobo\Utils\ModuleConfig\ModuleConfig;
 
@@ -39,7 +40,7 @@ $table = TableRegistry::getTableLocator()->get($tableName);
 
 // generate title
 if (!$options['title']) {
-    $config = (new ModuleConfig(ConfigType::MODULE(), $this->name))->parse();
+    $config = ModuleRegistry::getModule($this->name)->getConfig()
     $options['title'] = $this->Html->link(
         __(isset($config->table->alias) ? $config->table->alias : __(Inflector::humanize(Inflector::underscore($this->name)))),
         ['plugin' => $this->plugin, 'controller' => $this->name, 'action' => 'index']

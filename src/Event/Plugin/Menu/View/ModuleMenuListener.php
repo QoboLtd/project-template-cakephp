@@ -2,16 +2,15 @@
 
 namespace App\Event\Plugin\Menu\View;
 
-use App\Feature\Config;
 use App\Feature\Factory as FeatureFactory;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Event\EventListenerInterface;
+use Cake\Utility\Hash;
 use Menu\Event\EventName as MenuEventName;
 use Menu\MenuBuilder\MenuFactory;
 use Menu\MenuBuilder\MenuInterface;
-use Qobo\Utils\ModuleConfig\ConfigType;
-use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\Module\ModuleRegistry;
 use Qobo\Utils\Utility;
 
 class ModuleMenuListener implements EventListenerInterface
@@ -115,17 +114,10 @@ class ModuleMenuListener implements EventListenerInterface
      */
     protected function getModuleMenuItems(string $module, string $menuName): array
     {
-        $moduleConfig = new ModuleConfig(ConfigType::MENUS(), $module);
-        $config = $moduleConfig->parseToArray();
-
-        if (empty($config[$menuName])) {
-            return [];
-        }
-
-        $result = $config[$menuName];
-        $result = $this->applyModuleDefaults($module, $result);
-
-        return $result;
+        return $this->applyModuleDefaults(
+            $module,
+            ModuleRegistry::getModule($module)->getMenu($menuName)
+        );
     }
 
     /**
@@ -151,27 +143,7 @@ class ModuleMenuListener implements EventListenerInterface
     private function getModuleDefaults(string $module): array
     {
         return [
-            'icon' => $this->getModuleIcon($module),
+            'icon' => Hash::get(ModuleRegistry::getModule($module)->getConfig(), 'table.icon'),
         ];
-    }
-
-    /**
-     * Provides an alternative icon in case the menu item was blank.
-     * The alternative icon is taken from table config
-     *
-     * @param string $module The module name
-     * @return string|null
-     * @throws \Exception
-     */
-    private function getModuleIcon(string $module): ?string
-    {
-        // Table icon
-        $moduleConfig = new ModuleConfig(ConfigType::MODULE(), $module);
-        $config = $moduleConfig->parseToArray();
-        if (!empty($config) && !empty($config['table']['icon'])) {
-            return $config['table']['icon'];
-        }
-
-        return null;
     }
 }

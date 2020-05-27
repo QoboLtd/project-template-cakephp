@@ -3,7 +3,6 @@
 namespace App\Model\Behavior;
 
 use ArrayObject;
-use Cake\Database\Expression\QueryExpression;
 use Cake\Database\Schema\TableSchema;
 use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
@@ -11,9 +10,9 @@ use Cake\ORM\Association;
 use Cake\ORM\Behavior;
 use Cake\ORM\Query;
 use Cake\ORM\Table;
+use Cake\Utility\Hash;
 use CsvMigrations\Exception\UnsupportedPrimaryKeyException;
-use Qobo\Utils\ModuleConfig\ConfigType;
-use Qobo\Utils\ModuleConfig\ModuleConfig;
+use Qobo\Utils\Module\ModuleRegistry;
 use Webmozart\Assert\Assert;
 
 /**
@@ -279,10 +278,11 @@ class LookupBehavior extends Behavior
      */
     private function getLookupFields(string $moduleName): array
     {
-        $mc = new ModuleConfig(ConfigType::MODULE(), $moduleName);
-        $config = $mc->parseToArray();
-
-        return !empty($config['table']['lookup_fields']) ? $config['table']['lookup_fields'] : [];
+        return Hash::get(
+            ModuleRegistry::getModule($moduleName)->getConfig(),
+            'table.lookup_fields',
+            []
+        );
     }
 
     /**

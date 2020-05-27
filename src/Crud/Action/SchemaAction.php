@@ -6,6 +6,7 @@ use ArrayIterator;
 use Cake\Core\App;
 use Crud\Action\BaseAction;
 use CsvMigrations\FieldHandlers\CsvField;
+use Qobo\Utils\Module\Exception\MissingModuleException;
 use Qobo\Utils\Module\ModuleRegistry;
 
 /**
@@ -41,7 +42,7 @@ class SchemaAction extends BaseAction
         $data_fields = [];
         $data_association = $this->getAssociations($this->_table()->associations()->getIterator());
 
-        $data_fields = $this->getFields($data_association);
+        // $data_fields = $this->getFields($data_association);
         $subject = $this->_subject(['success' => true]);
 
         $this->_controller()->set('data', ['fields' => $data_fields, 'associations' => $data_association]);
@@ -98,7 +99,7 @@ class SchemaAction extends BaseAction
                         [$this->_controller()->getName(), (string)$csvField->getLimit()];
                     $list = ModuleRegistry::getModule($moduleName)->getList($listName);
                     $data['db_type'] = $db_fields_type[$csvField->getName()];
-                    $data['options'] = $this->getOptionList($list['items']);
+                    $data['options'] = $this->getOptionList($list);
                     break;
                 case "related":
                     $data['db_type'] = $db_fields_type[$csvField->getName()];
@@ -144,7 +145,7 @@ class SchemaAction extends BaseAction
         foreach ($associations as $association) {
             $data_association[] = [
                 'name' => $association->getName(),
-                'model' => App::shortName(get_class($association->getTarget()), 'Model/Table', 'Table'),
+                'model' => $association->getClassName(),
                 'type' => $association->type(),
                 'primary_key' => $association->getBindingKey(),
                 'foreign_key' => $association->getForeignKey(),

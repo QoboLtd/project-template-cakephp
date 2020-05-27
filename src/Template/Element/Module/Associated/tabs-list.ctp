@@ -1,10 +1,12 @@
 <?php
 use Cake\Utility\Hash;
 use Cake\Utility\Inflector;
+use Qobo\Utils\Module\ModuleRegistry as ModuleRegistryAlias;
 use Qobo\Utils\ModuleConfig\ConfigType;
 use Qobo\Utils\ModuleConfig\ModuleConfig;
 
 $config = (new ModuleConfig(ConfigType::MODULE(), $this->name))->parseToArray();
+$config = ModuleRegistryAlias::getModule($this->name)->getConfig();
 
 $labels = Hash::get($config, 'associationLabels', []);
 $setLabels = [];
