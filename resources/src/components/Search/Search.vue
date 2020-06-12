@@ -256,6 +256,10 @@ export default {
       type: String,
       required: true
     },
+    modelUrl: {
+      type: String,
+      required: true
+    },
     id: {
       type: String,
       default: ''
@@ -333,9 +337,6 @@ export default {
       set (value) {
         this.$store.commit('search/groupBy', value)
       }
-    },
-    modelUrl () {
-      return dasherize(underscore(this.modelName))
     }
   },
   created() {

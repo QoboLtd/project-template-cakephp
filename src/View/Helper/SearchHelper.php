@@ -42,6 +42,17 @@ final class SearchHelper extends Helper
     }
 
     /**
+     * Method that returns the label for the provided table name.
+     *
+     * @param string $tableName Table name
+     * @return string
+     */
+    public function getTableLabel(string $tableName): string
+    {
+        return Search::getTableLabel($tableName);
+    }
+
+    /**
      * Chart options getter.
      *
      * @param \Search\Model\Entity\SavedSearch $entity Saved search entity

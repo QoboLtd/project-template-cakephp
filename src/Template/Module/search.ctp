@@ -1,6 +1,7 @@
 <?php
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Inflector;
 use Qobo\Utils\Utility\User;
 use RolesCapabilities\Access\AccessFactory;
 
@@ -21,7 +22,8 @@ $urlExport = ['plugin' => $this->plugin, 'controller' => $this->name, 'action' =
         :filters='<?= h(json_encode($this->Search->getFields($tableName))) ?>'
         id="<?= $searchId ?>"
         search-query="<?= '' !== $searchId ? '' : $searchQuery ?>"
-        model="<?= $this->name ?>"
+        model="<?= $this->Search->getTableLabel($tableName) ?>"
+        model-url="<?= Inflector::dasherize(Inflector::underscore($tableName)) ?>"
         primary-key="<?= $table->aliasField($table->getPrimaryKey()) ?>"
         user-id="<?= User::getCurrentUser()['id'] ?>"
         :with-batch-delete="<?= $accessFactory->hasAccess($urlBatch, $user) ? 'true' : 'false' ?>"

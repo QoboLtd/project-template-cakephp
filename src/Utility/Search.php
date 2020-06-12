@@ -15,6 +15,7 @@ use Qobo\Utils\Module\Exception\MissingModuleException;
 use Qobo\Utils\Module\ModuleRegistry;
 use Search\Aggregate\AggregateInterface;
 use Search\Model\Entity\SavedSearch;
+use Translations\Model\Table\TranslationsTable;
 use Webmozart\Assert\Assert;
 
 final class Search
@@ -78,7 +79,7 @@ final class Search
                 unset($result[$index]['operators']);
 
                 list($group, ) = pluginSplit($options['field']);
-                $group = array_key_exists($group, $labels) ? $labels[$group] : $group;
+                $group = array_key_exists($group, $labels) ? $labels[$group] : self::getTableLabel($group);
 
                 $result[$index]['group'] = $group;
             }
@@ -99,6 +100,24 @@ final class Search
         }
 
         return $result;
+    }
+
+    /**
+     * Returns the label for the provided table name
+     *
+     * @param string $tableName Table name
+     * @return string
+     */
+    public static function getTableLabel(string $tableName): string
+    {
+        // Load the right alias, if exists
+        $moduleConfig = ModuleRegistry::getModule($tableName)->getConfig();
+
+        return Hash::get(
+            $moduleConfig,
+            'table.alias',
+            Inflector::humanize(Inflector::underscore($tableName))
+        );
     }
 
     /**
@@ -269,13 +288,42 @@ final class Search
      */
     private static function getAssociationLabels(Table $table): array
     {
+        $tableModel = App::shortName(get_class($table), 'Model/Table', 'Table');
+        try {
+            $moduleConfig = ModuleRegistry::getModule($tableModel)->getConfig();
+        } catch (MissingModuleException $e) {
+            return [];
+        }
+
+        $skipAssociations = Hash::get($moduleConfig, 'associations.hide_associations', []);
+        $associationLabels = Hash::get($moduleConfig, 'associationLabels', []);
+
+        $fields = ModuleRegistry::getModule($tableModel)->getFields();
+
         $result = [];
         foreach ($table->associations() as $association) {
-            $result[$association->getName()] = sprintf(
-                '%s (%s)',
-                App::shortName(get_class($association->getTarget()), 'Model/Table', 'Table'),
-                Inflector::humanize(implode(', ', (array)$association->getForeignKey()))
-            );
+            $model = App::shortName(get_class($association->getTarget()), 'Model/Table', 'Table');
+
+            // Skip association, if it defined as hidden
+            if (in_array($association->getName(), $skipAssociations)) {
+                continue;
+            }
+
+            // Pick association label
+            if (array_key_exists($association->getName(), $associationLabels)) {
+                $result[$association->getName()] = $associationLabels[$association->getName()];
+
+                continue;
+            }
+
+            // Load custom label from config
+            if (is_string($association->getForeignKey()) && isset($fields[$association->getForeignKey()]['label'])) {
+                $result[$association->getName()] = $fields[$association->getForeignKey()]['label'];
+
+                continue;
+            }
+
+            $result[$association->getName()] = Inflector::humanize(implode(', ', (array)$association->getForeignKey()));
         }
 
         return $result;
@@ -428,16 +476,33 @@ final class Search
      */
     private static function includeAssociated(Table $table): array
     {
-        $result = [];
+        $tableModel = App::shortName(get_class($table), 'Model/Table', 'Table');
+        try {
+            $moduleConfig = ModuleRegistry::getModule($tableModel)->getConfig();
+        } catch (MissingModuleException $e) {
+            return [];
+        }
 
+        $skipAssociations = Hash::get($moduleConfig, 'associations.hide_associations', []);
+
+        $result = [];
         foreach ($table->associations() as $association) {
             // skip non-supported associations
             if (! in_array($association->type(), self::SUPPORTED_ASSOCIATIONS)) {
                 continue;
             }
 
+            // skip associations marked as hidden
+            if (in_array($association->getName(), $skipAssociations)) {
+                continue;
+            }
+
             $targetTable = $association->getTarget();
             if ($targetTable instanceof \Burzum\FileStorage\Model\Table\FileStorageTable) {
+                continue;
+            }
+
+            if ($targetTable instanceof TranslationsTable) {
                 continue;
             }
 
