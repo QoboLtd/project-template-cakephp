@@ -28,7 +28,7 @@
 <script>
 import * as $ from 'jquery'
 import datepicker from 'bootstrap-datepicker'
-import { MAGIC_VALUE_WRAPPER } from '@/utils/constants.js'
+import { MAGIC_VALUE_WRAPPER } from '../../utils/constants.js'
 
 export default {
   props: {

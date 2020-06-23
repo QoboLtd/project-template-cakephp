@@ -29,7 +29,7 @@
 import * as $ from 'jquery'
 import daterangepicker from 'daterangepicker'
 import moment from 'moment'
-import { MAGIC_VALUE_WRAPPER } from '@/utils/constants.js'
+import { MAGIC_VALUE_WRAPPER } from '../../utils/constants.js'
 
 export default {
   props: {

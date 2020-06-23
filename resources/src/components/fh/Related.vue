@@ -46,8 +46,8 @@
 import axios from 'axios'
 import debounce from 'lodash.debounce'
 import vSelect from 'vue-select'
-import { MAGIC_VALUE_WRAPPER } from '@/utils/constants.js'
-import UuidMixin from '@/mixins/uuid.js'
+import { MAGIC_VALUE_WRAPPER } from '../../utils/constants.js'
+import UuidMixin from '../../mixins/uuid.js'
 
 export default {
   components: {
