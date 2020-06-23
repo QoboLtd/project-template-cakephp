@@ -30,7 +30,7 @@
   </div>
 </template>
 <script>
-import DashboardMixin from '@/components/Dashboard/DashboardMixin.js'
+import DashboardMixin from './DashboardMixin.js'
 
 export default {
   mixins: [DashboardMixin],

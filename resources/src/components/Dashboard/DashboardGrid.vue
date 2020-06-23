@@ -173,8 +173,8 @@
 </template>
 
 <script>
-import DashboardWidget from '@/components/Dashboard/DashboardWidget.vue'
-import DashboardMixin from '@/components/Dashboard/DashboardMixin.js'
+import DashboardWidget from './DashboardWidget.vue'
+import DashboardMixin from './DashboardMixin.js'
 import VueGridLayout from 'vue-grid-layout'
 import * as $ from 'jquery'
 
