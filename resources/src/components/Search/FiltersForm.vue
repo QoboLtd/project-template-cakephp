@@ -10,7 +10,7 @@
       >
         <div class="row">
           <div class="col-xs-12 col-md-4 col-lg-3">
-            <label>{{ filters[field].label }}
+            <label class="search-label">{{ filters[field].label }}
               <template v-if="filters[field].group !== model">
                 <i
                   class="fa fa-info-circle"
@@ -22,7 +22,7 @@
           <div class="col-xs-4 col-md-2 col-lg-2">
             <select
               v-model="filtersList[guid]"
-              class="form-control input-sm"
+              class="form-control"
               @change="filterUpdated(field, guid, $event.target.value)"
             >
               <option
@@ -36,7 +36,7 @@
           </div>
           <div class="col-xs-6 col-md-5">
             <component
-              :is="info.type + 'Input'"
+              :is="getComponentName(info.type)"
               :key="guid"
               :guid="guid"
               :field="field"
@@ -45,14 +45,13 @@
               :source="filters[field].source"
               :display-field="filters[field].display_field"
               :multiple="true"
-              size="input-sm"
               @input-value-updated="valueUpdated"
             />
           </div>
           <div class="col-sm-2 col-md-1">
             <button
               type="button"
-              class="btn btn-default btn-sm"
+              class="btn btn-default"
               @click="remove(guid)"
             >
               <i
@@ -68,7 +67,8 @@
 </template>
 <script>
 import Aggregate from '../../utils/aggregate'
-import inputs from '../fh'
+import inputs from '../fh/search'
+import { capitalize } from 'inflected'
 import { mapGetters, mapState } from 'vuex'
 import { FIELD_OPERATOR_TYPES, FIELD_TYPE_MAP } from '../../utils/search'
 
@@ -120,6 +120,11 @@ export default {
     },
     valueUpdated(field, guid, value) {
       this.$store.commit('search/criteriaValue', { field: field, guid: guid, value: value })
+    },
+    getComponentName (name) {
+      const result = `${capitalize(name)}Input`
+
+      return result
     }
   }
 }

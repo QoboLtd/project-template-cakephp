@@ -556,8 +556,29 @@ export default {
   }
 }
 </script>
-<style>
-.search-form .form-group {
-    margin-bottom: 10px;
-}
+<style lang="css">
+  @import '~@anvyst/vue-fieldhandlers/dist/vue-fieldhandlers.css';
+
+  .search-form .form-group {
+      margin-bottom: 10px;
+  }
+
+  .vs__dropdown-toggle {
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .vs__selected {
+    margin: 4px;
+  }
+
+  .v-select input[type=search] {
+    padding: 4px 10px !important;
+    margin: 1px 5px !important;
+
+  }
+
+  .search-label {
+    padding: 6px 0;
+  }
 </style>
