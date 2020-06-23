@@ -9,14 +9,13 @@ import { PhoneInput } from '@anvyst/vue-fieldhandlers'
 import { RelatedInput } from '@anvyst/vue-fieldhandlers'
 import { TimeInput } from '@anvyst/vue-fieldhandlers'
 import { UrlInput } from '@anvyst/vue-fieldhandlers'
+import { StringInput } from '@anvyst/vue-fieldhandlers'
 import { TextInput as BlobInput } from '@anvyst/vue-fieldhandlers'
 import { ListInput as CountryInput } from '@anvyst/vue-fieldhandlers'
 import { ListInput as CurrencyInput } from '@anvyst/vue-fieldhandlers'
 import { ListInput as DblistInput } from '@anvyst/vue-fieldhandlers'
-import { TextInput as StringInput } from '@anvyst/vue-fieldhandlers'
 import { ListInput as SublistInput } from '@anvyst/vue-fieldhandlers'
 import { DatetimeInput as ReminderInput } from '@anvyst/vue-fieldhandlers'
-import { StringInput as TextInput } from '@anvyst/vue-fieldhandlers'
 
 export default {
     BlobInput,
@@ -35,7 +34,6 @@ export default {
     ReminderInput,
     StringInput,
     SublistInput,
-    TextInput,
     TimeInput,
     UrlInput
 }
