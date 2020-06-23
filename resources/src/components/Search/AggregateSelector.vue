@@ -88,8 +88,8 @@
   </div>
 </template>
 <script>
-import Aggregate from '@/utils/aggregate'
-import { AGGREGATES, FIELD_OPERATOR_TYPES } from '@/utils/search'
+import Aggregate from '../../utils/aggregate'
+import { AGGREGATES, FIELD_OPERATOR_TYPES } from '../../utils/search'
 import { mapGetters, mapState } from 'vuex'
 import { uuid } from 'vue-uuid'
 

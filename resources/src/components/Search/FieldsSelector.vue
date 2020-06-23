@@ -106,7 +106,7 @@
 </template>
 <script>
 import { mapGetters, mapState } from 'vuex'
-import Aggregate from '@/utils/aggregate'
+import Aggregate from '../../utils/aggregate'
 
 export default {
   name: 'FieldsSelector',

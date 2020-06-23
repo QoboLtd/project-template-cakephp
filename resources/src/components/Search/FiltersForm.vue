@@ -67,10 +67,10 @@
   </div>
 </template>
 <script>
-import Aggregate from '@/utils/aggregate'
-import inputs from '@/components/fh'
+import Aggregate from '../../utils/aggregate'
+import inputs from '../fh'
 import { mapGetters, mapState } from 'vuex'
-import { FIELD_OPERATOR_TYPES, FIELD_TYPE_MAP } from '@/utils/search'
+import { FIELD_OPERATOR_TYPES, FIELD_TYPE_MAP } from '../../utils/search'
 
 export default {
   name: 'FilterForm',

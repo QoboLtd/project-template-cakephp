@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import { CONJUNCTIONS } from '@/utils/search'
+import { CONJUNCTIONS } from '../../utils/search'
 
 export default {
   name: 'ConjunctionSelector',

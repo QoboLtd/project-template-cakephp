@@ -40,7 +40,7 @@
   </div>
 </template>
 <script>
-import Aggregate from '@/utils/aggregate'
+import Aggregate from '../../utils/aggregate'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
