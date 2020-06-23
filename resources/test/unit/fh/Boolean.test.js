@@ -1,4 +1,4 @@
-import Component from '@/components/fh/Boolean.vue'
+import Component from '../../../src/components/fh/Boolean.vue'
 import { shallowMount } from '@vue/test-utils'
 
 describe('Boolean fh component tests', () => {

@@ -66,9 +66,9 @@
   </div>
 </template>
 <script>
-import Phone from '@/components/fh/Phone.vue'
-import Url from '@/components/fh/Url.vue'
-import TextInput from '@/components/fh/Text.vue'
+import Phone from '../src/components/fh/Phone.vue'
+import Url from '../src/components/fh/Url.vue'
+import TextInput from '../src/components/fh/Text.vue'
 
 export default {
   components: {

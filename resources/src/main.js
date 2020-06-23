@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import store from '@/store'
+import store from './store'
 import axios from 'axios'
-import DashboardGrid from '@/components/Dashboard/DashboardGrid.vue'
-import Search from '@/components/Search/Search.vue'
-import TableAjax from '@/components/ui/TableAjax.vue'
+import DashboardGrid from './components/Dashboard/DashboardGrid.vue'
+import Search from './components/Search/Search.vue'
+import TableAjax from './components/ui/TableAjax.vue'
 import Notifications from 'vue-notification'
-import inputs from '@/components/fh'
+import inputs from './components/fh'
 
 Vue.use(Notifications)
 

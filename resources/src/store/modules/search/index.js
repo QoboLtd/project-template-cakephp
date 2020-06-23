@@ -1,4 +1,4 @@
-import ApiSearch from '@/ApiService/ApiSearch'
+import ApiSearch from '../../../ApiService/ApiSearch'
 import Vue from 'vue'
 import { dasherize, underscore } from 'inflected'
 import { uuid } from 'vue-uuid'
@@ -10,7 +10,7 @@ import {
   API_DELETE_SEARCH,
   FIELD_TYPE_MAP,
   FIELD_OPERATOR_TYPES
-} from '@/utils/search'
+} from '../../../utils/search'
 
 export default {
   namespaced: true,

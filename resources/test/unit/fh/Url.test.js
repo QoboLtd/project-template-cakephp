@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Component from '@/components/fh/Url.vue'
+import Component from '../../../components/fh/Url.vue'
 
 const wrapper = shallowMount(Component, {
   propsData: {

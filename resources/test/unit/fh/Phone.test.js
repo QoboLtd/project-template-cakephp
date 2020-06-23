@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Component from '@/components/fh/Phone.vue'
+import Component from '../../../components/fh/Phone.vue'
 
 const wrapper = shallowMount(Component, {
   propsData: {
