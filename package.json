@@ -53,7 +53,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@anvyst/vue-fieldhandlers": "^1.0.2",
+    "@anvyst/vue-fieldhandlers": "^1.0.3",
     "@babel/register": "^7.10.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
