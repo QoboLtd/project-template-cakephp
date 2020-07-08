@@ -33,7 +33,7 @@
     "require": {
         "aws/aws-sdk-php": "^3.52",
         "brainmaestro/composer-git-hooks": "^2.4",
-        "cakedc/users": "~8.1.0",
+        "cakedc/users": "~8.5.1",
         "cakephp/cakephp": "^3.6",
         "cakephp/plugin-installer": "^1.1",
         "composer/composer": "^1.7",
