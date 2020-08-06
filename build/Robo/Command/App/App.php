@@ -13,7 +13,7 @@ class App extends AbstractCommand
      */
     protected $defaultEnv = [
         'CHMOD_FILE_MODE' => '0664',
-        'CHMOD_DIR_MODE' => '02775'
+        'CHMOD_DIR_MODE' => '02775',
     ];
 
     /**
@@ -68,7 +68,7 @@ class App extends AbstractCommand
         }
 
         if (isset($env['CRON_ENABLED']) && $env['CRON_ENABLED']) {
-            $this->installCron($env);
+            $this->updateCron($env);
         }
 
         return ($this->setPathPermissions($env) && $this->postInstall());
@@ -257,7 +257,7 @@ class App extends AbstractCommand
             'capability assign',
             'menu import',
             'validate', // run after dblists are populated
-            'settings'
+            'settings',
         ];
 
         foreach ($shellScripts as $script) {
@@ -403,7 +403,7 @@ class App extends AbstractCommand
             'capability assign',
             'menu import',
             'validate', // run after dblists are populated
-            'settings'
+            'settings',
         ];
 
         foreach ($shellScripts as $script) {
@@ -579,15 +579,34 @@ class App extends AbstractCommand
     {
         $projectPath = "{$env['NGINX_ROOT_PREFIX']}/{$env['NGINX_SITE_MAIN']}";
 
-        if (!file_exists("$projectPath/bin/cron.sh") || file_exists("/etc/cron.d/{$env['NGINX_SITE_MAIN']}")) {
+        if (! self::cronShellExists($projectPath) || self::cronFileExists($env)) {
+            return;
+        }
+
+        if (!is_dir("$projectPath/logs")) {
+            $this->taskExec('mkdir ' . $projectPath . '/logs')->run();
+        }
+        $redirectPath = ((bool)$env['CRON_LOG_ENABLED']) ? $projectPath . '/logs/cron.log' : '/dev/null';
+        $this->taskExec('echo "* * * * * root ' . $projectPath . '/bin/cron.sh >> ' . $redirectPath . ' 2>&1" > /etc/cron.d/' . $env['NGINX_SITE_MAIN'])->run();
+        $this->taskExec('service crond reload')->run();
+    }
+
+    /**
+     * Update system cron job for the project
+     *
+     * @param array $env Environment
+     * @return void
+     */
+    protected function updateCron($env)
+    {
+        $projectPath = "{$env['NGINX_ROOT_PREFIX']}/{$env['NGINX_SITE_MAIN']}";
+
+         if (! self::cronShellExists($projectPath) || ! self::cronFileExists($env)) {
             return;
         }
 
         $redirectPath = ((bool)$env['CRON_LOG_ENABLED']) ? $projectPath . '/logs/cron.log' : '/dev/null';
         $this->taskExec('echo "* * * * * root ' . $projectPath . '/bin/cron.sh >> ' . $redirectPath . ' 2>&1" > /etc/cron.d/' . $env['NGINX_SITE_MAIN'])->run();
-        if (!is_dir("$projectPath/logs")) {
-            $this->taskExec('mkdir ' . $projectPath . '/logs')->run();
-        }
         $this->taskExec('service crond reload')->run();
     }
 
@@ -599,10 +618,32 @@ class App extends AbstractCommand
      */
     protected function uninstallCron($env)
     {
-        if (!file_exists("/etc/cron.d/{$env['NGINX_SITE_MAIN']}")) {
+        if (! self::cronFileExists($env)) {
             return;
         }
         $this->taskExec("rm -f '/etc/cron.d/{$env['NGINX_SITE_MAIN']}'")->run();
+    }
+
+    /**
+     * Verifies that cron file exists.
+     *
+     * @param array $env Environment
+     * @return bool
+     */
+    private static function cronFileExists($env): bool
+    {
+        return file_exists("/etc/cron.d/{$env['NGINX_SITE_MAIN']}");
+    }
+
+    /**
+     * Verifies that cron shell exists.
+     *
+     * @param string $projectPath Project path
+     * @return bool
+     */
+    private static function cronShellExists($projectPath): bool
+    {
+        return file_exists("$projectPath/bin/cron.sh");
     }
 
     /**
