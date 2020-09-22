@@ -19,10 +19,9 @@ class MyHtmlHelper extends HtmlHelper
     public function help(string $message): string
     {
         $dataToggle = Configure::read("CsvMigrations.HelperConfig.dataToggle");
-        $classCss = Configure::read("CsvMigrations.HelperConfig.classCss");
         $dataPlacement = Configure::read("CsvMigrations.HelperConfig.dataPlacement");
 
-        return empty($message) ? '' : '<span data-toggle="' . $dataToggle . '" class="' . $classCss . '" data-placement="' . $dataPlacement . '" data-original-title="' . __($message) . '">?</span>';
+        return empty($message) ? '' : 'data-toggle="' . $dataToggle . '" data-placement="' . $dataPlacement . '" data-original-title="' . __($message) . '"';
     }
 
     /**

@@ -13,16 +13,13 @@ class MyFormHelper extends FormHelper
      */
     public function control($fieldName, array $options = [])
     {
-        $helper = new MyHtmlHelper(new View());
-
-        if (!empty($options['help'])) {
-            $options['templates'] = [
-                'label' => '<label class="control-label" {{attrs}}>{{text}}</label>' .
-                $helper->help($options['help']),
-            ];
-            unset($options['help']);
+        if (isset($options['cakeControl'])) {
+            return parent::control($fieldName, $options);
         }
 
-        return parent::control($fieldName, $options);
+        $helper = new MyHtmlHelper(new View());
+        $help = empty($options['help']) ? '' : $helper->help($options['help']);
+
+        return sprintf('<div %s>%s</div>', $help, parent::control($fieldName, $options));
     }
 }
