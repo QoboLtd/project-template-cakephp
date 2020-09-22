@@ -45,8 +45,7 @@ return [
         // Helper configuration : see App/View/Helper/MyHtmlHelper::class
         'HelperConfig' => [
             'dataToggle' => 'tooltip',
-            'classCss' => 'badgeLeft badge bg-blue',
-            'dataPlacement' => 'auto right',
+            'dataPlacement' => 'auto bottom',
         ],
     ],
 ];
