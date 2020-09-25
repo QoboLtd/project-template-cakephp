@@ -102,9 +102,6 @@ class FixDateTimeShell extends BaseShell
     public function updateFields(string $module): void
     {
         $mc = $this->getModuleConfig($module, []);
-
-        $fields = [];
-        $config = json_encode($mc->parse());
         $fields = $mc->parseToArray();
 
         $skipfields = ['created', 'modified', 'trashed'];
@@ -147,7 +144,6 @@ class FixDateTimeShell extends BaseShell
 
         $table = TableRegistry::getTableLocator()->get($module);
         $entities = $table->find()->limit((int)$this->getLimit());
-        $primaryKey = $table->getPrimaryKey();
 
         $updatedRecords = 0;
 

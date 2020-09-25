@@ -76,8 +76,6 @@ class BaseModuleControllerTest extends IntegrationTestCase
      */
     public function testAddGetRequest(string $module): void
     {
-        $table = TableRegistry::getTableLocator()->get($module);
-
         $this->get('/' . Inflector::dasherize($module) . '/add/');
 
         $this->assertResponseCode(200);

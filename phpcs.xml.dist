@@ -17,6 +17,14 @@
             <property name="forbiddenFunctions" type="array" value="debug=>null,dd=>null,var_dump=>null,sizeof=>count,delete=>unset"/>
         </properties>
     </rule>
+	
+    <config name="installed_paths" value="../../slevomat/coding-standard"/>
+	<rule ref="SlevomatCodingStandard.Namespaces.UnusedUses"/>
+	<rule ref="SlevomatCodingStandard.Variables.UnusedVariable">
+        <properties>
+            <property name="ignoreUnusedValuesWhenOnlyKeysAreUsedInForeach" value="true"/>
+        </properties>
+    </rule>
 
     <!-- Do not fail on warnings -->
     <config name="ignore_warnings_on_exit" value="1" />

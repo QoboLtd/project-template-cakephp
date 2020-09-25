@@ -20,7 +20,6 @@
  */
 
 use App\Routing\ApiRouter;
-use Cake\Core\Plugin;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;

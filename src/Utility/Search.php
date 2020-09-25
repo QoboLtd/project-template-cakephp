@@ -10,7 +10,6 @@ use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Hash;
 use Cake\Utility\Inflector;
-use CsvMigrations\FieldHandlers\FieldHandlerFactory;
 use Qobo\Utils\Module\Exception\MissingModuleException;
 use Qobo\Utils\Module\ModuleRegistry;
 use Search\Aggregate\AggregateInterface;
@@ -174,7 +173,6 @@ final class Search
         list(, $aggregateField) = pluginSplit($aggregateFieldAliased);
 
         $table = TableRegistry::getTableLocator()->get($savedSearch->get('model'));
-        $factory = new FieldHandlerFactory();
 
         $query = $table->find('search', Manager::getOptionsFromRequest([
             'criteria' => $savedSearch->get('criteria'),
@@ -290,9 +288,6 @@ final class Search
      */
     private static function getTableSchema(Table $table, bool $withAssociated = true): array
     {
-        list($plugin, $controller) = pluginSplit(App::shortName(get_class($table), 'Model/Table', 'Table'));
-        $url = ['plugin' => $plugin, 'controller' => $controller, 'action' => 'search'];
-
         $result = self::getFieldSchemaByTable($table);
         if ($withAssociated) {
             $result = array_merge($result, self::includeAssociated($table));
@@ -329,7 +324,7 @@ final class Search
      */
     private static function getDisplayFieldsFromView(string $tableName): array
     {
-        list($plugin, $module) = pluginSplit($tableName);
+        list(, $module) = pluginSplit($tableName);
         $fields = [];
         try {
             $fields = ModuleRegistry::getModule($module)->getView('index');

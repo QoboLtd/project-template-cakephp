@@ -74,7 +74,7 @@ class Upgrade20170316000000Task extends Shell
 
                 if ($tblSchema->isNullable($targetColumn) && $columnType == self::TARGET_COLUMN_TYPE) {
                     $this->out("Column '$targetColumn' can be null in the table '$tbl' and has the target type '$columnType'. Update data ...");
-                    $result = $db->query("UPDATE $tbl SET $targetColumn=NULL WHERE CAST($targetColumn as CHAR(20)) = '0000-00-00 00:00:00'");
+                    $db->query("UPDATE $tbl SET $targetColumn=NULL WHERE CAST($targetColumn as CHAR(20)) = '0000-00-00 00:00:00'");
                 } else {
                     $this->out("Field '$targetColumn' cannot be null in the table '$tbl' or its type is not the target one: '$columnType'!");
                 }

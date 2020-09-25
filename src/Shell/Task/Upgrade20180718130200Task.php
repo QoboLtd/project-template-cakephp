@@ -331,7 +331,7 @@ class Upgrade20180718130200Task extends Shell
         );
 
         try {
-            $statement = $connection->query($command);
+            $connection->query($command);
             $this->success($command);
         } catch (\Exception $e) {
             $this->err(sprintf('Failed: %s', $command));

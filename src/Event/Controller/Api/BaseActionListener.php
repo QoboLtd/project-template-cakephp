@@ -8,7 +8,6 @@ use Cake\Datasource\RepositoryInterface;
 use Cake\Event\EventListenerInterface;
 use Cake\ORM\Table;
 use Cake\Utility\Hash;
-use Cake\Utility\Inflector;
 use Cake\View\View;
 use CsvMigrations\FieldHandlers\FieldHandlerFactory;
 use CsvMigrations\Utility\FileUpload;
@@ -190,7 +189,7 @@ abstract class BaseActionListener implements EventListenerInterface
      */
     protected function attachRelatedMenu(EntityInterface $entity, Table $table, array $user, array $data): void
     {
-        list($plugin, $controller) = pluginSplit($this->getControllerName($table));
+        list(, $controller) = pluginSplit($this->getControllerName($table));
 
         $data += [
             'plugin' => false,

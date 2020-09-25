@@ -4,7 +4,6 @@ namespace App\Test\TestCase\Controller\Component;
 
 use App\Feature\Factory;
 use Cake\Core\Configure;
-use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\IntegrationTestCase;
 

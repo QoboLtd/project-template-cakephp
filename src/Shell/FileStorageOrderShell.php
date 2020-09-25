@@ -13,7 +13,6 @@ use Cake\Console\ConsoleOptionParser;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Hash;
 use CsvMigrations\Utility\FileUpload;
-use Qobo\Utils\Module\ModuleRegistry;
 
 class FileStorageOrderShell extends BaseShell
 {
@@ -98,12 +97,7 @@ class FileStorageOrderShell extends BaseShell
      */
     public function updateFileStorage(string $module, string $field, string $currentOrderField = '', string $currentOrderFieldDirection = ''): void
     {
-        $config = ModuleRegistry::getModule($module)->getConfig();
-        $moduleFields = ModuleRegistry::getModule($module)->getFields();
-
         $table = TableRegistry::getTableLocator()->get($module);
-
-        $fileStorageTable = TableRegistry::getTableLocator()->get('FileStorage');
 
         $moduleRecords = $table->find('all');
         $fileUpload = new FileUpload($table);

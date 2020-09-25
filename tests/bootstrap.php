@@ -10,7 +10,6 @@
 use Cake\Console\ConsoleErrorHandler;
 use Cake\Core\Configure;
 use Cake\Log\Log;
-use Cake\Mailer\Email;
 use Cake\Mailer\TransportFactory;
 use Cake\Mailer\Transport\DebugTransport;
 

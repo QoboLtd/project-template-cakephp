@@ -42,8 +42,6 @@ class ExportTest extends TestCase
     {
         $table = TableRegistry::getTableLocator()->get('Things');
 
-        $headers = array_slice($table->getSchema()->columns(), 0, 2);
-
         $export = Export::fromIds(['00000000-0000-0000-0000-000000000001'], $table, [$table->getDisplayField()], true);
         unlink($export->path());
 

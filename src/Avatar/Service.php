@@ -2,7 +2,6 @@
 
 namespace App\Avatar;
 
-use App\Avatar\Type\ImageSource;
 use Cake\Core\Configure;
 use Cake\Utility\Hash;
 use InvalidArgumentException;

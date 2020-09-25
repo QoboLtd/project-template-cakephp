@@ -6,7 +6,6 @@ use App\Model\Entity\ScheduledJobLog;
 use App\Model\Table\ScheduledJobLogsTable;
 use Cake\I18n\Time;
 use Cake\ORM\Association\BelongsTo;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Utility\Text;

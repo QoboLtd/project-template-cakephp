@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use Cake\ORM\TableRegistry;
-use ErrorException;
 use InvalidArgumentException;
 
 final class OrderFileStorage

@@ -6,8 +6,6 @@ use Cake\Core\App;
 use Cake\Datasource\QueryInterface;
 use Cake\Datasource\RepositoryInterface;
 use Cake\ORM\Association;
-use Cake\ORM\TableRegistry;
-use Cake\Utility\Inflector;
 use Crud\Action\BaseAction;
 use Crud\Traits\FindMethodTrait;
 use Crud\Traits\SerializeTrait;
@@ -133,12 +131,6 @@ class RelatedAction extends BaseAction
      */
     private function manyToManyQuery(Association $association, string $id): QueryInterface
     {
-        /**
-         * @var string $tableName
-         */
-        $tableName = $association->getTarget()->getTable();
-        $table = TableRegistry::getTableLocator()->get(Inflector::camelize($tableName));
-
         // pagination hack to modify alias
         $association->setTarget($association->getTarget());
         $association->getTarget()->setAlias($this->_controller()->getName());

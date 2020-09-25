@@ -40,7 +40,6 @@ final class Gravatar extends AbstractAvatar
         $saved = false;
         $filename = $this->getAvatarUrl($this->options);
         $file = WWW_ROOT . $filename;
-        $httpCode = 400;
 
         if (file_exists($file)) {
             return $filename;

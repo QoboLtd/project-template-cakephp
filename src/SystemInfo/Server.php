@@ -96,7 +96,7 @@ class Server
         }
 
         $totalMemory = preg_grep("/^MemTotal:/", $memoryInfoFile);
-        list($key, $size, $unit) = preg_split('/\s+/', $totalMemory[0], 3);
+        list(, $size, $unit) = preg_split('/\s+/', $totalMemory[0], 3);
         $result = number_format((float)$size) . ' ' . $unit;
 
         return $result;

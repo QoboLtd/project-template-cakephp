@@ -6,7 +6,6 @@ use App\Event\EventName;
 use App\ORM\PrettyFormatter;
 use App\ORM\RawFormatter;
 use Cake\Controller\Controller;
-use Cake\Core\App;
 use Cake\Datasource\QueryInterface;
 use Cake\Datasource\ResultSetInterface;
 use Cake\Event\Event;

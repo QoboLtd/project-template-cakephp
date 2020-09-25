@@ -3,18 +3,13 @@
 namespace App\Shell\Task;
 
 use App\Search\Manager;
-use App\Utility\Search;
 use Cake\Console\Shell;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
-use Cake\Datasource\EntityInterface;
-use Cake\ORM\TableRegistry;
 use Cake\Utility\Hash;
-use Cake\Utility\Inflector;
 use Qobo\Utils\ModuleConfig\ConfigType;
 use Qobo\Utils\ModuleConfig\ModuleConfig;
 use Qobo\Utils\Utility;
-use Webmozart\Assert\Assert;
 
 /**
  *  This class is responsible for creating system searches for all system Modules.

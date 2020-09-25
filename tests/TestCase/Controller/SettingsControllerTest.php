@@ -102,8 +102,6 @@ class SettingsControllerTest extends IntegrationTestCase
      */
     public function testAppMenuOrder(): void
     {
-        $currentSettings = $this->settings->get(7)->toArray();
-
         $dashboardsOrder = [
             ['id' => '00000000-0000-0000-0000-000000000002', 'order' => 0],
             ['id' => '00000000-0000-0000-0000-000000000001', 'order' => 1],

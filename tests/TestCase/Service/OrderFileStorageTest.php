@@ -70,12 +70,12 @@ class OrderFileStorageTest extends TestCase
     {
         $table = TableRegistry::getTableLocator()->get('FileStorage');
 
-        $files = $table->find()->all();
+        $table->find()->all();
 
         $filesToOrder = [];
 
         OrderFileStorage::orderFiles($filesToOrder);
 
-        $files = $table->find()->all();
+        $table->find()->all();
     }
 }

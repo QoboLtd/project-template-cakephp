@@ -5,7 +5,6 @@ namespace App\Shell;
 use CakeDC\Users\Model\Behavior\SocialBehavior;
 use CakeDC\Users\Shell\UsersShell as BaseShell;
 use Cake\Datasource\EntityInterface;
-use Cake\ORM\Entity;
 use Webmozart\Assert\Assert;
 
 class UsersShell extends BaseShell

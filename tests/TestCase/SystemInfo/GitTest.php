@@ -12,7 +12,7 @@ class GitTest extends TestCase
      */
     public function testGetCommandException(): void
     {
-        $result = Git::getCommand('this command is not defined');
+        Git::getCommand('this command is not defined');
     }
 
     public function testGetCommand(): void

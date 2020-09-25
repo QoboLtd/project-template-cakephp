@@ -2,8 +2,6 @@
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SettingsTable;
-use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Utility\Hash;
@@ -67,7 +65,7 @@ class SettingsTableTest extends TestCase
     public function testCreateEntityNoKey(): void
     {
         $this->expectException('Cake\Datasource\Exception\RecordNotFoundException');
-        $en = $this->settings->createEntity('invalid.key', '1234', 'integer', 'app', 'app');
+        $this->settings->createEntity('invalid.key', '1234', 'integer', 'app', 'app');
     }
 
     /**
@@ -134,7 +132,7 @@ class SettingsTableTest extends TestCase
          * @var \Cake\Datasource\EntityInterface $oldEntity
          */
         $oldEntity = $this->settings->find('all')->where(['key' => 'ScheduledLog.stats.age'])->first();
-        $patchEntity = $this->settings->patchEntity($oldEntity, $params);
+        $this->settings->patchEntity($oldEntity, $params);
         $oldEntityValues = [
             'key' => 'ScheduledLog.stats.age',
             'value' => $oldEntity['value'],
@@ -212,7 +210,7 @@ class SettingsTableTest extends TestCase
         ];
 
         $this->expectException('\RuntimeException');
-        $filterData = $this->settings->filterSettings($configSettings, $userRoles);
+        $this->settings->filterSettings($configSettings, $userRoles);
     }
 
     /**

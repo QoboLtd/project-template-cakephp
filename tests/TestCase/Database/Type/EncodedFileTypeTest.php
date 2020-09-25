@@ -29,7 +29,7 @@ class EncodedFileTypeTest extends TestCase
      */
     public function testToDatabaseExceptionNotArray(): void
     {
-        $result = $this->type->toDatabase('not an array', $this->driver);
+        $this->type->toDatabase('not an array', $this->driver);
     }
 
     /**
@@ -37,7 +37,7 @@ class EncodedFileTypeTest extends TestCase
      */
     public function testToDatabaseExceptionMissingType(): void
     {
-        $result = $this->type->toDatabase(['foo' => 'bar'], $this->driver);
+        $this->type->toDatabase(['foo' => 'bar'], $this->driver);
     }
 
     /**
@@ -45,7 +45,7 @@ class EncodedFileTypeTest extends TestCase
      */
     public function testToDatabaseExceptionMissingTmpName(): void
     {
-        $result = $this->type->toDatabase(['type' => 'image/png'], $this->driver);
+        $this->type->toDatabase(['type' => 'image/png'], $this->driver);
     }
 
     public function testToDatabase(): void

@@ -13,7 +13,6 @@
 
 namespace App\Service;
 
-use App\Search\Manager as SearchManager;
 use App\Utility\Field;
 use App\Utility\Model;
 use Cake\Core\App;

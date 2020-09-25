@@ -77,7 +77,7 @@ class LogAuditTableTest extends TestCase
         $this->assertInstanceOf(Validator::class, $result);
 
         $entity = $this->LogAudit->newEntity([
-            'timestamp' => new Datetime(),
+            'timestamp' => new DateTime(),
             'primary_key' => '00000000-0000-0000-0000-000000001234',
             'source' => 'Foo',
         ]);

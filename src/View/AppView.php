@@ -15,7 +15,6 @@
 
 namespace App\View;
 
-use Cake\ORM\TableRegistry;
 use Cake\View\View;
 
 /**

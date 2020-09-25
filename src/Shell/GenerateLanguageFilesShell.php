@@ -2,17 +2,12 @@
 
 namespace App\Shell;
 
-use App\Utility\Model;
-use BadMethodCallException;
 use CakeDC\Users\Shell\UsersShell as BaseShell;
 use Cake\Console\ConsoleOptionParser;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
 use CsvMigrations\Controller\Traits\PanelsTrait;
-use CsvMigrations\Exception\UnsupportedPrimaryKeyException;
-use CsvMigrations\FieldHandlers\FieldHandlerFactory;
 use CsvMigrations\Utility as CsvUtility;
-use CsvMigrations\Utility\Panel;
 use CsvMigrations\Utility\Validate\Utility;
 use PHPUnit\Framework\Assert;
 use Qobo\Utils\ModuleConfig\ConfigType;
@@ -115,10 +110,6 @@ class GenerateLanguageFilesShell extends BaseShell
      */
     private function generateModuleTitleLine(string $module): string
     {
-        $mc = $this->getModuleConfig($module, []);
-        $configFile = (string)$mc->find(false);
-        $moduleAlias = $mc->parseToArray();
-
         $ctpLines = '';
         $ctpLines .= $this->generateCommentLine("Module Title") . "\n";
         $ctpLines .= $this->generateLine(Inflector::humanize(Inflector::underscore($module))) . "\n\n";
@@ -230,7 +221,6 @@ class GenerateLanguageFilesShell extends BaseShell
 
         $table = TableRegistry::getTableLocator()->get($module);
 
-        $hasViews = false;
         $views = ['view', 'edit', 'add'];
         foreach ($views as $view) {
             $panels = CsvUtility\Field::getCsvView($table, $view, true, true);
@@ -239,7 +229,6 @@ class GenerateLanguageFilesShell extends BaseShell
                 continue;
             }
 
-            $hasViews = true;
             $ctpLines .= $this->generateCommentLine("Module: " . $module . ", CsvView: " . $view) . "\n";
             $actionTitles = array_keys($panels);
 
@@ -260,12 +249,10 @@ class GenerateLanguageFilesShell extends BaseShell
     private function migrationFieldLabels(string $module): array
     {
         $mc = $this->getMigrationConfig($module, []);
-
-        $config = json_encode($mc->parse());
         $fields = $mc->parseToArray();
 
         $fieldLabels = [];
-        $factory = new FieldHandlerFactory();
+
         foreach ($fields as $field) {
             $fieldLabels[] = Inflector::humanize(Inflector::underscore($field['name']));
         }
