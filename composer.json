@@ -40,7 +40,7 @@
         "qobo/cakephp-groups": "^11.0",
         "qobo/cakephp-menu": "^16.0",
         "qobo/cakephp-roles-capabilities": "^v18.0",
-        "qobo/cakephp-search": "^22.0",
+        "qobo/cakephp-search": "^23.0",
         "qobo/cakephp-utils": "^13.0",
         "qobo/qobo-robo": "^2.0",
         "qobo/qobo-robo-cakephp": "^2.0"
