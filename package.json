@@ -59,7 +59,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "acorn": "^6.4.1",
     "admin-lte": "^2.4.18",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap-datepicker": "^1.8.0",
     "bootstrap-timepicker": "^0.5.2",
     "datatables.net-bs": "^1.10.21",
